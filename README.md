@@ -1,54 +1,66 @@
 \mainpage
 [TOC]
-TODO: Rendre ça compréhensible
-## Passif
-Notre programme utilise une version légèrement modifiée de MapleCOMSPS_LRB. La modification apportée consiste à retirer les affichages dans la console afin de rendre notre programme plus agréable à utiliser.
+# Deterministic finite automata learning library
+The `libgsjj` is an open-source framework for learning deterministic finite automata. This project was done by Jonathan Joertz and Gaëtan Staquet (we named this library after our initials in our humility) for our Master's project at the University of Mons (UMONS).
 
-### Installation de Maple
-  * Télécharger MapleCOMSPS_LRB depuis le [site officiel](https://sites.google.com/a/gsd.uwaterloo.ca/maplesat/maplesat).
-  * `unzip MapleCOMSPS_LRB.zip && cd MapleCOMSPS_LRB/simp && export MROOT=.. && make`
+## Learning deterministic finite automata
+This library focuses on passive learning algorithms. In other words, the learning task is the following:
+  1. We have a sample \f$S = (S_+, S_-)\f$ over an alphabet \f$\sigma\f$ where \f$S_+\f$ is the finite set of words the DFA must accept and \f$S_-\f$ is the finite set of words the DFA must reject.
+  2. We must build the smallest DFA consistent with \f$S\f$. A DFA \f$A\f$ is consistent with \f$S\f$ if \f$S_+ \subseteq L(A) \land S_- \cap L(A) = \emptyset\f$.
 
-On peut installer dans les dossiers standards en faisant `make install` (ou en utilisant `checkinstall` qui permet de créer un .deb et donc d'avoir une installation plus propre) mais on en n'a pas besoin.
+To build such a DFA, we use what we call passive learning algorithms. The following algorithms are implemented in `libgsjj`:
+  - Biermann and Feldman's algorithm
+  - Grinchtein, Leucker and Piterman's unary and binary algorithms
+  - Heule and Verwer's algorithm
+  - Neider and Jansen's algorithm
 
-#### Pourquoi Maple ?
-Parce qu'il a gagné la SAT Competition en 2016 et a été 2ème en 2017.
+## How to use `libgsjj`
+### Dependencies to install
+To be able to compile and use our library, you will need the install the following dependencies (we also give the Debian and Ubuntu package's name in parenthesis):
+  - GMP (libgmp-dev)
+  - CVC4 (libcvc4-dev)
+  - zlib (zlib1g-dev)
+  - Boost (libboost-all-dev)
+  - Bison (bison)
+  - Flex (flex)
+  - PkgConfig (pkg-config or pkgconfig), optional
+  - Doxygen and dot (doxygen and graphviz), optional, to build to documentation
 
-## Dépendances
-Il faut installer :
-  - CMake
-  - Un compilateur de C++ qui supporte le standard C++14. Le compilateur de Visual Studio n'est pas supporté.
-  - Boost (program_options et la bibliothèque String Algorithms)
-  - cvc4 (présent dans les dépôts officiels Debian/Ubuntu/ArchLinux); il s'agit d'un SMT solveur
-  - gmp (idem); nécessaire pour le SMT solveur
-  - Doxygen; nécessaire pour générer la documentation
-  - graphviz; idem
+The other dependencies are given in this repository.
 
-Un SAT solveur basé sur CNF (MapleCOMSPS_LRB) est fourni dans le code source.
+### How to compile
+When you are in the root directory of this library:
+```bash
+mkdir build && cd build && cmake .. && make
+```
 
-Il y a également 2 autres SAT solveurs fournis dans le code source. L'un est limboole qui permet de trouver les variables satisfaisant une formule booléenne qui n'est pas en CNF et l'autre est picosat qui est une dépendance de limboole. Les deux sont distribués sous une license "as-is". La ligne 51 de `limboole.c` a été modifée afin de pouvoir plus aisément ajouter la bibliothèque à notre code. Un fichier `limboole.h` a également été ajouté pour la même raison.
+This will build the library. If you want to install it, use `make install`. You can change the installation folder with `cmake -DCMAKE_INSTALL_PREFIX=your/path ..` (or use a graphical interface for CMake).
 
-bcsat est également fourni dans le code source. Il permet de rajouter une interface à Minisat (donc Maple) pour manipuler des formules booléennes quelconques. Plus précisément, cet outil traduit les formules booléennes en CNF. Pour télécharger cette dépendance, il faut exécuter `git submodule init && git submodule update`
+To enable building the benchmarks, instead of `cmake ..` use `cmake -DBUILD_BENCHMARKS=TRUE ..`.
 
-## Compilation des benchmarks
-Dans le dossier `benchmarks` :
-~~~
-  mkdir build && cd build && cmake .. && make
-~~~
+To enable building the tests, instead of `cmake ..` use `cmake -DBUILD_TESTS=TRUE ..`. You can of course enable the benchmarks and the tests at the same time with `cmake -DBUILD_BENCHMARKS=TRUE -DBUILD_TESTS=TRUE ..`
 
-### Documentation
-Il suffit d'éxécuter `make documentation`. La documentation est générée dans le sous-dossier `documentation` de `build`.
+### How to use in a project
+If you use CMake, it's easy. The building stage described before also creates a CMake Config file. Therefore, in your `CMakeLists.txt`, you only have to add the line
+```cmake
+find_library(gsjj)
+```
+and `gsjj` will be available a target you can link against. It's possible the user must set the `gsjj_DIR` CMake parameter to be able to build your program if the files are not installed in the standard location.
 
-Pour la documentation html, le fichier `index.html` est l'endroit idéal pour commencer à lire la documentation.
+### Unit tests
+Once build, you can launch the unit tests by starting the program `tests` (built in the subfolder `tests` in `build`).
 
-### Ajouter une méthode
-Il suffit de créer la classe et, dans le fichier `main.cpp`, de rajouter une valeur dans l'énumération `Choices` ainsi que l'appel au constructeur dans la fonction `createMethod`.
+### Benchmarks
+Once build, you can launch the benchmarks by starting the program `benchmarks` (built in the subfolder `benchmarks` in `build`).
 
-### Changement de SAT solver
-Il est possible de changer le SAT solver utilisé en changeant le paramètre `SAT_SOLVER` dans CMake. Le programme `cmake-gui` peut être utile pour modifier cette valeur facilement.
+## License
+Due to bcsat and the modifications done on this dependency, our library is licensed under the GNU GPL v2.
 
-### Changements effectués sur bcsat
-https://github.com/scrippie/bcsat
+### Changes made on bcsat
+We give here the modifications done on bcsat. The base files can be found at https://github.com/scrippie/bcsat.
 
-  * Le 6 Mars 2019 :
-    * Modification du fichier bcminisat220_solve.cc pour retirer les informations de Maple qui s'affichaient dans la console
-    * Suppression des sous-dossiers `minisat-2.2.0` et `zchaff.2008.10.12`
+  * On 6 March 2019:
+    * Modification of `bcminisat220_solve.cc` to remove log messages.
+    * Removing folders `minisat-2.2.0` et `zchaff.2008.10.12`.
+  * On 10 March 2019:
+    * Modification of `bc.hh`, `bc.cc` and `bcminisat220_solve.cc` to allow the functions to stop when the time limit is reached (the information is propagated through a `std::atomic_bool` object).

@@ -1,6 +1,5 @@
 # Boost
 find_package(Boost REQUIRED COMPONENTS program_options)
-
 # To find the module for cvc4
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/Modules/")
 # cvc4
@@ -88,7 +87,7 @@ install(EXPORT gsjjConfig DESTINATION share/gsjj/cmake)
 export(TARGETS gsjj FILE gsjjConfig.cmake)
  
 # Documentation
-option(BUILD_DOCUMENTATION "Whether to build the documentation" ON)
+option(BUILD_DOCUMENTATION "Whether to build the documentation" OFF)
 if(BUILD_DOCUMENTATION)
     set(DOXYGEN_OUTPUT_DIRECTORY documentation)
     set(DOXYGEN_JAVADOC_AUTOBRIEF TRUE)
