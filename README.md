@@ -3,6 +3,8 @@
 # Deterministic finite automata learning library
 The `libgsjj` is an open-source framework for learning deterministic finite automata. This project was done by Jonathan Joertz and Gaëtan Staquet (we named this library after our initials in our humility) for our Master's project at the University of Mons (UMONS).
 
+This README uses Doxygen's features. Please see the [online documentation](https://libgsjj.github.io/libgsjj/) for a easier to read README.
+
 ## Learning deterministic finite automata
 This library focuses on passive learning algorithms. In other words, the learning task is the following:
   1. We have a sample \f$S = (S_+, S_-)\f$ over an alphabet \f$\sigma\f$ where \f$S_+\f$ is the finite set of words the DFA must accept and \f$S_-\f$ is the finite set of words the DFA must reject.
