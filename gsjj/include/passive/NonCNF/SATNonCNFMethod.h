@@ -10,71 +10,73 @@ extern "C" {
     #include "limboole.h"
 }
 
-namespace passive {
-    /**
-     * Contains every method that relies on a SAT solver that works on any boolean formula.
-     * 
-     * These methodes use limboole.
-     */
-    namespace NonCNF {
+namespace gsjj {
+    namespace passive {
         /**
-         * Base class for every method that relies on a non-CNF SAT solver.
+         * Contains every method that relies on a SAT solver that works on any boolean formula.
          * 
-         * It creates a non-CNF SAT solver
+         * These methodes use limboole.
          */
-        class SATNonCNFMethod : public Method {
-        public:
-            SATNonCNFMethod(const std::set<std::string> &SpSet, const std::set<std::string> &SmSet, const std::set<std::string> &SSet, const std::set<std::string> &prefixesSet, const std::set<char> &alphabetSet, unsigned int n, const bool *stopTrigger);
-            virtual ~SATNonCNFMethod();
-
-            virtual bool solve() override;
-
-            virtual bool hasSolution() const override;
-
-            virtual std::unique_ptr<DFA<char>> constructDFA() override;
-
-            void printVariables() const override;
-
-        protected:
+        namespace NonCNF {
             /**
-             * Gives the name of the file in which the boolean formula must be written
-             * @return The name of the file
-             */
-            virtual std::string getFileName() const = 0;
-
-            /**
-             * Reads the output of the SAT solver and checks if the formula was satisfiable or not
-             * @return True iff the formula was satisfiable
-             */
-            bool isSatisfiable() const;
-
-            /**
-             * Creates the boolean formula (must not be in CNF) and writes it in the stream
-             * @param stream The output stream in which to write
-             * @return True iff it is possible to create the formula
-             */
-            virtual bool createFormula(std::ostream &stream) = 0;
-
-            /**
-             * Effectively creates the DFA.
+             * Base class for every method that relies on a non-CNF SAT solver.
              * 
-             * If this function is called, the boolean formula is satisfiable. The output of the SAT solver is given in the stream
+             * It creates a non-CNF SAT solver
              */
-            virtual std::unique_ptr<DFA<char>> toDFA(std::istream &stream) const = 0;
+            class SATNonCNFMethod : public Method {
+            public:
+                SATNonCNFMethod(const std::set<std::string> &SpSet, const std::set<std::string> &SmSet, const std::set<std::string> &SSet, const std::set<std::string> &prefixesSet, const std::set<char> &alphabetSet, unsigned int n, const bool *stopTrigger);
+                virtual ~SATNonCNFMethod();
 
-        private:
-            bool m_hasSolution;
-            const bool *mustStop;
+                virtual bool solve() override;
 
-        private:
-            /**
-             * The name of the file in which to write the boolean formula
-             */
-            std::string getInputFile() const;
-            /**
-             * The name of the file in which the SAT solver writes
-             */
-            std::string getOutputFile() const;
-        };
+                virtual bool hasSolution() const override;
+
+                virtual std::unique_ptr<DFA<char>> constructDFA() override;
+
+                void printVariables() const override;
+
+            protected:
+                /**
+                 * Gives the name of the file in which the boolean formula must be written
+                 * @return The name of the file
+                 */
+                virtual std::string getFileName() const = 0;
+
+                /**
+                 * Reads the output of the SAT solver and checks if the formula was satisfiable or not
+                 * @return True iff the formula was satisfiable
+                 */
+                bool isSatisfiable() const;
+
+                /**
+                 * Creates the boolean formula (must not be in CNF) and writes it in the stream
+                 * @param stream The output stream in which to write
+                 * @return True iff it is possible to create the formula
+                 */
+                virtual bool createFormula(std::ostream &stream) = 0;
+
+                /**
+                 * Effectively creates the DFA.
+                 * 
+                 * If this function is called, the boolean formula is satisfiable. The output of the SAT solver is given in the stream
+                 */
+                virtual std::unique_ptr<DFA<char>> toDFA(std::istream &stream) const = 0;
+
+            private:
+                bool m_hasSolution;
+                const bool *mustStop;
+
+            private:
+                /**
+                 * The name of the file in which to write the boolean formula
+                 */
+                std::string getInputFile() const;
+                /**
+                 * The name of the file in which the SAT solver writes
+                 */
+                std::string getOutputFile() const;
+            };
+        }
     }
 }

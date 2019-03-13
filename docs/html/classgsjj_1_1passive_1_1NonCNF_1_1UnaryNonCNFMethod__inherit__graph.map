@@ -1,0 +1,4 @@
+<map id="gsjj::passive::NonCNF::UnaryNonCNFMethod" name="gsjj::passive::NonCNF::UnaryNonCNFMethod">
+<area shape="rect" id="node2" href="$classgsjj_1_1passive_1_1NonCNF_1_1SATNonCNFMethod.html" title="Base class for every method that relies on a non&#45;CNF SAT solver. " alt="" coords="8,80,163,121"/>
+<area shape="rect" id="node3" href="$classgsjj_1_1passive_1_1Method.html" title="The base class of all passive methods. " alt="" coords="12,5,159,32"/>
+</map>

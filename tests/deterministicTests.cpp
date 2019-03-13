@@ -12,6 +12,8 @@
 
 #include "utils.h"
 
+using namespace gsjj;
+
 /**
  * Requires that the methods construct optimal DFA of the expected size
  * @param Sp The \f$S_+\f$
