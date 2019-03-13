@@ -1,0 +1,2 @@
+/usr/bin/ar qc libmaple.a  CMakeFiles/maple.dir/MapleCOMSPS_LRB/core/Solver.cc.o CMakeFiles/maple.dir/MapleCOMSPS_LRB/simp/SimpSolver.cc.o
+/usr/bin/ranlib libmaple.a

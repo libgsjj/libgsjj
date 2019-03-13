@@ -1,0 +1,38 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../gsjj/lib/picosat/picosat.h
+stdlib.h
+-
+stdio.h
+-
+stdbool.h
+-
+
+/home/gaetan/Github/MAB1/libgsjj/gsjj/lib/limboole/limboole.c
+stdio.h
+-
+stdlib.h
+-
+string.h
+-
+ctype.h
+-
+stdarg.h
+-
+limboole.h
+/home/gaetan/Github/MAB1/libgsjj/gsjj/lib/limboole/limboole.h
+lglib.h
+/home/gaetan/Github/MAB1/libgsjj/gsjj/lib/limboole/lglib.h
+picosat.h
+/home/gaetan/Github/MAB1/libgsjj/gsjj/lib/limboole/picosat.h
+
+/home/gaetan/Github/MAB1/libgsjj/gsjj/lib/limboole/limboole.h
+stdbool.h
+-
+

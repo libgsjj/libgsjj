@@ -1,0 +1,6 @@
+<map id="src/passive/CNF/BinaryCNFMethod.cpp" name="src/passive/CNF/BinaryCNFMethod.cpp">
+<area shape="rect" id="node2" href="$BinaryCNFMethod_8h.html" title="This file declares the Biermann method that relies on a CNF SAT solver. " alt="" coords="5,80,228,107"/>
+<area shape="rect" id="node18" href="$binary_8h.html" title="This file declares the function to convert a number in its decimal form to its binary form and vice&#45;v..." alt="" coords="541,155,609,181"/>
+<area shape="rect" id="node4" href="$Method_8h.html" title="passive/Method.h" alt="" coords="147,155,273,181"/>
+<area shape="rect" id="node9" href="$DFA_8h.html" title="This file declares and implements the templated class DFA. " alt="" coords="355,229,415,256"/>
+</map>

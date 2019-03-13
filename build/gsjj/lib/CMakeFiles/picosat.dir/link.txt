@@ -1,0 +1,2 @@
+/usr/bin/ar qc libpicosat.a  CMakeFiles/picosat.dir/picosat/picosat.c.o
+/usr/bin/ranlib libpicosat.a
