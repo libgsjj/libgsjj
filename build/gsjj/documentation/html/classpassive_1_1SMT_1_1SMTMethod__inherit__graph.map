@@ -1,5 +1,0 @@
-<map id="passive::SMT::SMTMethod" name="passive::SMT::SMTMethod">
-<area shape="rect" id="node3" href="$classpassive_1_1SMT_1_1BiermannMethod.html" title="Implements the Biermann and Feldman method. " alt="" coords="5,162,215,189"/>
-<area shape="rect" id="node4" href="$classpassive_1_1SMT_1_1NeiderJansenMethod.html" title="The Neider and Jansen method. " alt="" coords="239,155,429,196"/>
-<area shape="rect" id="node2" href="$classpassive_1_1Method.html" title="The base class of all passive methods. " alt="" coords="163,5,281,32"/>
-</map>

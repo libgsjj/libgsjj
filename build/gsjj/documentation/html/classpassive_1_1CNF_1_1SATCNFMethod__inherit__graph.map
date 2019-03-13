@@ -1,5 +1,0 @@
-<map id="passive::CNF::SATCNFMethod" name="passive::CNF::SATCNFMethod">
-<area shape="rect" id="node3" href="$classpassive_1_1CNF_1_1HeuleVerwerCNFMethod.html" title="The Heule and Verwer method. " alt="" coords="5,155,192,196"/>
-<area shape="rect" id="node4" href="$classpassive_1_1CNF_1_1UnaryCNFMethod.html" title="The Grinchtein, Leucker and Piterman&#39;s unary method. " alt="" coords="217,162,434,189"/>
-<area shape="rect" id="node2" href="$classpassive_1_1Method.html" title="The base class of all passive methods. " alt="" coords="153,5,271,32"/>
-</map>

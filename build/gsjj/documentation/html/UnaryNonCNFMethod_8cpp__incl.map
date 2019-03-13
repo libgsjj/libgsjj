@@ -1,6 +1,0 @@
-<map id="src/passive/NonCNF/UnaryNonCNFMethod.cpp" name="src/passive/NonCNF/UnaryNonCNFMethod.cpp">
-<area shape="rect" id="node2" href="$UnaryNonCNFMethod_8h.html" title="passive/NonCNF/UnaryNonCNFMethod.h" alt="" coords="143,95,411,121"/>
-<area shape="rect" id="node3" href="$SATNonCNFMethod_8h.html" title="passive/NonCNF/SATNonCNFMethod.h" alt="" coords="117,169,376,196"/>
-<area shape="rect" id="node6" href="$Method_8h.html" title="passive/Method.h" alt="" coords="184,244,309,271"/>
-<area shape="rect" id="node11" href="$DFA_8h.html" title="This file declares and implements the templated class DFA. " alt="" coords="362,319,422,345"/>
-</map>

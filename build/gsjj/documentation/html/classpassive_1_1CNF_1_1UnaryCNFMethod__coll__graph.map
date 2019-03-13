@@ -1,4 +1,0 @@
-<map id="passive::CNF::UnaryCNFMethod" name="passive::CNF::UnaryCNFMethod">
-<area shape="rect" id="node2" href="$classpassive_1_1CNF_1_1SATCNFMethod.html" title="Base class for every method that relies on a SAT solver. " alt="" coords="10,80,218,107"/>
-<area shape="rect" id="node3" href="$classpassive_1_1Method.html" title="The base class of all passive methods. " alt="" coords="55,5,173,32"/>
-</map>

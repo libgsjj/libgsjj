@@ -1,5 +1,0 @@
-<map id="include/binary.h" name="include/binary.h">
-<area shape="rect" id="node2" href="$binary_8cpp.html" title="This file implements the functions to convert a number in its decimal form to its binary form and vic..." alt="" coords="5,87,109,114"/>
-<area shape="rect" id="node3" href="$BinaryCNFMethod_8cpp.html" title="This file implements the Biermann method that relies on CNF SAT solver. " alt="" coords="133,87,392,114"/>
-<area shape="rect" id="node4" href="$BinaryNonCNFMethod_8cpp.html" title="src/passive/NonCNF\l/BinaryNonCNFMethod.cpp" alt="" coords="417,80,599,121"/>
-</map>

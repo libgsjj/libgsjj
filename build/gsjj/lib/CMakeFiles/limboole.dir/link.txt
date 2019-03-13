@@ -1,2 +1,0 @@
-/usr/bin/ar qc liblimboole.a  CMakeFiles/limboole.dir/limboole/limboole.c.o
-/usr/bin/ranlib liblimboole.a
