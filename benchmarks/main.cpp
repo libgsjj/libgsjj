@@ -9,6 +9,7 @@
 #include "passive/utils.h"
 
 namespace po = boost::program_options;
+using namespace gsjj;
 
 /**
  * To read the method option from the command-line

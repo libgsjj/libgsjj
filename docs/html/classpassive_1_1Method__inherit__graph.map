@@ -1,0 +1,13 @@
+<map id="passive::Method" name="passive::Method">
+<area shape="rect" id="node2" href="$classpassive_1_1CNF_1_1BinaryCNFMethod.html" title="The binary method with a CNF SAT solver. " alt="" coords="191,39,409,66"/>
+<area shape="rect" id="node3" href="$classpassive_1_1CNF_1_1SATCNFMethod.html" title="Base class for every method that relies on a SAT solver. " alt="" coords="196,90,404,117"/>
+<area shape="rect" id="node6" href="$classpassive_1_1NonCNF_1_1SATNonCNFMethod.html" title="Base class for every method that relies on a non&#45;CNF SAT solver. " alt="" coords="172,177,428,203"/>
+<area shape="rect" id="node10" href="$classpassive_1_1SMT_1_1SMTMethod.html" title="The base class for every SMT&#45;based method. " alt="" coords="209,319,391,346"/>
+<area shape="rect" id="node4" href="$classpassive_1_1CNF_1_1HeuleVerwerCNFMethod.html" title="The Heule and Verwer method. " alt="" coords="491,5,678,47"/>
+<area shape="rect" id="node5" href="$classpassive_1_1CNF_1_1UnaryCNFMethod.html" title="The Grinchtein, Leucker and Piterman&#39;s unary method. " alt="" coords="476,71,693,98"/>
+<area shape="rect" id="node7" href="$classpassive_1_1NonCNF_1_1BinaryNonCNFMethod.html" title="The Grinchtein, Leucker and Piterman&#39;s binary method using a SAT Solver that does not rely on CNF..." alt="" coords="487,123,683,164"/>
+<area shape="rect" id="node8" href="$classpassive_1_1NonCNF_1_1HeuleVerwerNonCNFMethod.html" title="The Heule and Verwer method. " alt="" coords="479,188,690,229"/>
+<area shape="rect" id="node9" href="$classpassive_1_1NonCNF_1_1UnaryNonCNFMethod.html" title="The Grinchtein, Leucker and Piterman&#39;s unary method. " alt="" coords="487,253,682,295"/>
+<area shape="rect" id="node11" href="$classpassive_1_1SMT_1_1BiermannMethod.html" title="Implements the Biermann and Feldman method. " alt="" coords="480,319,689,346"/>
+<area shape="rect" id="node12" href="$classpassive_1_1SMT_1_1NeiderJansenMethod.html" title="The Neider and Jansen method. " alt="" coords="489,371,680,412"/>
+</map>

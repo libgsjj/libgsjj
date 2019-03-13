@@ -1,0 +1,21 @@
+\form#0:$m$
+\form#1:$(Q, \Sigma, q_0, \delta, F)$
+\form#2:$Q$
+\form#3:$\Sigma$
+\form#4:$q_0$
+\form#5:$\delta$
+\form#6:$Q \times Sigma \rightarrow Q: \delta(q, a) = p$
+\form#7:$F$
+\form#8:$m = log_2(n)$
+\form#9:$S = (S_+, S_-)$
+\form#10:$S_+$
+\form#11:$S_-$
+\form#12:$(S_+, S_-)$
+\form#13:$S = S_+ \cup S_-$
+\form#14:$Pref(S)$
+\form#15:$Pref(S_+ \cup S_-)$
+\form#16:$Pref(S_+, S_-)$
+\form#17:$S$
+\form#18:$\sigma$
+\form#19:$A$
+\form#20:$S_+ \subseteq L(A) \land S_- \cap L(A) = \emptyset$

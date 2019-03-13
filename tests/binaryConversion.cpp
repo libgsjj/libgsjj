@@ -2,6 +2,8 @@
 
 #include "binary.h"
 
+using namespace gsjj;
+
 TEST_CASE("Binary to decimal", "[conversions]") {
     SECTION("Conversion of 6 to 011") {
         auto bin = decimal_to_binary(6, 3);

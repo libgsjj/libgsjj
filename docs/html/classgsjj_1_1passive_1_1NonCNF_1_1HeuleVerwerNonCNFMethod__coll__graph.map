@@ -1,0 +1,4 @@
+<map id="gsjj::passive::NonCNF::HeuleVerwerNonCNFMethod" name="gsjj::passive::NonCNF::HeuleVerwerNonCNFMethod">
+<area shape="rect" id="node2" href="$classgsjj_1_1passive_1_1NonCNF_1_1SATNonCNFMethod.html" title="Base class for every method that relies on a non&#45;CNF SAT solver. " alt="" coords="28,80,183,121"/>
+<area shape="rect" id="node3" href="$classgsjj_1_1passive_1_1Method.html" title="The base class of all passive methods. " alt="" coords="32,5,179,32"/>
+</map>
