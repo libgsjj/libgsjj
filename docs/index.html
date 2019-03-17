@@ -66,10 +66,11 @@ $(function() {
 <div class="contents">
 <div class="textblock"><h1>Deterministic finite automata learning library</h1>
 <p>The <code>libgsjj</code> is an open-source framework for learning deterministic finite automata. This project was done by Jonathan Joertz and Gaëtan Staquet (we named this library after our initials in our humility) for our Master's project at the University of Mons (UMONS).</p>
+<p>This README uses Doxygen's features. Please see the <a href="https://libgsjj.github.io/libgsjj/index.html">online documentation</a> for a easier to read README.</p>
 <h2>Learning deterministic finite automata</h2>
 <p>This library focuses on passive learning algorithms. In other words, the learning task is the following:</p><ol type="1">
-<li>We have a sample <img class="formulaInl" alt="$S = (S_+, S_-)$" src="form_9.png"/> over an alphabet <img class="formulaInl" alt="$\sigma$" src="form_18.png"/> where <img class="formulaInl" alt="$S_+$" src="form_10.png"/> is the finite set of words the DFA must accept and <img class="formulaInl" alt="$S_-$" src="form_11.png"/> is the finite set of words the DFA must reject.</li>
-<li>We must build the smallest DFA consistent with <img class="formulaInl" alt="$S$" src="form_17.png"/>. A DFA <img class="formulaInl" alt="$A$" src="form_19.png"/> is consistent with <img class="formulaInl" alt="$S$" src="form_17.png"/> if <img class="formulaInl" alt="$S_+ \subseteq L(A) \land S_- \cap L(A) = \emptyset$" src="form_20.png"/>.</li>
+<li>We have a sample <img class="formulaInl" alt="$S = (S_+, S_-)$" src="form_0.png"/> over an alphabet <img class="formulaInl" alt="$\sigma$" src="form_1.png"/> where <img class="formulaInl" alt="$S_+$" src="form_2.png"/> is the finite set of words the DFA must accept and <img class="formulaInl" alt="$S_-$" src="form_3.png"/> is the finite set of words the DFA must reject.</li>
+<li>We must build the smallest DFA consistent with <img class="formulaInl" alt="$S$" src="form_4.png"/>. A DFA <img class="formulaInl" alt="$A$" src="form_5.png"/> is consistent with <img class="formulaInl" alt="$S$" src="form_4.png"/> if <img class="formulaInl" alt="$S_+ \subseteq L(A) \land S_- \cap L(A) = \emptyset$" src="form_6.png"/>.</li>
 </ol>
 <p>To build such a DFA, we use what we call passive learning algorithms. The following algorithms are implemented in <code>libgsjj</code>:</p><ul>
 <li>Biermann and Feldman's algorithm</li>
