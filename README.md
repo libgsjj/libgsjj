@@ -58,6 +58,8 @@ Once build, you can launch the benchmarks by starting the program `benchmarks` (
 ## License
 Due to bcsat and the modifications done on this dependency, our library is licensed under the GNU GPL v2.
 
+CVC4 is distributed both under BSD 3-Clause and GNU GPL v3. If you want to distribute binaries based on libgsjj, be sure to use a BSD 3-Clause distribution for CVC4 since GNU GPL v2 and v3 are incompatible.
+
 ### Changes made on bcsat
 We give here the modifications done on bcsat. The base files can be found at https://github.com/scrippie/bcsat.
 
