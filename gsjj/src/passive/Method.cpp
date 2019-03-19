@@ -100,18 +100,19 @@ namespace gsjj {
                 if (!bestPossible->hasSolution()) {
                     return nullptr;
                 }
+                remainingTime -= std::chrono::seconds(int(std::floor(bestPossible->timeToSolve())));
 
                 unsigned int n = std::ceil(nMin + (nMax - nMin) / 2.);
 
-                while (n != nMax && n != nMin && !stopTrigger) { // In case a method manages to escape the trigger, we force it to stop here
+                while (n != nMax && n != nMin && !stopTrigger && remainingTime != std::chrono::seconds(0)) { // In case a method manages to escape the trigger, we force it to stop here
                     // std::cout << methodsNames.at(method) << " " << n << "\n";
-                    std::unique_ptr<Method> toTry = constructMethodTrigger(method, n, Sp, Sm, S, prefixes, alphabet, timeLimit, stopTrigger, &stopBool);
+                    std::unique_ptr<Method> toTry = constructMethodTrigger(method, n, Sp, Sm, S, prefixes, alphabet, remainingTime, stopTrigger, &stopBool);
 
                     bool success = toTry->solve();
                     if (timeTaken) {
                         *timeTaken += toTry->timeToSolve();
                     }
-                    remainingTime -= std::chrono::seconds(int(std::ceil(toTry->timeToSolve())));
+                    remainingTime -= std::chrono::seconds(int(std::floor(toTry->timeToSolve())));
 
                     if (success) {
                         if (toTry->numberOfStates() < bestPossible->numberOfStates()) {

@@ -173,7 +173,7 @@ void random_benchmark(unsigned int minSize, unsigned int maxSize, unsigned int n
             }
 
             // This should be a case of an embarrassingly parallel problem. Therefore, we only have to activate the parallelisation (using OpenMP)
-            #pragma omp parallel for num_threads(2)
+            #pragma omp parallel for num_threads(4)
             for (unsigned int c = 0 ; c < passive::allMethods.size() ; c++) {
                 long double timeTaken = 0;
                 std::unique_ptr<passive::Method> ptr;
@@ -309,7 +309,9 @@ int main(int argc, char** argv) {
         if (variables.count("min-word-size")) {
             random_benchmark(minSize, maxSize, nGenerations, minWordSize, maxWordSize, alphabetSize, probabilityAccepted, timeLimit, verbose);
         }
-        random_benchmark(minSize, maxSize, nGenerations, wordSize, wordSize, alphabetSize, probabilityAccepted, timeLimit, verbose);
+        else {
+            random_benchmark(minSize, maxSize, nGenerations, wordSize, wordSize, alphabetSize, probabilityAccepted, timeLimit, verbose);
+        }
     }
     else {
         if (!variables.count("method")) {

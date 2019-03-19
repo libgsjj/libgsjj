@@ -28,7 +28,7 @@ namespace gsjj {
                 m_cpuTimeStart = Minisat::cpuTime();
                 CVC4::Result result = m_SMTEngine.checkSat(expr);
                 m_cpuTimeEnd = Minisat::cpuTime();
-                m_hasSolution = result == CVC4::Result::SAT;
+                m_hasSolution = result.isSat();
                 return m_hasSolution;
             }
 

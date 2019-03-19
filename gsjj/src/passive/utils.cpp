@@ -52,7 +52,7 @@ namespace gsjj {
         void generateRandomly(unsigned int numberWords, unsigned int minLength, unsigned int maxLength, unsigned int alphabetSize, std::set<std::string> &Sp, std::set<std::string> &Sm, double SpProbability) {
             std::default_random_engine generator(time(0));
             std::bernoulli_distribution toAcceptDistribution(SpProbability);
-            std::uniform_int_distribution<char> symbolDistribution('a', 'a' + alphabetSize);
+            std::uniform_int_distribution<char> symbolDistribution('a', 'a' + alphabetSize - 1);
             std::uniform_int_distribution<unsigned int> lengthDistribution(minLength, maxLength);
 
             while (Sp.size() + Sm.size() < numberWords) {

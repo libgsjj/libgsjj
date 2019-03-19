@@ -52,7 +52,7 @@ static inline double Minisat::cpuTime(void) { return (double)clock() / CLOCKS_PE
 
 static inline double Minisat::cpuTime(void) {
     struct rusage ru;
-    getrusage(RUSAGE_SELF, &ru);
+    getrusage(RUSAGE_THREAD, &ru); // Modified on 19 March 2019
     return (double)ru.ru_utime.tv_sec + (double)ru.ru_utime.tv_usec / 1000000; }
 
 #endif

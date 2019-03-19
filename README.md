@@ -17,6 +17,8 @@ To build such a DFA, we use what we call passive learning algorithms. The follow
   - Neider and Jansen's algorithm
 
 ## How to use `libgsjj`
+Please note that the benchmarks will only be correct under Linux because the way the CPU time for a thread is retrieved is only working under that family of OS. The Linux kernel's version must be at least 2.6.26.
+
 ### Dependencies to install
 To be able to compile and use our library, you will need the install the following dependencies (we also give the Debian and Ubuntu package's name in parenthesis):
   - GMP (libgmp-dev)
