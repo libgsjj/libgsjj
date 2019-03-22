@@ -173,7 +173,7 @@ void random_benchmark(unsigned int minSize, unsigned int maxSize, unsigned int n
             }
 
             // This should be a case of an embarrassingly parallel problem. Therefore, we only have to activate the parallelisation (using OpenMP)
-            #pragma omp parallel for num_threads(4)
+            #pragma omp parallel for schedule(dynamic)
             for (unsigned int c = 0 ; c < passive::allMethods.size() ; c++) {
                 long double timeTaken = 0;
                 std::unique_ptr<passive::Method> ptr;
@@ -353,8 +353,7 @@ int main(int argc, char** argv) {
                 std::cout << "We found the best possible DFA\n";
             }
             else {
-                std::cout << "Timeout: not enough time to build the DFA\n";
-                return 8;
+                std::cout << "Timeout: not enough time to build the optimal DFA. We still show information about the best DFA found.\n";
             }
             std::cout << "Total time: " << timeTaken << "\n";
             std::cout << "Number of states: " << method->numberOfStates() << "\n";

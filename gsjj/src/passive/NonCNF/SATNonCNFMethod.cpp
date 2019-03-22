@@ -34,10 +34,6 @@ namespace gsjj {
                         out.c_str(),
                     };
 
-                    if (*mustStop) {
-                        return false;
-                    }
-
                     m_cpuTimeStart = cpuTime();
                     limboole(5, argv, mustStop);
                     m_cpuTimeEnd = cpuTime();
@@ -46,7 +42,6 @@ namespace gsjj {
                 }
                 else {
                     output.close();
-                    // TODO: is it the same condition for every method?
                     return m_hasSolution = (m_Sp.size() == 0 || m_Sm.size() == 0);
                 }
             }

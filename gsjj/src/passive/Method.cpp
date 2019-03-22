@@ -86,9 +86,10 @@ namespace gsjj {
 
             std::chrono::seconds remainingTime(timeLimit);
 
-            std::packaged_task<std::unique_ptr<Method>()> task([&]() -> std::unique_ptr<Method> {
-                std::unique_ptr<Method> bestPossible;
+            std::unique_ptr<Method> bestPossible = nullptr;
 
+            // We use a thread to be able to stop the method when the time limit is reached
+            std::packaged_task<void()> task([&]() {
                 unsigned int nMin = 1, nMax = prefixes.size();
 
                 // We know that the prefix acceptor is consistent (it might be the smallest DFA)
@@ -98,7 +99,7 @@ namespace gsjj {
                     *timeTaken = bestPossible->timeToSolve();
                 }
                 if (!bestPossible->hasSolution()) {
-                    return nullptr;
+                    return;
                 }
                 remainingTime -= std::chrono::seconds(int(std::floor(bestPossible->timeToSolve())));
 
@@ -126,34 +127,31 @@ namespace gsjj {
 
                     n = std::ceil(nMin + (nMax - nMin) / 2.);
                 }
-                return bestPossible;
             });
 
-            std::future<std::unique_ptr<Method>> future = task.get_future();
+            std::future<void> future = task.get_future();
             std::thread t(std::move(task));
 
-            // If there is no limit
+            // If there is no limit, we just start the thread and join
             if (timeLimit <= std::chrono::seconds(0)) {
-                // std::cout << methodsNames.at(method) << " NO LIMIT\n";
                 future.wait();
                 t.join();
-                return std::make_pair(future.get(), true);
+                return std::make_pair(std::move(bestPossible), true);
             }
             else {
-                // std::cout << methodsNames.at(method) << " LIMIT\n";
+                // We use wait_for to wait for the thread to finish or for the timeLimit to be reached
+                // If the thread had enough time, we simply join (to make sure everything is ready to be destroyed) and we return the built model
+                // If the time limit is reached, we set the stopping flags to ask the thread to finish as soon as possible and we join
                 std::future_status status = future.wait_for(timeLimit);
                 if (status == std::future_status::ready) {
-                    // std::cout << methodsNames.at(method) << " ready\n";
                     t.join();
-                    return std::make_pair(future.get(), true);
+                    return std::make_pair(std::move(bestPossible), true);
                 }
                 else {
-                    // std::cout << methodsNames.at(method) << " timeout\n";
-                    *timeTaken = timeLimit.count();
                     stopTrigger = true;
                     stopBool = true;
                     t.join();
-                    return std::make_pair(nullptr, false);
+                    return std::make_pair(std::move(bestPossible), false);
                 }
             }
         }
@@ -165,7 +163,9 @@ namespace gsjj {
             m_S(SSet),
             m_prefixes(prefixesSet),
             m_alphabet(alphabetSet),
-            m_triedSolve(false)
+            m_triedSolve(false),
+            m_cpuTimeStart(0),
+            m_cpuTimeEnd(0)
         {
 
         }
