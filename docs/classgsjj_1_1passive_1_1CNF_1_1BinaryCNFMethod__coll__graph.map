@@ -1,3 +1,4 @@
 <map id="gsjj::passive::CNF::BinaryCNFMethod" name="gsjj::passive::CNF::BinaryCNFMethod">
-<area shape="rect" id="node2" href="$classgsjj_1_1passive_1_1Method.html" title="The base class of all passive methods. " alt="" coords="5,5,152,32"/>
+<area shape="rect" id="node2" href="$classgsjj_1_1passive_1_1Method.html" title="The base class of all passive methods. " alt="" coords="5,13,152,39"/>
+<area shape="rect" id="node3" href="$classgsjj_1_1passive_1_1RegisterInFactory.html" title="gsjj::passive::RegisterIn\lFactory\&lt; BinaryCNFMethod \&gt;" alt="" coords="177,5,375,47"/>
 </map>

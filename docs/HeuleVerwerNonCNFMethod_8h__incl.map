@@ -1,5 +1,6 @@
-<map id="include/passive/NonCNF/HeuleVerwerNonCNFMethod.h" name="include/passive/NonCNF/HeuleVerwerNonCNFMethod.h">
-<area shape="rect" id="node2" href="$SATNonCNFMethod_8h.html" title="passive/NonCNF/SATNonCNFMethod.h" alt="" coords="59,95,317,121"/>
-<area shape="rect" id="node5" href="$Method_8h.html" title="passive/Method.h" alt="" coords="184,169,309,196"/>
-<area shape="rect" id="node10" href="$DFA_8h.html" title="This file declares and implements the templated class DFA. " alt="" coords="391,244,451,271"/>
+<map id="include/gsjj/passive/NonCNF/HeuleVerwerNonCNFMethod.h" name="include/gsjj/passive/NonCNF/HeuleVerwerNonCNFMethod.h">
+<area shape="rect" id="node2" href="$SATNonCNFMethod_8h.html" title="gsjj/passive/NonCNF\l/SATNonCNFMethod.h" alt="" coords="137,95,295,136"/>
+<area shape="rect" id="node17" href="$MethodFactory_8h.html" title="gsjj/passive/MethodFactory.h" alt="" coords="455,102,649,129"/>
+<area shape="rect" id="node5" href="$Method_8h.html" title="gsjj/passive/Method.h" alt="" coords="307,184,456,211"/>
+<area shape="rect" id="node10" href="$DFA_8h.html" title="This file declares and implements the templated class DFA. " alt="" coords="253,259,337,285"/>
 </map>

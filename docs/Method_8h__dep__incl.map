@@ -1,25 +1,27 @@
-<map id="include/passive/Method.h" name="include/passive/Method.h">
-<area shape="rect" id="node2" href="$BinaryCNFMethod_8h.html" title="This file declares the Biermann method that relies on a CNF SAT solver. " alt="" coords="816,80,961,121"/>
-<area shape="rect" id="node4" href="$Method_8cpp.html" title="src/passive/Method.cpp" alt="" coords="953,266,1115,293"/>
-<area shape="rect" id="node5" href="$SATCNFMethod_8h.html" title="include/passive/CNF\l/SATCNFMethod.h" alt="" coords="371,80,515,121"/>
-<area shape="rect" id="node11" href="$SATNonCNFMethod_8h.html" title="include/passive/NonCNF\l/SATNonCNFMethod.h" alt="" coords="1233,80,1401,121"/>
-<area shape="rect" id="node19" href="$SMTMethod_8h.html" title="include/passive/SMT\l/SMTMethod.h" alt="" coords="1938,80,2082,121"/>
-<area shape="rect" id="node3" href="$BinaryCNFMethod_8cpp.html" title="This file implements the Biermann method that relies on CNF SAT solver. " alt="" coords="653,177,911,203"/>
-<area shape="rect" id="node6" href="$HeuleVerwerCNFMethod_8h.html" title="This file declares the Heule and Verwer method that relies on CNF SAT solver. " alt="" coords="445,169,628,211"/>
-<area shape="rect" id="node8" href="$UnaryCNFMethod_8h.html" title="include/passive/CNF\l/UnaryCNFMethod.h" alt="" coords="277,169,421,211"/>
-<area shape="rect" id="node10" href="$SATCNFMethod_8cpp.html" title="src/passive/CNF/SATCNFMethod.cpp" alt="" coords="5,177,252,203"/>
-<area shape="rect" id="node7" href="$HeuleVerwerCNFMethod_8cpp.html" title="This file implements the Heule and Verwer method that relies on CNF SAT solver. " alt="" coords="469,259,669,300"/>
-<area shape="rect" id="node9" href="$UnaryCNFMethod_8cpp.html" title="src/passive/CNF/UnaryCNFMethod.cpp" alt="" coords="189,266,445,293"/>
-<area shape="rect" id="node12" href="$BinaryNonCNFMethod_8h.html" title="include/passive/NonCNF\l/BinaryNonCNFMethod.h" alt="" coords="1037,169,1207,211"/>
-<area shape="rect" id="node14" href="$HeuleVerwerNonCNFMethod_8h.html" title="This file declares the Heule and Verwer method that relies on non CNF SAT solver. ..." alt="" coords="1427,169,1633,211"/>
-<area shape="rect" id="node16" href="$UnaryNonCNFMethod_8h.html" title="include/passive/NonCNF\l/UnaryNonCNFMethod.h" alt="" coords="1658,169,1826,211"/>
-<area shape="rect" id="node18" href="$SATNonCNFMethod_8cpp.html" title="src/passive/NonCNF\l/SATNonCNFMethod.cpp" alt="" coords="1231,169,1403,211"/>
-<area shape="rect" id="node13" href="$BinaryNonCNFMethod_8cpp.html" title="src/passive/NonCNF\l/BinaryNonCNFMethod.cpp" alt="" coords="1139,259,1321,300"/>
-<area shape="rect" id="node15" href="$HeuleVerwerNonCNFMethod_8cpp.html" title="This file implements the Heule and Verwer method that relies on non CNF SAT solver. " alt="" coords="1393,259,1614,300"/>
-<area shape="rect" id="node17" href="$UnaryNonCNFMethod_8cpp.html" title="src/passive/NonCNF\l/UnaryNonCNFMethod.cpp" alt="" coords="1638,259,1819,300"/>
-<area shape="rect" id="node20" href="$BiermannMethod_8h.html" title="include/passive/SMT\l/BiermannMethod.h" alt="" coords="1850,169,1994,211"/>
-<area shape="rect" id="node22" href="$NeiderJansenMethod_8h.html" title="include/passive/SMT\l/NeiderJansenMethod.h" alt="" coords="2018,169,2178,211"/>
-<area shape="rect" id="node24" href="$SMTMethod_8cpp.html" title="src/passive/SMT/SMTMethod.cpp" alt="" coords="2202,177,2423,203"/>
-<area shape="rect" id="node21" href="$BiermannMethod_8cpp.html" title="src/passive/SMT/Biermann\lMethod.cpp" alt="" coords="1844,259,2024,300"/>
-<area shape="rect" id="node23" href="$NeiderJansenMethod_8cpp.html" title="src/passive/SMT/NeiderJansen\lMethod.cpp" alt="" coords="2049,259,2254,300"/>
+<map id="include/gsjj/passive/Method.h" name="include/gsjj/passive/Method.h">
+<area shape="rect" id="node2" href="$BinaryCNFMethod_8h.html" title="This file declares the Biermann method that relies on a CNF SAT solver. " alt="" coords="276,184,453,225"/>
+<area shape="rect" id="node4" href="$Method_8cpp.html" title="src/passive/Method.cpp" alt="" coords="1012,281,1173,307"/>
+<area shape="rect" id="node5" href="$SATCNFMethod_8h.html" title="include/gsjj/passive\l/CNF/SATCNFMethod.h" alt="" coords="625,95,792,136"/>
+<area shape="rect" id="node11" href="$MethodFactory_8h.html" title="include/gsjj/passive\l/MethodFactory.h" alt="" coords="1171,95,1307,136"/>
+<area shape="rect" id="node23" href="$SATNonCNFMethod_8h.html" title="include/gsjj/passive\l/NonCNF/SATNonCNFMethod.h" alt="" coords="1520,95,1735,136"/>
+<area shape="rect" id="node25" href="$SMTMethod_8h.html" title="include/gsjj/passive\l/SMT/SMTMethod.h" alt="" coords="2293,95,2433,136"/>
+<area shape="rect" id="node3" href="$BinaryCNFMethod_8cpp.html" title="This file implements the Biermann method that relies on CNF SAT solver. " alt="" coords="154,281,413,307"/>
+<area shape="rect" id="node6" href="$HeuleVerwerCNFMethod_8h.html" title="This file declares the Heule and Verwer method that relies on CNF SAT solver. " alt="" coords="676,184,891,225"/>
+<area shape="rect" id="node8" href="$UnaryCNFMethod_8h.html" title="include/gsjj/passive\l/CNF/UnaryCNFMethod.h" alt="" coords="477,184,652,225"/>
+<area shape="rect" id="node10" href="$SATCNFMethod_8cpp.html" title="src/passive/CNF/SATCNFMethod.cpp" alt="" coords="5,191,252,218"/>
+<area shape="rect" id="node7" href="$HeuleVerwerCNFMethod_8cpp.html" title="This file implements the Heule and Verwer method that relies on CNF SAT solver. " alt="" coords="717,273,917,315"/>
+<area shape="rect" id="node9" href="$UnaryCNFMethod_8cpp.html" title="src/passive/CNF/UnaryCNFMethod.cpp" alt="" coords="437,281,693,307"/>
+<area shape="rect" id="node12" href="$BinaryNonCNFMethod_8h.html" title="include/gsjj/passive\l/NonCNF/BinaryNonCNFMethod.h" alt="" coords="1247,184,1472,225"/>
+<area shape="rect" id="node14" href="$HeuleVerwerNonCNFMethod_8h.html" title="This file declares the Heule and Verwer method that relies on non CNF SAT solver. ..." alt="" coords="1496,184,1759,225"/>
+<area shape="rect" id="node16" href="$UnaryNonCNFMethod_8h.html" title="include/gsjj/passive\l/NonCNF/UnaryNonCNFMethod.h" alt="" coords="1783,184,2005,225"/>
+<area shape="rect" id="node18" href="$BiermannMethod_8h.html" title="include/gsjj/passive\l/SMT/BiermannMethod.h" alt="" coords="2080,184,2247,225"/>
+<area shape="rect" id="node19" href="$BiermannMethod_8cpp.html" title="src/passive/SMT/Biermann\lMethod.cpp" alt="" coords="2041,273,2221,315"/>
+<area shape="rect" id="node20" href="$NeiderJansenMethod_8h.html" title="include/gsjj/passive\l/SMT/NeiderJansenMethod.h" alt="" coords="2467,184,2659,225"/>
+<area shape="rect" id="node22" href="$MethodFactory_8cpp.html" title="src/passive/MethodFactory.cpp" alt="" coords="1017,191,1222,218"/>
+<area shape="rect" id="node13" href="$BinaryNonCNFMethod_8cpp.html" title="src/passive/NonCNF\l/BinaryNonCNFMethod.cpp" alt="" coords="1268,273,1451,315"/>
+<area shape="rect" id="node15" href="$HeuleVerwerNonCNFMethod_8cpp.html" title="This file implements the Heule and Verwer method that relies on non CNF SAT solver. " alt="" coords="1517,273,1738,315"/>
+<area shape="rect" id="node17" href="$UnaryNonCNFMethod_8cpp.html" title="src/passive/NonCNF\l/UnaryNonCNFMethod.cpp" alt="" coords="1803,273,1985,315"/>
+<area shape="rect" id="node21" href="$NeiderJansenMethod_8cpp.html" title="src/passive/SMT/NeiderJansen\lMethod.cpp" alt="" coords="2461,273,2666,315"/>
+<area shape="rect" id="node24" href="$SATNonCNFMethod_8cpp.html" title="src/passive/NonCNF\l/SATNonCNFMethod.cpp" alt="" coords="2271,184,2443,225"/>
+<area shape="rect" id="node26" href="$SMTMethod_8cpp.html" title="src/passive/SMT/SMTMethod.cpp" alt="" coords="2683,191,2905,218"/>
 </map>

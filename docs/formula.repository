@@ -14,8 +14,8 @@
 \form#13:$Q \times Sigma \rightarrow Q: \delta(q, a) = p$
 \form#14:$F$
 \form#15:$m = log_2(n)$
-\form#16:$(S_+, S_-)$
-\form#17:$S = S_+ \cup S_-$
-\form#18:$Pref(S)$
-\form#19:$Pref(S_+ \cup S_-)$
+\form#16:$S = S_+ \cup S_-$
+\form#17:$Pref(S_+ \cup S_-)$
+\form#18:$(S_+, S_-)$
+\form#19:$Pref(S)$
 \form#20:$Pref(S_+, S_-)$

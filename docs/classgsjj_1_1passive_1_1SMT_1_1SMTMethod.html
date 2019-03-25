@@ -99,8 +99,8 @@ Collaboration diagram for gsjj::passive::SMT::SMTMethod:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a3a3e8ade30882815b2725a03712d88e4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgsjj_1_1passive_1_1SMT_1_1SMTMethod.html#a3a3e8ade30882815b2725a03712d88e4">SMTMethod</a> (const std::set&lt; std::string &gt; &amp;SpSet, const std::set&lt; std::string &gt; &amp;SmSet, const std::set&lt; std::string &gt; &amp;SSet, const std::set&lt; std::string &gt; &amp;prefixesSet, const std::set&lt; char &gt; &amp;alphabetSet, unsigned int n, const std::chrono::seconds &amp;timeLimit)</td></tr>
-<tr class="separator:a3a3e8ade30882815b2725a03712d88e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4651d01c3af6815b6157b2add25c75d4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgsjj_1_1passive_1_1SMT_1_1SMTMethod.html#a4651d01c3af6815b6157b2add25c75d4">SMTMethod</a> ()=delete</td></tr>
+<tr class="separator:a4651d01c3af6815b6157b2add25c75d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4ffdf979dd0b974b41ca3d74e570dc7d"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgsjj_1_1passive_1_1SMT_1_1SMTMethod.html#a4ffdf979dd0b974b41ca3d74e570dc7d">~SMTMethod</a> ()</td></tr>
 <tr class="separator:a4ffdf979dd0b974b41ca3d74e570dc7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a20a25efc0e0543c19ce9b2296094ecc2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgsjj_1_1passive_1_1SMT_1_1SMTMethod.html#a20a25efc0e0543c19ce9b2296094ecc2">solve</a> () override</td></tr>
@@ -115,10 +115,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a6360126aaa55cc4aa5f5ccf69e6b6362"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgsjj_1_1passive_1_1SMT_1_1SMTMethod.html#a6360126aaa55cc4aa5f5ccf69e6b6362">printVariables</a> () const override</td></tr>
 <tr class="memdesc:a6360126aaa55cc4aa5f5ccf69e6b6362"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints the values of the variables, UNSAT or NOT SOLVED.  <a href="#a6360126aaa55cc4aa5f5ccf69e6b6362">More...</a><br /></td></tr>
 <tr class="separator:a6360126aaa55cc4aa5f5ccf69e6b6362"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1a716a98cc104289cc262955638bb1a7"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgsjj_1_1passive_1_1SMT_1_1SMTMethod.html#a1a716a98cc104289cc262955638bb1a7">setStopTrigger</a> (const std::chrono::seconds &amp;timeLimit, std::atomic_bool &amp;stopTrigger, const bool *stopPointer) override</td></tr>
+<tr class="memdesc:a1a716a98cc104289cc262955638bb1a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the stop trigger for this method.  <a href="#a1a716a98cc104289cc262955638bb1a7">More...</a><br /></td></tr>
+<tr class="separator:a1a716a98cc104289cc262955638bb1a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classgsjj_1_1passive_1_1Method"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classgsjj_1_1passive_1_1Method')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classgsjj_1_1passive_1_1Method.html">gsjj::passive::Method</a></td></tr>
-<tr class="memitem:ab5de618f144bf5a3a22b729c363d53d8 inherit pub_methods_classgsjj_1_1passive_1_1Method"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgsjj_1_1passive_1_1Method.html#ab5de618f144bf5a3a22b729c363d53d8">Method</a> (const std::set&lt; std::string &gt; &amp;SpSet, const std::set&lt; std::string &gt; &amp;SmSet, const std::set&lt; std::string &gt; &amp;SSet, const std::set&lt; std::string &gt; &amp;prefixesSet, const std::set&lt; char &gt; &amp;alphabetSet, unsigned int n)</td></tr>
-<tr class="memdesc:ab5de618f144bf5a3a22b729c363d53d8 inherit pub_methods_classgsjj_1_1passive_1_1Method"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates the method.  <a href="classgsjj_1_1passive_1_1Method.html#ab5de618f144bf5a3a22b729c363d53d8">More...</a><br /></td></tr>
-<tr class="separator:ab5de618f144bf5a3a22b729c363d53d8 inherit pub_methods_classgsjj_1_1passive_1_1Method"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a389b5d1b558d8668297b48e2b11d2f49 inherit pub_methods_classgsjj_1_1passive_1_1Method"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgsjj_1_1passive_1_1Method.html#a389b5d1b558d8668297b48e2b11d2f49">Method</a> ()=delete</td></tr>
+<tr class="separator:a389b5d1b558d8668297b48e2b11d2f49 inherit pub_methods_classgsjj_1_1passive_1_1Method"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0cce0cbd56d6f365c4340d1cbfad31ac inherit pub_methods_classgsjj_1_1passive_1_1Method"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgsjj_1_1passive_1_1Method.html#a0cce0cbd56d6f365c4340d1cbfad31ac">~Method</a> ()</td></tr>
 <tr class="separator:a0cce0cbd56d6f365c4340d1cbfad31ac inherit pub_methods_classgsjj_1_1passive_1_1Method"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af3377625c54a2cfc2487847061d3d8ad inherit pub_methods_classgsjj_1_1passive_1_1Method"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgsjj_1_1passive_1_1Method.html#af3377625c54a2cfc2487847061d3d8ad">numberOfStates</a> () const</td></tr>
@@ -139,6 +141,12 @@ Protected Member Functions</h2></td></tr>
 <tr class="memitem:a3b48839658c52c4621847f9c067b61d6"><td class="memItemLeft" align="right" valign="top">virtual std::unique_ptr&lt; <a class="el" href="classgsjj_1_1DFA.html">DFA</a>&lt; char &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgsjj_1_1passive_1_1SMT_1_1SMTMethod.html#a3b48839658c52c4621847f9c067b61d6">toDFA</a> ()=0</td></tr>
 <tr class="memdesc:a3b48839658c52c4621847f9c067b61d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Effectively creates the <a class="el" href="classgsjj_1_1DFA.html" title="A Deterministic Finite Automaton. ">DFA</a> from the values of the variables in the <a class="el" href="namespacegsjj_1_1passive_1_1SMT.html" title="Contains every method that relies on a SMT solver. ">SMT</a> solver (see <a class="el" href="classgsjj_1_1passive_1_1SMT_1_1SMTMethod.html#a0cf2c642dffe0a568585666f5dad3b3d" title="This computes acceptable values for the variables and allows to retrieve them. ">SMTMethod::m_SMTEngine</a>)  <a href="#a3b48839658c52c4621847f9c067b61d6">More...</a><br /></td></tr>
 <tr class="separator:a3b48839658c52c4621847f9c067b61d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab0d1f1329b8446e959ca9d1c45d8a986"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgsjj_1_1passive_1_1SMT_1_1SMTMethod.html#ab0d1f1329b8446e959ca9d1c45d8a986">SMTMethod</a> (const std::set&lt; std::string &gt; &amp;SpSet, const std::set&lt; std::string &gt; &amp;SmSet, const std::set&lt; std::string &gt; &amp;SSet, const std::set&lt; std::string &gt; &amp;prefixesSet, const std::set&lt; char &gt; &amp;alphabetSet, unsigned int n)</td></tr>
+<tr class="separator:ab0d1f1329b8446e959ca9d1c45d8a986"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_methods_classgsjj_1_1passive_1_1Method"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_classgsjj_1_1passive_1_1Method')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="classgsjj_1_1passive_1_1Method.html">gsjj::passive::Method</a></td></tr>
+<tr class="memitem:ab5de618f144bf5a3a22b729c363d53d8 inherit pro_methods_classgsjj_1_1passive_1_1Method"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgsjj_1_1passive_1_1Method.html#ab5de618f144bf5a3a22b729c363d53d8">Method</a> (const std::set&lt; std::string &gt; &amp;SpSet, const std::set&lt; std::string &gt; &amp;SmSet, const std::set&lt; std::string &gt; &amp;SSet, const std::set&lt; std::string &gt; &amp;prefixesSet, const std::set&lt; char &gt; &amp;alphabetSet, unsigned int n)</td></tr>
+<tr class="memdesc:ab5de618f144bf5a3a22b729c363d53d8 inherit pro_methods_classgsjj_1_1passive_1_1Method"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates the method.  <a href="classgsjj_1_1passive_1_1Method.html#ab5de618f144bf5a3a22b729c363d53d8">More...</a><br /></td></tr>
+<tr class="separator:ab5de618f144bf5a3a22b729c363d53d8 inherit pro_methods_classgsjj_1_1passive_1_1Method"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
@@ -159,47 +167,88 @@ Protected Attributes</h2></td></tr>
 <tr class="memdesc:ad5180d9fcd2df8c86033b97618bbc32e inherit pro_attribs_classgsjj_1_1passive_1_1Method"><td class="mdescLeft">&#160;</td><td class="mdescRight">The number of states in the <a class="el" href="classgsjj_1_1DFA.html" title="A Deterministic Finite Automaton. ">DFA</a> to construct.  <a href="classgsjj_1_1passive_1_1Method.html#ad5180d9fcd2df8c86033b97618bbc32e">More...</a><br /></td></tr>
 <tr class="separator:ad5180d9fcd2df8c86033b97618bbc32e inherit pro_attribs_classgsjj_1_1passive_1_1Method"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a602c66f1fcbba4b3427b7f42363282fd inherit pro_attribs_classgsjj_1_1passive_1_1Method"><td class="memItemLeft" align="right" valign="top">const std::set&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgsjj_1_1passive_1_1Method.html#a602c66f1fcbba4b3427b7f42363282fd">m_S</a></td></tr>
-<tr class="memdesc:a602c66f1fcbba4b3427b7f42363282fd inherit pro_attribs_classgsjj_1_1passive_1_1Method"><td class="mdescLeft">&#160;</td><td class="mdescRight">In the code, <img class="formulaInl" alt="$S = S_+ \cup S_-$" src="form_17.png"/>.  <a href="classgsjj_1_1passive_1_1Method.html#a602c66f1fcbba4b3427b7f42363282fd">More...</a><br /></td></tr>
+<tr class="memdesc:a602c66f1fcbba4b3427b7f42363282fd inherit pro_attribs_classgsjj_1_1passive_1_1Method"><td class="mdescLeft">&#160;</td><td class="mdescRight">In the code, <img class="formulaInl" alt="$S = S_+ \cup S_-$" src="form_16.png"/>.  <a href="classgsjj_1_1passive_1_1Method.html#a602c66f1fcbba4b3427b7f42363282fd">More...</a><br /></td></tr>
 <tr class="separator:a602c66f1fcbba4b3427b7f42363282fd inherit pro_attribs_classgsjj_1_1passive_1_1Method"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2ba85f0bbd5399a61114a5c4ad0f6ab7 inherit pro_attribs_classgsjj_1_1passive_1_1Method"><td class="memItemLeft" align="right" valign="top">const std::set&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgsjj_1_1passive_1_1Method.html#a2ba85f0bbd5399a61114a5c4ad0f6ab7">m_prefixes</a></td></tr>
-<tr class="memdesc:a2ba85f0bbd5399a61114a5c4ad0f6ab7 inherit pro_attribs_classgsjj_1_1passive_1_1Method"><td class="mdescLeft">&#160;</td><td class="mdescRight"><img class="formulaInl" alt="$Pref(S_+ \cup S_-)$" src="form_19.png"/>  <a href="classgsjj_1_1passive_1_1Method.html#a2ba85f0bbd5399a61114a5c4ad0f6ab7">More...</a><br /></td></tr>
+<tr class="memdesc:a2ba85f0bbd5399a61114a5c4ad0f6ab7 inherit pro_attribs_classgsjj_1_1passive_1_1Method"><td class="mdescLeft">&#160;</td><td class="mdescRight"><img class="formulaInl" alt="$Pref(S_+ \cup S_-)$" src="form_17.png"/>  <a href="classgsjj_1_1passive_1_1Method.html#a2ba85f0bbd5399a61114a5c4ad0f6ab7">More...</a><br /></td></tr>
 <tr class="separator:a2ba85f0bbd5399a61114a5c4ad0f6ab7 inherit pro_attribs_classgsjj_1_1passive_1_1Method"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae3992d9b09d020026223990a81e77c9b inherit pro_attribs_classgsjj_1_1passive_1_1Method"><td class="memItemLeft" align="right" valign="top">const std::set&lt; char &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgsjj_1_1passive_1_1Method.html#ae3992d9b09d020026223990a81e77c9b">m_alphabet</a></td></tr>
 <tr class="memdesc:ae3992d9b09d020026223990a81e77c9b inherit pro_attribs_classgsjj_1_1passive_1_1Method"><td class="mdescLeft">&#160;</td><td class="mdescRight"><img class="formulaInl" alt="$\Sigma$" src="form_10.png"/>  <a href="classgsjj_1_1passive_1_1Method.html#ae3992d9b09d020026223990a81e77c9b">More...</a><br /></td></tr>
 <tr class="separator:ae3992d9b09d020026223990a81e77c9b inherit pro_attribs_classgsjj_1_1passive_1_1Method"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a587f941ba89bcbfe26d14bc58c9433ba inherit pro_attribs_classgsjj_1_1passive_1_1Method"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgsjj_1_1passive_1_1Method.html#a587f941ba89bcbfe26d14bc58c9433ba">m_triedSolve</a></td></tr>
 <tr class="separator:a587f941ba89bcbfe26d14bc58c9433ba inherit pro_attribs_classgsjj_1_1passive_1_1Method"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acd6b5238d4cbfbc6db948017d8fd0999 inherit pro_attribs_classgsjj_1_1passive_1_1Method"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgsjj_1_1passive_1_1Method.html#acd6b5238d4cbfbc6db948017d8fd0999">m_hasSolution</a></td></tr>
+<tr class="separator:acd6b5238d4cbfbc6db948017d8fd0999 inherit pro_attribs_classgsjj_1_1passive_1_1Method"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab5066b6102d457181c65fa512b90b4dc inherit pro_attribs_classgsjj_1_1passive_1_1Method"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgsjj_1_1passive_1_1Method.html#ab5066b6102d457181c65fa512b90b4dc">m_cpuTimeStart</a></td></tr>
 <tr class="separator:ab5066b6102d457181c65fa512b90b4dc inherit pro_attribs_classgsjj_1_1passive_1_1Method"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abcfd5b7be2ff29432d08328810b45408 inherit pro_attribs_classgsjj_1_1passive_1_1Method"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgsjj_1_1passive_1_1Method.html#abcfd5b7be2ff29432d08328810b45408">m_cpuTimeEnd</a></td></tr>
 <tr class="separator:abcfd5b7be2ff29432d08328810b45408 inherit pro_attribs_classgsjj_1_1passive_1_1Method"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
-Additional Inherited Members</h2></td></tr>
-<tr class="inherit_header pub_static_methods_classgsjj_1_1passive_1_1Method"><td colspan="2" onclick="javascript:toggleInherit('pub_static_methods_classgsjj_1_1passive_1_1Method')"><img src="closed.png" alt="-"/>&#160;Static Public Member Functions inherited from <a class="el" href="classgsjj_1_1passive_1_1Method.html">gsjj::passive::Method</a></td></tr>
-<tr class="memitem:aac20aea8fb53b13a17d85ed2b40d19b0 inherit pub_static_methods_classgsjj_1_1passive_1_1Method"><td class="memItemLeft" align="right" valign="top">static std::unique_ptr&lt; <a class="el" href="classgsjj_1_1passive_1_1Method.html">Method</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgsjj_1_1passive_1_1Method.html#aac20aea8fb53b13a17d85ed2b40d19b0">constructMethod</a> (<a class="el" href="namespacegsjj_1_1passive.html#a492da7d0028db7621b2135b6cbac7452">Methods</a> method, unsigned int n, const std::set&lt; std::string &gt; &amp;Sp, const std::set&lt; std::string &gt; &amp;Sm)</td></tr>
-<tr class="memdesc:aac20aea8fb53b13a17d85ed2b40d19b0 inherit pub_static_methods_classgsjj_1_1passive_1_1Method"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the alphabet and the prefixes set from Sp and Sm and constructs a method for a fixed number of states.  <a href="classgsjj_1_1passive_1_1Method.html#aac20aea8fb53b13a17d85ed2b40d19b0">More...</a><br /></td></tr>
-<tr class="separator:aac20aea8fb53b13a17d85ed2b40d19b0 inherit pub_static_methods_classgsjj_1_1passive_1_1Method"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acee1ec04b139719275d22a904dd346a3 inherit pub_static_methods_classgsjj_1_1passive_1_1Method"><td class="memItemLeft" align="right" valign="top">static std::unique_ptr&lt; <a class="el" href="classgsjj_1_1passive_1_1Method.html">Method</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgsjj_1_1passive_1_1Method.html#acee1ec04b139719275d22a904dd346a3">constructMethod</a> (<a class="el" href="namespacegsjj_1_1passive.html#a492da7d0028db7621b2135b6cbac7452">Methods</a> method, unsigned int n, const std::set&lt; std::string &gt; &amp;Sp, const std::set&lt; std::string &gt; &amp;Sm, const std::set&lt; std::string &gt; &amp;S, const std::set&lt; std::string &gt; &amp;prefixes, const std::set&lt; char &gt; &amp;alphabet)</td></tr>
-<tr class="memdesc:acee1ec04b139719275d22a904dd346a3 inherit pub_static_methods_classgsjj_1_1passive_1_1Method"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a method for a fixed number of states.  <a href="classgsjj_1_1passive_1_1Method.html#acee1ec04b139719275d22a904dd346a3">More...</a><br /></td></tr>
-<tr class="separator:acee1ec04b139719275d22a904dd346a3 inherit pub_static_methods_classgsjj_1_1passive_1_1Method"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a361da2a2f21ec2873384b9fa8d7a8d54 inherit pub_static_methods_classgsjj_1_1passive_1_1Method"><td class="memItemLeft" align="right" valign="top">static std::pair&lt; std::unique_ptr&lt; <a class="el" href="classgsjj_1_1passive_1_1Method.html">Method</a> &gt;, bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgsjj_1_1passive_1_1Method.html#a361da2a2f21ec2873384b9fa8d7a8d54">constructMethod</a> (<a class="el" href="namespacegsjj_1_1passive.html#a492da7d0028db7621b2135b6cbac7452">Methods</a> method, const std::set&lt; std::string &gt; &amp;Sp, const std::set&lt; std::string &gt; &amp;Sm, const std::chrono::seconds &amp;timeLimit=std::chrono::seconds(0), long double *timeTaken=nullptr)</td></tr>
-<tr class="memdesc:a361da2a2f21ec2873384b9fa8d7a8d54 inherit pub_static_methods_classgsjj_1_1passive_1_1Method"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the alphabet and the prefixes set from Sp and Sm and constructs a method with the smallest possible number of states.  <a href="classgsjj_1_1passive_1_1Method.html#a361da2a2f21ec2873384b9fa8d7a8d54">More...</a><br /></td></tr>
-<tr class="separator:a361da2a2f21ec2873384b9fa8d7a8d54 inherit pub_static_methods_classgsjj_1_1passive_1_1Method"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a748b9a52c4ea899ce0fa8c7d99d8947d inherit pub_static_methods_classgsjj_1_1passive_1_1Method"><td class="memItemLeft" align="right" valign="top">static std::pair&lt; std::unique_ptr&lt; <a class="el" href="classgsjj_1_1passive_1_1Method.html">Method</a> &gt;, bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgsjj_1_1passive_1_1Method.html#a748b9a52c4ea899ce0fa8c7d99d8947d">constructMethod</a> (<a class="el" href="namespacegsjj_1_1passive.html#a492da7d0028db7621b2135b6cbac7452">Methods</a> method, const std::set&lt; std::string &gt; &amp;Sp, const std::set&lt; std::string &gt; &amp;Sm, const std::set&lt; std::string &gt; &amp;S, const std::set&lt; std::string &gt; &amp;prefixes, const std::set&lt; char &gt; &amp;alphabet, const std::chrono::seconds &amp;timeLimit=std::chrono::seconds(0), long double *timeTaken=nullptr)</td></tr>
-<tr class="memdesc:a748b9a52c4ea899ce0fa8c7d99d8947d inherit pub_static_methods_classgsjj_1_1passive_1_1Method"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a method with the smallest possible number of states.  <a href="classgsjj_1_1passive_1_1Method.html#a748b9a52c4ea899ce0fa8c7d99d8947d">More...</a><br /></td></tr>
-<tr class="separator:a748b9a52c4ea899ce0fa8c7d99d8947d inherit pub_static_methods_classgsjj_1_1passive_1_1Method"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The base class for every SMT-based method. </p>
 
 <p class="definition">Definition at line <a class="el" href="SMTMethod_8h_source.html#l00020">20</a> of file <a class="el" href="SMTMethod_8h_source.html">SMTMethod.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a3a3e8ade30882815b2725a03712d88e4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3a3e8ade30882815b2725a03712d88e4">&#9670;&nbsp;</a></span>SMTMethod()</h2>
+<a id="a4651d01c3af6815b6157b2add25c75d4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4651d01c3af6815b6157b2add25c75d4">&#9670;&nbsp;</a></span>SMTMethod() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">gsjj::passive::SMT::SMTMethod::SMTMethod </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">delete</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4ffdf979dd0b974b41ca3d74e570dc7d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4ffdf979dd0b974b41ca3d74e570dc7d">&#9670;&nbsp;</a></span>~SMTMethod()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">gsjj::passive::SMT::SMTMethod::~SMTMethod </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="SMTMethod_8cpp_source.html#l00017">17</a> of file <a class="el" href="SMTMethod_8cpp_source.html">SMTMethod.cpp</a>.</p>
+
+</div>
+</div>
+<a id="ab0d1f1329b8446e959ca9d1c45d8a986"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab0d1f1329b8446e959ca9d1c45d8a986">&#9670;&nbsp;</a></span>SMTMethod() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">gsjj::passive::SMT::SMTMethod::SMTMethod </td>
@@ -235,13 +284,7 @@ Additional Inherited Members</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">unsigned int&#160;</td>
-          <td class="paramname"><em>n</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const std::chrono::seconds &amp;&#160;</td>
-          <td class="paramname"><em>timeLimit</em>&#160;</td>
+          <td class="paramname"><em>n</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -249,36 +292,14 @@ Additional Inherited Members</h2></td></tr>
           <td></td><td></td>
         </tr>
       </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="SMTMethod_8cpp_source.html#l00008">8</a> of file <a class="el" href="SMTMethod_8cpp_source.html">SMTMethod.cpp</a>.</p>
-
-</div>
-</div>
-<a id="a4ffdf979dd0b974b41ca3d74e570dc7d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4ffdf979dd0b974b41ca3d74e570dc7d">&#9670;&nbsp;</a></span>~SMTMethod()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">gsjj::passive::SMT::SMTMethod::~SMTMethod </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="SMTMethod_8cpp_source.html#l00019">19</a> of file <a class="el" href="SMTMethod_8cpp_source.html">SMTMethod.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="SMTMethod_8cpp_source.html#l00008">8</a> of file <a class="el" href="SMTMethod_8cpp_source.html">SMTMethod.cpp</a>.</p>
 
 </div>
 </div>
@@ -311,7 +332,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="classgsjj_1_1passive_1_1Method.html#af9eea07c5d7bc311e2afa615702e913c">gsjj::passive::Method</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="SMTMethod_8cpp_source.html#l00039">39</a> of file <a class="el" href="SMTMethod_8cpp_source.html">SMTMethod.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="SMTMethod_8cpp_source.html#l00037">37</a> of file <a class="el" href="SMTMethod_8cpp_source.html">SMTMethod.cpp</a>.</p>
 
 </div>
 </div>
@@ -403,7 +424,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="classgsjj_1_1passive_1_1Method.html#a4fcee2ec7321629a70519151ee414feb">gsjj::passive::Method</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="SMTMethod_8cpp_source.html#l00035">35</a> of file <a class="el" href="SMTMethod_8cpp_source.html">SMTMethod.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="SMTMethod_8cpp_source.html#l00033">33</a> of file <a class="el" href="SMTMethod_8cpp_source.html">SMTMethod.cpp</a>.</p>
 
 </div>
 </div>
@@ -435,7 +456,63 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="classgsjj_1_1passive_1_1Method.html#adaa209f5e7ce72be2cf98623e79dc39d">gsjj::passive::Method</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="SMTMethod_8cpp_source.html#l00049">49</a> of file <a class="el" href="SMTMethod_8cpp_source.html">SMTMethod.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="SMTMethod_8cpp_source.html#l00047">47</a> of file <a class="el" href="SMTMethod_8cpp_source.html">SMTMethod.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a1a716a98cc104289cc262955638bb1a7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1a716a98cc104289cc262955638bb1a7">&#9670;&nbsp;</a></span>setStopTrigger()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void gsjj::passive::SMT::SMTMethod::setStopTrigger </td>
+          <td>(</td>
+          <td class="paramtype">const std::chrono::seconds &amp;&#160;</td>
+          <td class="paramname"><em>timeLimit</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::atomic_bool &amp;&#160;</td>
+          <td class="paramname"><em>stopTrigger</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const bool *&#160;</td>
+          <td class="paramname"><em>stopPointer</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Sets the stop trigger for this method. </p>
+<p>Since we use three different solvers and each has its own way to stop (CVC4 uses a function to set a time limit, Maple is in C++ so we can use an atomic variable and Limboole is in C and we must use a pointer), we must provide each possibility </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">timeLimit</td><td>The time in seconds the method can take. It's used by <a class="el" href="namespacegsjj_1_1passive_1_1SMT.html" title="Contains every method that relies on a SMT solver. ">SMT</a> methods. </td></tr>
+    <tr><td class="paramname">stopTrigger</td><td>The atomic_bool variable. Once set to true, the method will stop. It's used by <a class="el" href="namespacegsjj_1_1passive_1_1CNF.html" title="Contains every method that relies on a SAT solver with CNF clauses. ">CNF</a> methods. </td></tr>
+    <tr><td class="paramname">stopPointer</td><td>The pointer variable. Once the value is set to true, the method will stop. It's used by <a class="el" href="namespacegsjj_1_1passive_1_1NonCNF.html" title="Contains every method that relies on a SAT solver that works on any boolean formula. ">NonCNF</a> methods. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implements <a class="el" href="classgsjj_1_1passive_1_1Method.html#a3791091fea1b184e606b7221888b968c">gsjj::passive::Method</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="SMTMethod_8cpp_source.html#l00051">51</a> of file <a class="el" href="SMTMethod_8cpp_source.html">SMTMethod.cpp</a>.</p>
 
 </div>
 </div>
@@ -467,7 +544,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="classgsjj_1_1passive_1_1Method.html#a0d36eafeb3a90fa36ffc462b02f5ddd6">gsjj::passive::Method</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="SMTMethod_8cpp_source.html#l00023">23</a> of file <a class="el" href="SMTMethod_8cpp_source.html">SMTMethod.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="SMTMethod_8cpp_source.html#l00021">21</a> of file <a class="el" href="SMTMethod_8cpp_source.html">SMTMethod.cpp</a>.</p>
 
 </div>
 </div>
@@ -524,7 +601,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>This must be used to create new variables, constants and expressions. </p>
 
-<p class="definition">Definition at line <a class="el" href="SMTMethod_8h_source.html#l00037">37</a> of file <a class="el" href="SMTMethod_8h_source.html">SMTMethod.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="SMTMethod_8h_source.html#l00039">39</a> of file <a class="el" href="SMTMethod_8h_source.html">SMTMethod.h</a>.</p>
 
 </div>
 </div>
@@ -550,12 +627,12 @@ Additional Inherited Members</h2></td></tr>
 
 <p>This computes acceptable values for the variables and allows to retrieve them. </p>
 
-<p class="definition">Definition at line <a class="el" href="SMTMethod_8h_source.html#l00041">41</a> of file <a class="el" href="SMTMethod_8h_source.html">SMTMethod.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="SMTMethod_8h_source.html#l00043">43</a> of file <a class="el" href="SMTMethod_8h_source.html">SMTMethod.h</a>.</p>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>include/passive/SMT/<a class="el" href="SMTMethod_8h_source.html">SMTMethod.h</a></li>
+<li>include/gsjj/passive/SMT/<a class="el" href="SMTMethod_8h_source.html">SMTMethod.h</a></li>
 <li>src/passive/SMT/<a class="el" href="SMTMethod_8cpp_source.html">SMTMethod.cpp</a></li>
 </ul>
 </div><!-- contents -->

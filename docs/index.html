@@ -79,6 +79,7 @@ $(function() {
 <li>Neider and Jansen's algorithm</li>
 </ul>
 <h2>How to use <code>libgsjj</code></h2>
+<p>Please note that the benchmarks will only be correct under Linux because the way the CPU time for a thread is retrieved is only working under that family of OS. The Linux kernel's version must be at least 2.6.26.</p>
 <h3>Dependencies to install</h3>
 <p>To be able to compile and use our library, you will need the install the following dependencies (we also give the Debian and Ubuntu package's name in parenthesis):</p><ul>
 <li>GMP (libgmp-dev)</li>
@@ -97,12 +98,32 @@ $(function() {
 <p>To enable building the tests, instead of <code>cmake ..</code> use <code>cmake -DBUILD_TESTS=TRUE ..</code>. You can of course enable the benchmarks and the tests at the same time with <code>cmake -DBUILD_BENCHMARKS=TRUE -DBUILD_TESTS=TRUE ..</code></p>
 <h3>How to use in a project</h3>
 <p>If you use CMake, it's easy. The building stage described before also creates a CMake Config file. Therefore, in your <code>CMakeLists.txt</code>, you only have to add the line </p><div class="fragment"><div class="line">find_library(gsjj)</div></div><!-- fragment --><p> and <code>gsjj</code> will be available a target you can link against. It's possible the user must set the <code>gsjj_DIR</code> CMake parameter to be able to build your program if the files are not installed in the standard location.</p>
+<p>To construct a method, please see the <a class="el" href="namespacegsjj_1_1passive.html#ab144a441d83d1d16f7e63d782866501b" title="Computes the alphabet and the prefixes set from Sp and Sm and constructs a method for a fixed number ...">gsjj::passive::constructMethod</a> functions. Here is the complete list of built-in methods with the names used in the program:</p><ul>
+<li>Biermann and Feldman: <code>biermann</code></li>
+<li>Neider and Jansen: <code>neider</code></li>
+<li>Grinchtein, Leucker and Piterman unary:<ul>
+<li>CNF: <code>unary</code></li>
+<li>Non-CNF: <code>unaryNonCNF</code></li>
+</ul>
+</li>
+<li>Grinchtein, Leucker and Piterman binary:<ul>
+<li>CNF: <code>binary</code></li>
+<li>Non-CNF: <code>binaryNonCNF</code></li>
+</ul>
+</li>
+<li>Heule and Verwer:<ul>
+<li>CNF: <code>heule</code></li>
+<li>Non-CNF: <code>heuleNonCNF</code></li>
+</ul>
+</li>
+</ul>
 <h3>Unit tests</h3>
 <p>Once build, you can launch the unit tests by starting the program <code>tests</code> (built in the subfolder <code>tests</code> in <code>build</code>).</p>
 <h3>Benchmarks</h3>
 <p>Once build, you can launch the benchmarks by starting the program <code>benchmarks</code> (built in the subfolder <code>benchmarks</code> in <code>build</code>).</p>
 <h2>License</h2>
 <p>Due to bcsat and the modifications done on this dependency, our library is licensed under the GNU GPL v2.</p>
+<p>CVC4 is distributed both under BSD 3-Clause and GNU GPL v3. If you want to distribute binaries based on libgsjj, be sure to use a BSD 3-Clause distribution for CVC4 since GNU GPL v2 and v3 are incompatible.</p>
 <h3>Changes made on bcsat</h3>
 <p>We give here the modifications done on bcsat. The base files can be found at <a href="https://github.com/scrippie/bcsat">https://github.com/scrippie/bcsat</a>.</p>
 <ul>
@@ -112,7 +133,11 @@ $(function() {
 </ul>
 </li>
 <li>On 10 March 2019:<ul>
-<li>Modification of <code>bc.hh</code>, <code>bc.cc</code> and <code>bcminisat220_solve.cc</code> to allow the functions to stop when the time limit is reached (the information is propagated through a <code>std::atomic_bool</code> object). </li>
+<li>Modification of <code>bc.hh</code>, <code>bc.cc</code> and <code>bcminisat220_solve.cc</code> to allow the functions to stop when the time limit is reached (the information is propagated through a <code>std::atomic_bool</code> object).</li>
+</ul>
+</li>
+<li>On 25 March 2019:<ul>
+<li>Modification of <code>bcminisat220_solve.c</code>, <code>lexer.lex</code>, <code>lexer11.lex</code>, <code>parser.y</code> and <code>parser11.y</code> to change the include paths </li>
 </ul>
 </li>
 </ul>

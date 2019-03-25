@@ -1,4 +1,5 @@
 <map id="gsjj::passive::NonCNF::BinaryNonCNFMethod" name="gsjj::passive::NonCNF::BinaryNonCNFMethod">
-<area shape="rect" id="node2" href="$classgsjj_1_1passive_1_1NonCNF_1_1SATNonCNFMethod.html" title="Base class for every method that relies on a non&#45;CNF SAT solver. " alt="" coords="9,80,164,121"/>
-<area shape="rect" id="node3" href="$classgsjj_1_1passive_1_1Method.html" title="The base class of all passive methods. " alt="" coords="13,5,160,32"/>
+<area shape="rect" id="node2" href="$classgsjj_1_1passive_1_1NonCNF_1_1SATNonCNFMethod.html" title="Base class for every method that relies on a non&#45;CNF SAT solver. " alt="" coords="234,5,389,47"/>
+<area shape="rect" id="node3" href="$classgsjj_1_1passive_1_1Method.html" title="The base class of all passive methods. " alt="" coords="5,13,152,39"/>
+<area shape="rect" id="node4" href="$classgsjj_1_1passive_1_1RegisterInFactory.html" title="gsjj::passive::RegisterIn\lFactory\&lt; BinaryNonCNFMethod \&gt;" alt="" coords="200,71,423,112"/>
 </map>
