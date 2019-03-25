@@ -9,9 +9,10 @@ bool isAccepting(Expr f_value) {
 namespace gsjj {
     namespace passive {
         namespace SMT {
-            NeiderJansenMethod::NeiderJansenMethod(const std::set<std::string> &SpSet, const std::set<std::string> &SmSet, const std::set<std::string> &SSet, const std::set<std::string> &prefixesSet, const std::set<char> &alphabetSet, unsigned int n, const std::chrono::seconds &timeLimit) :
-                SMTMethod(SpSet, SmSet, SSet, prefixesSet, alphabetSet, n, timeLimit)
+            NeiderJansenMethod::NeiderJansenMethod(const std::set<std::string> &SpSet, const std::set<std::string> &SmSet, const std::set<std::string> &SSet, const std::set<std::string> &prefixesSet, const std::set<char> &alphabetSet, unsigned int n) :
+                SMTMethod(SpSet, SmSet, SSet, prefixesSet, alphabetSet, n)
             {
+                s_registered = s_registered;
                 LogicInfo logic;
                 logic.enableIntegers();
                 logic.enableTheory(theory::THEORY_UF);
@@ -20,6 +21,10 @@ namespace gsjj {
 
             NeiderJansenMethod::~NeiderJansenMethod() {
 
+            }
+
+            std::string NeiderJansenMethod::getFactoryName() {
+                return "neider";
             }
 
             void NeiderJansenMethod::createVariables() {

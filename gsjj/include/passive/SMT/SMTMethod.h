@@ -19,7 +19,7 @@ namespace gsjj {
              */
             class SMTMethod : public Method {
             public:
-                SMTMethod(const std::set<std::string> &SpSet, const std::set<std::string> &SmSet, const std::set<std::string> &SSet, const std::set<std::string> &prefixesSet, const std::set<char> &alphabetSet, unsigned int n, const std::chrono::seconds &timeLimit);
+                SMTMethod() = delete;
                 virtual ~SMTMethod();
 
                 bool solve() override;
@@ -29,6 +29,8 @@ namespace gsjj {
                 std::unique_ptr<DFA<char>> constructDFA() override;
 
                 void printVariables() const override;
+
+                virtual void setStopTrigger(const std::chrono::seconds &timeLimit, std::atomic_bool &stopTrigger, const bool *stopPointer) override;
 
             protected:
                 /**
@@ -56,8 +58,7 @@ namespace gsjj {
                  */
                 virtual std::unique_ptr<DFA<char>> toDFA() = 0;
 
-            private:
-                bool m_hasSolution;
+                SMTMethod(const std::set<std::string> &SpSet, const std::set<std::string> &SmSet, const std::set<std::string> &SSet, const std::set<std::string> &prefixesSet, const std::set<char> &alphabetSet, unsigned int n);
             };
         }
     }

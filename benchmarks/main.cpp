@@ -7,49 +7,10 @@
 
 #include "passive/Method.h"
 #include "passive/utils.h"
+#include "passive/MethodFactory.h"
 
 namespace po = boost::program_options;
 using namespace gsjj;
-
-/**
- * To read the method option from the command-line
- * @param in The istream
- * @param choice The choice
- */
-std::istream &operator>>(std::istream &in, passive::Methods &choice) {
-    std::string token;
-    in >> token;
-
-    if (token == "biermann") {
-        choice = passive::Methods::BIERMANN;
-    }
-    else if (token == "unary") {
-        choice = passive::Methods::UNARY;
-    }
-    else if (token == "binary") {
-        choice = passive::Methods::BINARY;
-    }
-    else if(token == "heule") {
-        choice = passive::Methods::HEULEVERWER;
-    }
-    else if (token == "neider") {
-        choice = passive::Methods::NEIDERJANSEN;
-    }
-    else if (token == "unaryNonCNF") {
-        choice = passive::Methods::UNARY_NON_CNF;
-    }
-    else if (token == "binaryNonCNF") {
-        choice = passive::Methods::BINARY_NON_CNF;
-    }
-    else if (token == "heuleNonCNF") {
-        choice = passive::Methods::HEULE_NON_CNF;
-    }
-    else {
-        in.setstate(std::ios_base::failbit);
-    }
-
-    return in;
-}
 
 /**
  * Prints Sp and Sm. Mainly for debug purposes
@@ -91,8 +52,8 @@ void print_Sp_Sm(const std::set<std::string> &Sp, const std::set<std::string> &S
  * @param choice The choice of method to construct
  * @return The method already solved
  */
-std::unique_ptr<passive::Method> call_method_fixed_n(const std::set<std::string> &Sp, const std::set<std::string> &Sm, const std::set<std::string> &S, const std::set<std::string> &prefixes, const std::set<char> &alphabet, unsigned int n, passive::Methods choice) {
-    std::unique_ptr<passive::Method> method = passive::Method::constructMethod(choice, n, Sp, Sm, S, prefixes, alphabet);
+std::unique_ptr<passive::Method> call_method_fixed_n(const std::set<std::string> &Sp, const std::set<std::string> &Sm, const std::set<std::string> &S, const std::set<std::string> &prefixes, const std::set<char> &alphabet, unsigned int n, const std::string &choice) {
+    std::unique_ptr<passive::Method> method = passive::constructMethod(choice, n, Sp, Sm, S, prefixes, alphabet);
 
     method->solve();
     std::cout << "TIME TAKEN: " << method->timeToSolve() << "\n";
@@ -153,7 +114,7 @@ void random_benchmark(unsigned int minSize, unsigned int maxSize, unsigned int n
     std::array<unsigned int, passive::allMethods.size()> timeouts;
     for (unsigned int c = 0 ; c < passive::allMethods.size() ; c++) {
         times[c].resize(nGenerations);
-        output << passive::methodsNames.at(passive::allMethods[c]) << " mean median timeouts;" << " ";
+        output << passive::allMethods[c] << " mean median timeouts;" << " ";
     }
     output << "\n";
 
@@ -178,14 +139,14 @@ void random_benchmark(unsigned int minSize, unsigned int maxSize, unsigned int n
                 long double timeTaken = 0;
                 std::unique_ptr<passive::Method> ptr;
                 bool success;
-                std::tie(ptr, success) = passive::Method::constructMethod(passive::allMethods[c], Sp, Sm, S, prefixes, alphabet, std::chrono::seconds(timeLimit), &timeTaken);
+                std::tie(ptr, success) = passive::constructMethod(passive::allMethods[c], Sp, Sm, S, prefixes, alphabet, std::chrono::seconds(timeLimit), &timeTaken);
                 
                 times[c][generation] = timeTaken;
                 if (!success) {
                     timeouts[c] += 1;
                 }
                 if (verbose) {
-                    std::cout << passive::methodsNames.at(passive::allMethods[c]) << " ";
+                    std::cout << passive::allMethods[c] << " ";
                 }
             }
             if (verbose) {
@@ -207,7 +168,7 @@ void random_benchmark(unsigned int minSize, unsigned int maxSize, unsigned int n
 }
 
 int main(int argc, char** argv) {
-    passive::Methods choice;
+    std::string choice;
     std::string inputFile, outputFile;
     bool toDot, rand_bench, verbose;
     unsigned int n, numberWords, minSize, maxSize, nGenerations, wordSize, minWordSize, maxWordSize, alphabetSize, timeLimit;
@@ -218,7 +179,7 @@ int main(int argc, char** argv) {
         ("help,h", "produce help message")
         ("verbose,v", po::bool_switch(&verbose), "If set, the program outputs more information")
 
-        ("method", po::value<passive::Methods>(&choice), "The method to use [MANDATORY if random-benchmarks is not set]. The '--method' part is not necessary (positional argument)")
+        ("method", po::value<std::string>(&choice), "The method to use [MANDATORY if random-benchmarks is not set]. The '--method' part is not necessary (positional argument)")
         ("number-states,n", po::value<unsigned int>(&n)->notifier([](unsigned int i) {
                 if (i < 1) {
                     throw std::runtime_error("--number-states (or -n) must be greater or equal to 1");
@@ -348,7 +309,7 @@ int main(int argc, char** argv) {
         else {
             long double timeTaken = 0;
             bool succes;
-            std::tie(method, succes) = passive::Method::constructMethod(choice, Sp, Sm, S, prefixes, alphabet, std::chrono::seconds(timeLimit), &timeTaken);
+            std::tie(method, succes) = passive::constructMethod(choice, Sp, Sm, S, prefixes, alphabet, std::chrono::seconds(timeLimit), &timeTaken);
             if (succes) {
                 std::cout << "We found the best possible DFA\n";
             }

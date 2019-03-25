@@ -9,6 +9,7 @@
 #include "bc.hh"
  
 #include "passive/Method.h"
+#include "passive/MethodFactory.h"
 
 namespace gsjj {
     namespace passive {
@@ -18,9 +19,9 @@ namespace gsjj {
              * 
              * Since we need to use a tool to translate the boolean formula in CNF, this implementation is different from the other methods relying on CNF Solvers.
              */
-            class BinaryCNFMethod : public Method {
+            class BinaryCNFMethod : public Method, public RegisterInFactory<BinaryCNFMethod> {
             public:
-                BinaryCNFMethod(const std::set<std::string> &SpSet, const std::set<std::string> &SmSet, const std::set<std::string> &SSet, const std::set<std::string> &prefixesSet, const std::set<char> &alphabetSet, unsigned int n, std::atomic_bool &stopTrigger);
+                BinaryCNFMethod() = delete;
                 virtual ~BinaryCNFMethod();
 
                 bool solve() override;
@@ -31,12 +32,19 @@ namespace gsjj {
 
                 void printVariables() const override;
 
+                static std::string getFactoryName();
+
+                virtual void setStopTrigger(const std::chrono::seconds &timeLimit, std::atomic_bool &stopTrigger, const bool *stopPointer) override;
+
+            protected:
+                BinaryCNFMethod(const std::set<std::string> &SpSet, const std::set<std::string> &SmSet, const std::set<std::string> &SSet, const std::set<std::string> &prefixesSet, const std::set<char> &alphabetSet, unsigned int n);
+
             private:
                 typedef std::map<std::pair<std::string, unsigned int>, Gate*> m_mapType;
 
             private:
                 bool m_hasSolution;
-                BC m_solver;
+                std::unique_ptr<BC> m_solver;
                 SimplifyOptions m_simplify_opts;
                 /**
                  * \f$m = log_2(n)\f$

@@ -1,18 +1,23 @@
 #include "passive/SMT/BiermannMethod.h"
+#include "passive/MethodFactory.h"
 
 using namespace CVC4;
 
 namespace gsjj {
     namespace passive {
         namespace SMT {
-            BiermannMethod::BiermannMethod(const std::set<std::string> &SpSet, const std::set<std::string> &SmSet, const std::set<std::string> &SSet, const std::set<std::string> &prefixesSet, const std::set<char> &alphabetSet, unsigned int n, const std::chrono::seconds &timeLimit) :
-                SMTMethod(SpSet, SmSet, SSet, prefixesSet, alphabetSet, n, timeLimit)
+            BiermannMethod::BiermannMethod(const std::set<std::string> &SpSet, const std::set<std::string> &SmSet, const std::set<std::string> &SSet, const std::set<std::string> &prefixesSet, const std::set<char> &alphabetSet, unsigned int n) :
+                SMTMethod(SpSet, SmSet, SSet, prefixesSet, alphabetSet, n)
             {
-
+                s_registered = s_registered;
             }
 
             BiermannMethod::~BiermannMethod() {
 
+            }
+
+            std::string BiermannMethod::getFactoryName() {
+                return "biermann";
             }
 
             void BiermannMethod::createVariables() {

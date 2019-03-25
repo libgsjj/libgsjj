@@ -51,6 +51,21 @@ find_library(gsjj)
 ```
 and `gsjj` will be available a target you can link against. It's possible the user must set the `gsjj_DIR` CMake parameter to be able to build your program if the files are not installed in the standard location.
 
+To construct a method, please see the gsjj::passive::constructMethod functions. Here is the complete list of built-in methods with the names used in the program:
+  * Biermann and Feldman: `biermann`
+  * Neider and Jansen: `neider`
+  * Grinchtein, Leucker and Piterman unary:
+    * CNF: `unary`
+    * Non-CNF: `unaryNonCNF`
+  * Grinchtein, Leucker and Piterman binary:
+    * CNF: `binary`
+    * Non-CNF: `binaryNonCNF`
+  * Heule and Verwer:
+    * CNF: `heule`
+    * Non-CNF: `heuleNonCNF`
+
+[//]: # (TODO: how to create a new method and register it)
+
 ### Unit tests
 Once build, you can launch the unit tests by starting the program `tests` (built in the subfolder `tests` in `build`).
 

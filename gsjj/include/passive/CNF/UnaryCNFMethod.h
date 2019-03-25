@@ -1,6 +1,7 @@
 #pragma once
 
 #include "passive/CNF/SATCNFMethod.h"
+#include "passive/MethodFactory.h"
 
 namespace gsjj {
     namespace passive {
@@ -10,15 +11,19 @@ namespace gsjj {
              * 
              * It relies on SAT solver
              */
-            class UnaryCNFMethod : public SATCNFMethod {
+            class UnaryCNFMethod : public SATCNFMethod, public RegisterInFactory<UnaryCNFMethod> {
             public:
-                UnaryCNFMethod(const std::set<std::string> &SpSet, const std::set<std::string> &SmSet, const std::set<std::string> &SSet, const std::set<std::string> &prefixesSet, const std::set<char> &alphabetSet, unsigned int n, std::atomic_bool &stopTrigger);
+                UnaryCNFMethod() = delete;
                 ~UnaryCNFMethod();
+
+                static std::string getFactoryName();
 
             protected:
                 void createVariables() override;
                 void createClauses() override;
                 std::unique_ptr<DFA<char>> toDFA(const Minisat::vec<Minisat::lbool> &model) const override;
+
+                UnaryCNFMethod(const std::set<std::string> &SpSet, const std::set<std::string> &SmSet, const std::set<std::string> &SSet, const std::set<std::string> &prefixesSet, const std::set<char> &alphabetSet, unsigned int n);
 
             private:
                 /**

@@ -15,6 +15,7 @@ set(SOURCE_FILES
     src/binary.cpp
     src/passive/Method.cpp
     src/passive/utils.cpp
+    src/passive/MethodFactory.cpp
     src/passive/CNF/BinaryCNFMethod.cpp
     src/passive/CNF/HeuleVerwerCNFMethod.cpp
     src/passive/CNF/SATCNFMethod.cpp

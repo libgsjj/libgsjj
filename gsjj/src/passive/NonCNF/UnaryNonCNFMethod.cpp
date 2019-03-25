@@ -7,12 +7,18 @@
 namespace gsjj {
     namespace passive {
         namespace NonCNF {
-            UnaryNonCNFMethod::UnaryNonCNFMethod(const std::set<std::string> &SpSet, const std::set<std::string> &SmSet, const std::set<std::string> &SSet, const std::set<std::string> &prefixesSet, const std::set<char> &alphabetSet, unsigned int n, const bool *stopTrigger) :
-                SATNonCNFMethod(SpSet, SmSet, SSet, prefixesSet, alphabetSet, n, stopTrigger)
-            {}
+            UnaryNonCNFMethod::UnaryNonCNFMethod(const std::set<std::string> &SpSet, const std::set<std::string> &SmSet, const std::set<std::string> &SSet, const std::set<std::string> &prefixesSet, const std::set<char> &alphabetSet, unsigned int n) :
+                SATNonCNFMethod(SpSet, SmSet, SSet, prefixesSet, alphabetSet, n)
+            {
+                s_registered = s_registered;
+            }
 
             UnaryNonCNFMethod::~UnaryNonCNFMethod() {
 
+            }
+
+            std::string UnaryNonCNFMethod::getFactoryName() {
+                return "unaryNonCNF";
             }
 
             bool UnaryNonCNFMethod::createFormula(std::ostream &stream){

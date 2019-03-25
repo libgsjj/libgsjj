@@ -13,12 +13,17 @@ using namespace Minisat;
 namespace gsjj {
     namespace passive {
         namespace CNF {
-            HeuleVerwerCNFMethod::HeuleVerwerCNFMethod(const std::set<std::string> &SpSet, const std::set<std::string> &SmSet, const std::set<std::string> &SSet, const std::set<std::string> &prefixesSet, const std::set<char> &alphabetSet, unsigned int n, std::atomic_bool &stopTrigger) :
-                SATCNFMethod(SpSet, SmSet, SSet, prefixesSet, alphabetSet, n, stopTrigger)
+            HeuleVerwerCNFMethod::HeuleVerwerCNFMethod(const std::set<std::string> &SpSet, const std::set<std::string> &SmSet, const std::set<std::string> &SSet, const std::set<std::string> &prefixesSet, const std::set<char> &alphabetSet, unsigned int n) :
+                SATCNFMethod(SpSet, SmSet, SSet, prefixesSet, alphabetSet, n)
             {
+                s_registered = s_registered;
             }
 
             HeuleVerwerCNFMethod::~HeuleVerwerCNFMethod() {
+            }
+
+            std::string HeuleVerwerCNFMethod::getFactoryName() {
+                return "heule";
             }
 
             void HeuleVerwerCNFMethod::createVariables() {

@@ -1,7 +1,9 @@
 #pragma once
 
-#include "passive/NonCNF/SATNonCNFMethod.h"
 #include <vector>
+
+#include "passive/NonCNF/SATNonCNFMethod.h"
+#include "passive/MethodFactory.h"
 
 namespace gsjj {
     namespace passive {
@@ -9,15 +11,19 @@ namespace gsjj {
             /**
              * The Grinchtein, Leucker and Piterman's binary method using a SAT Solver that does not rely on CNF
              */
-            class BinaryNonCNFMethod : public SATNonCNFMethod {
+            class BinaryNonCNFMethod : public SATNonCNFMethod, public RegisterInFactory<BinaryNonCNFMethod> {
             public:
-                BinaryNonCNFMethod(const std::set<std::string> &SpSet, const std::set<std::string> &SmSet, const std::set<std::string> &SSet, const std::set<std::string> &prefixesSet, const std::set<char> &alphabetSet, unsigned int n, const bool *stopTrigger);
+                BinaryNonCNFMethod() = delete;
                 ~BinaryNonCNFMethod();
+
+                static std::string getFactoryName();
 
             protected:
                 virtual bool createFormula(std::ostream &stream) override;
                 virtual std::unique_ptr<DFA<char>> toDFA(std::istream &stream) const override;
                 virtual std::string getFileName() const override;
+
+                BinaryNonCNFMethod(const std::set<std::string> &SpSet, const std::set<std::string> &SmSet, const std::set<std::string> &SSet, const std::set<std::string> &prefixesSet, const std::set<char> &alphabetSet, unsigned int n);
 
             private:
                 std::string phi_different(std::string pref1, std::string pref2);

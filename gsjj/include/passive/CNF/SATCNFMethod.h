@@ -21,7 +21,7 @@ namespace gsjj {
              */
             class SATCNFMethod : public Method {
             public:
-                SATCNFMethod(const std::set<std::string> &SpSet, const std::set<std::string> &SmSet, const std::set<std::string> &SSet, const std::set<std::string> &prefixesSet, const std::set<char> &alphabetSet, unsigned int n, std::atomic_bool &stopTrigger);
+                SATCNFMethod() = delete;
                 virtual ~SATCNFMethod();
 
                 bool solve() override;
@@ -31,6 +31,8 @@ namespace gsjj {
                 std::unique_ptr<DFA<char>> constructDFA() override;
 
                 void printVariables() const override;
+
+                virtual void setStopTrigger(const std::chrono::seconds &timeLimit, std::atomic_bool &stopTrigger, const bool *stopPointer) override;
             
             protected:
                 /**
@@ -64,6 +66,8 @@ namespace gsjj {
                  */
                 virtual std::unique_ptr<DFA<char>> toDFA(const Minisat::vec<Minisat::lbool> &model) const = 0;
 
+                SATCNFMethod(const std::set<std::string> &SpSet, const std::set<std::string> &SmSet, const std::set<std::string> &SSet, const std::set<std::string> &prefixesSet, const std::set<char> &alphabetSet, unsigned int n);
+
             private:
                 /**
                  * The SAT solver.
@@ -71,10 +75,8 @@ namespace gsjj {
                  * It's a pointer because the copy/move constructor is disabled and we need to reset the solver
                  */
                 std::unique_ptr<Minisat::SimpSolver> m_solver;
-                
-                bool m_hasSolution;
 
-                std::atomic_bool &mustStop;
+                std::atomic_bool *mustStop;
             };
         }
     }

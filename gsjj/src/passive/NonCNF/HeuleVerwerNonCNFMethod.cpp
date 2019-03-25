@@ -17,51 +17,21 @@
 namespace gsjj {
     namespace passive {
         namespace NonCNF {
-            HeuleVerwerNonCNFMethod::HeuleVerwerNonCNFMethod(const std::set<std::string> &SpSet, const std::set<std::string> &SmSet, const std::set<std::string> &SSet, const std::set<std::string> &prefixesSet, const std::set<char> &alphabetSet, unsigned int n, const bool *stopTrigger) :
-                SATNonCNFMethod(SpSet, SmSet, SSet, prefixesSet, alphabetSet, n, stopTrigger)
+            HeuleVerwerNonCNFMethod::HeuleVerwerNonCNFMethod(const std::set<std::string> &SpSet, const std::set<std::string> &SmSet, const std::set<std::string> &SSet, const std::set<std::string> &prefixesSet, const std::set<char> &alphabetSet, unsigned int n) :
+                SATNonCNFMethod(SpSet, SmSet, SSet, prefixesSet, alphabetSet, n)
             {
+                s_registered = s_registered;
             }
 
             HeuleVerwerNonCNFMethod::~HeuleVerwerNonCNFMethod()
             {
             }
 
-            // void HeuleVerwerNonCNFMethod::createVariables()
-            // {
-            //     // The x variables (same as for Grinchtein, Leucker and Piterman's unary method)
-            //     for (const auto &u : m_prefixes)
-            //     {
-            //         for (unsigned int q = 0; q < m_numberStates; q++)
-            //         {
-            //             auto pair = std::make_pair(u, q);
-            //             Var var = newVariable();
-            //             m_xVars.emplace(pair, var);
-            //         }
-            //     }
-
-            //     // The d variables : for each state, for each symbol, for each state, there is a distinct variable
-            //     for (unsigned int p = 0; p < m_numberStates; p++)
-            //     {
-            //         for (const char &a : m_alphabet)
-            //         {
-            //             for (unsigned int q = 0; q < m_numberStates; q++)
-            //             {
-            //                 auto trip = std::make_tuple(p, a, q);
-            //                 Var var = newVariable();
-            //                 m_dVars.emplace(trip, var);
-            //             }
-            //         }
-            //     }
-
-            //     // The f variables : for each state, there is a distinct variable
-            //     for (unsigned int q = 0; q < m_numberStates; q++)
-            //     {
-            //         m_fVars.emplace(q, newVariable());
-            //     }
-            // }
+            std::string HeuleVerwerNonCNFMethod::getFactoryName() {
+                return "heuleNonCNF";
+            }
 
             bool HeuleVerwerNonCNFMethod::createFormula(std::ostream &stream){
-                //TODO:
                 std::string formula = "";
                 //Equation 4.5.1
                 for (unsigned int p = 0; p < m_numberStates; p++){

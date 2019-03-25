@@ -4,6 +4,7 @@
 #include <string>
 #include <memory>
 #include <chrono>
+#include <atomic>
 
 #include "DFA.h"
 
@@ -19,54 +20,17 @@ namespace gsjj {
      */
     namespace passive {
         /**
-         * Enumerates every available method.
-         * 
-         * Please use Method::constructMethod to build the method according to the method of your choice
-         */
-        enum class Methods {
-            /** The Biermann and Feldman method */
-            BIERMANN = 0,
-            /** The Grinchtein, Leucker and Piterman's unary method with a CNF SAT solver */
-            UNARY,
-            /** The Grinchtein, Leucker and Piterman's binary method with a CNF SAT solver */
-            BINARY,
-            /** The Heule and Verwer method with a CNF SAT solver */
-            HEULEVERWER,
-            /** The Neider and Jansen method */
-            NEIDERJANSEN,
-            /** The Grinchtein, Leucker and Piterman's unary method with a non-CNF SAT solver */
-            UNARY_NON_CNF,
-            /** The Grinchtein, Leucker and Piterman's binary method with a non-CNF SAT solver */
-            BINARY_NON_CNF,
-            /** The Heule and Verwer method with a non-CNF SAT solver */
-            HEULE_NON_CNF
-        };
-        /**
          * An array with every possible method choice. Useful to iterate over the methods
          */
-        const std::array<Methods, 8> allMethods = {
-            Methods::BIERMANN,
-            Methods::UNARY,
-            Methods::BINARY,
-            Methods::HEULEVERWER,
-            Methods::NEIDERJANSEN,
-            Methods::UNARY_NON_CNF,
-            Methods::BINARY_NON_CNF,
-            Methods::HEULE_NON_CNF
-        };
-
-        /**
-         * A map associating every method with a name easily readable for a human
-         */
-        const std::map<Methods, std::string> methodsNames = {
-            {Methods::BIERMANN, "biermann"},
-            {Methods::UNARY, "unary"},
-            {Methods::BINARY, "binary"},
-            {Methods::HEULEVERWER, "heule"},
-            {Methods::NEIDERJANSEN, "neider"},
-            {Methods::UNARY_NON_CNF, "unary (non CNF)"},
-            {Methods::BINARY_NON_CNF, "binary (non CNF)"},
-            {Methods::HEULE_NON_CNF, "heule (non CNF)"}
+        const std::array<std::string, 8> allMethods = {
+            "biermann",
+            "unary",
+            "binary",
+            "heule",
+            "neider",
+            "unaryNonCNF",
+            "binaryNonCNF",
+            "heuleNonCNF"
         };
 
         /**
@@ -74,78 +38,9 @@ namespace gsjj {
          */
         class Method {
         public:
-            /**
-             * Computes the alphabet and the prefixes set from Sp and Sm and constructs a method for a fixed number of states.
-             * 
-             * Sp and Sm must be disjoint.
-             * @param method The choice of the method to construct
-             * @param n The number of states
-             * @param Sp The \f$S_+\f$ set
-             * @param Sm The \f$S_-\f$ set
-             * @return A method to construct the DFA for the sample \f$(S_+, S_-)\f$
-             */
-            static std::unique_ptr<Method> constructMethod(Methods method, unsigned int n, const std::set<std::string> &Sp, const std::set<std::string> &Sm);
-
-            /**
-             * Constructs a method for a fixed number of states.
-             * 
-             * Sp and Sm must be disjoint.
-             * @param method The choice of the method to construct
-             * @param n The number of states
-             * @param Sp The \f$S_+\f$ set
-             * @param Sm The \f$S_-\f$ set
-             * @param S The \f$S = S_+ \cup S_-\f$ set. See passive::computeS
-             * @param prefixes The \f$Pref(S)\f$ set. See passive::computePrefixes
-             * @param alphabet The alphabet. See computeAlphabet
-             * @return A method to construct the DFA for the sample \f$(S_+, S_-)\f$
-             */
-            static std::unique_ptr<Method> constructMethod(Methods method, unsigned int n, const std::set<std::string> &Sp, const std::set<std::string> &Sm, const std::set<std::string> &S, const std::set<std::string> &prefixes, const std::set<char> &alphabet);
-
-            /**
-             * Computes the alphabet and the prefixes set from Sp and Sm and constructs a method with the smallest possible number of states.
-             * 
-             * This uses a binary search to find the minimal number of states
-             * 
-             * Sp and Sm must be disjoint.
-             * @param method The choice of the method to construct
-             * @param Sp The \f$S_+\f$ set
-             * @param Sm The \f$S_-\f$ set
-             * @param timeLimit The time in seconds the program can take to find the best possible method. If the time limit is reached, the function returns the best method found so far.
-             * @param timeTaken If not nullptr, the total time used to solve the different formulas is written. It does NOT give the full CPU time to find the best number of states, juste the time used by the SAT/SMT solvers!
-             * @return A method to construct the DFA for the sample \f$(S_+, S_-)\f$ and a boolean. The boolean is true iff the function did not reach the time limit.
-             */
-            static std::pair<std::unique_ptr<Method>, bool> constructMethod(Methods method, const std::set<std::string> &Sp, const std::set<std::string> &Sm, const std::chrono::seconds &timeLimit = std::chrono::seconds(0), long double *timeTaken = nullptr);
-
-            /**
-             * Constructs a method with the smallest possible number of states.
-             * 
-             * This uses a binary search to find the minimal number of states
-             * 
-             * Sp and Sm must be disjoint.
-             * @param method The choice of the method to construct
-             * @param Sp The \f$S_+\f$ set
-             * @param Sm The \f$S_-\f$ set
-             * @param S \f$S = S_+ \cup S_-\f$. See passive::computeS
-             * @param prefixes The set of prefixes of \f$S\f$. See passive::computePrefixes
-             * @param alphabet The alphabet of \f$S\f$. See passive::computeAlphabet
-             * @param timeLimit The time in milliseconds the program can take to find the best possible method. If the time limit is reached, the function returns the best method found so far.
-             * @param timeTaken If not nullptr, the total time used to solve the different formulas is written. It does NOT give the full CPU time to find the best number of states, juste the time used by the SAT/SMT solvers!
-             * @return A method to construct the DFA for the sample \f$(S_+, S_-)\f$ and a boolean. The boolean is true iff the function did not reach the time limit.
-             */
-            static std::pair<std::unique_ptr<Method>, bool> constructMethod(Methods method, const std::set<std::string> &Sp, const std::set<std::string> &Sm, const std::set<std::string> &S, const std::set<std::string> &prefixes, const std::set<char> &alphabet, const std::chrono::seconds &timeLimit = std::chrono::seconds(0), long double *timeTaken = nullptr);
 
         public:
-            /**
-             * Creates the method.
-             * 
-             * @param SpSet The set of words to accept
-             * @param SmSet The set of words to reject
-             * @param SSet The union of SpSet and SmSet
-             * @param prefixesSet The prefixes of S
-             * @param alphabetSet The used alphabet
-             * @param n The number of states in the prospected DFA
-             */
-            Method(const std::set<std::string> &SpSet, const std::set<std::string> &SmSet, const std::set<std::string> &SSet, const std::set<std::string> &prefixesSet, const std::set<char> &alphabetSet, unsigned int n);
+            Method() = delete;
             virtual ~Method();
 
             /**
@@ -195,6 +90,16 @@ namespace gsjj {
              */
             double timeToSolve() const;
 
+            /**
+             * Sets the stop trigger for this method.
+             * 
+             * Since we use three different solvers and each has its own way to stop (CVC4 uses a function to set a time limit, Maple is in C++ so we can use an atomic variable and Limboole is in C and we must use a pointer), we must provide each possibility
+             * @param timeLimit The time in seconds the method can take. It's used by SMT methods.
+             * @param stopTrigger The atomic_bool variable. Once set to true, the method will stop. It's used by CNF methods.
+             * @param stopPointer The pointer variable. Once the value is set to true, the method will stop. It's used by NonCNF methods.
+             */
+            virtual void setStopTrigger(const std::chrono::seconds &timeLimit, std::atomic_bool &stopTrigger, const bool *stopPointer) = 0;
+
         protected:
             /**
              * The set of words to accept \f$S_+\f$
@@ -222,9 +127,23 @@ namespace gsjj {
             const std::set<char> m_alphabet;
 
             bool m_triedSolve;
+            bool m_hasSolution;
 
             double m_cpuTimeStart;
             double m_cpuTimeEnd;
+
+        protected:
+            /**
+             * Creates the method.
+             * 
+             * @param SpSet The set of words to accept
+             * @param SmSet The set of words to reject
+             * @param SSet The union of SpSet and SmSet
+             * @param prefixesSet The prefixes of S
+             * @param alphabetSet The used alphabet
+             * @param n The number of states in the prospected DFA
+             */
+            Method(const std::set<std::string> &SpSet, const std::set<std::string> &SmSet, const std::set<std::string> &SSet, const std::set<std::string> &prefixesSet, const std::set<char> &alphabetSet, unsigned int n);
         };
     }
 }

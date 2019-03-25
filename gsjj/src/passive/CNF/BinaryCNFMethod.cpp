@@ -18,10 +18,9 @@ using namespace Minisat;
 namespace gsjj {
     namespace passive {
         namespace CNF {
-            BinaryCNFMethod::BinaryCNFMethod(const std::set<std::string> &SpSet, const std::set<std::string> &SmSet, const std::set<std::string> &SSet, const std::set<std::string> &prefixesSet, const std::set<char> &alphabetSet, unsigned int n, std::atomic_bool &stopTrigger) :
+            BinaryCNFMethod::BinaryCNFMethod(const std::set<std::string> &SpSet, const std::set<std::string> &SmSet, const std::set<std::string> &SSet, const std::set<std::string> &prefixesSet, const std::set<char> &alphabetSet, unsigned int n) :
                 Method(SpSet, SmSet, SSet, prefixesSet, alphabetSet, n),
-                m_hasSolution(false),
-                m_solver(stopTrigger)
+                m_hasSolution(false)
             {
                 // Defaults values for the options (taken from the bcsat code)
                 m_simplify_opts.constant_folding = true;
@@ -35,6 +34,8 @@ namespace gsjj {
                 verbose = false;
 
                 m_binarySize = std::ceil(std::log2(n));
+
+                s_registered = s_registered;
             }
 
             BinaryCNFMethod::~BinaryCNFMethod() {
@@ -53,7 +54,7 @@ namespace gsjj {
                 m_triedSolve = true;
                 m_cpuTimeStart = cpuTime();
                 // minisat_solver returns 1 iff the formula is sat
-                m_hasSolution = m_solver.minisat_solve(false, m_simplify_opts, false, false, false, false, 0) == 1;
+                m_hasSolution = m_solver->minisat_solve(false, m_simplify_opts, false, false, false, false, 0) == 1;
                 m_cpuTimeEnd = cpuTime();
                 return m_hasSolution;
             }
@@ -92,10 +93,18 @@ namespace gsjj {
                 std::cout << "NOT IMPLEMENTED\n";
             }
 
+            std::string BinaryCNFMethod::getFactoryName() {
+                return "binary";
+            }
+
+            void BinaryCNFMethod::setStopTrigger(const std::chrono::seconds &timeLimit, std::atomic_bool &stopTrigger, const bool *stopPointer) {
+                m_solver = std::make_unique<BC>(stopTrigger);
+            }
+
             void BinaryCNFMethod::createVariables() {
                 for (const auto &u : m_prefixes) {
                     for (unsigned int i = 0 ; i < m_binarySize ; i++) {
-                        Gate *var = m_solver.new_VAR();
+                        Gate *var = m_solver->new_VAR();
                         m_stateToVar.emplace(std::make_pair(u, i), var);
                     }
                 }
@@ -118,10 +127,10 @@ namespace gsjj {
                                 // So, we create a formula for NOT (x_u = x_v) OR x_ua = x_va
                                 Gate *different = phi_different(u, v);
                                 Gate *eq = equal(ua, va);
-                                Gate *full = m_solver.new_OR(different, eq);
+                                Gate *full = m_solver->new_OR(different, eq);
 
                                 if (formula) {
-                                    formula = m_solver.new_AND(formula, full);
+                                    formula = m_solver->new_AND(formula, full);
                                 }
                                 else {
                                     formula = full;
@@ -135,7 +144,7 @@ namespace gsjj {
                 // In other words, u and v can not end in the same state (since u must be accepted and v rejected)
                 for (const auto &u : m_Sp) {
                     for (const auto &v : m_Sm) {
-                        formula = m_solver.new_AND(formula, phi_different(u, v));
+                        formula = m_solver->new_AND(formula, phi_different(u, v));
                     }
                 }
 
@@ -143,15 +152,15 @@ namespace gsjj {
                 // http://www.graphics.stanford.edu/~seander/bithacks.html#DetermineIfPowerOf2
                 for (const auto &u : m_prefixes) {
                     for (unsigned int i = m_numberStates ; i < pow(2, m_binarySize) ; i++) {
-                        formula = m_solver.new_AND(formula, phi_not_q_i(u, i));
+                        formula = m_solver->new_AND(formula, phi_not_q_i(u, i));
                     }
                 }
 
-                m_solver.force_true(formula);
+                m_solver->force_true(formula);
             }
 
             Gate* BinaryCNFMethod::equal(const std::string &u, const std::string &v) {
-                return m_solver.new_NOT(phi_different(u, v));
+                return m_solver->new_NOT(phi_different(u, v));
             }
 
             Gate* BinaryCNFMethod::phi_different(const std::string &u, const std::string &v) {
@@ -160,12 +169,12 @@ namespace gsjj {
                 for (unsigned int j = 0 ; j < m_binarySize ; j++) {
                     Gate *x_uj = m_stateToVar.find(std::make_pair(u, j))->second;
                     Gate *x_vj = m_stateToVar.find(std::make_pair(v, j))->second;
-                    Gate *left = m_solver.new_AND(x_uj, m_solver.new_NOT(x_vj));
-                    Gate *right = m_solver.new_AND(m_solver.new_NOT(x_uj), x_vj);
-                    Gate *total = m_solver.new_OR(left, right);
+                    Gate *left = m_solver->new_AND(x_uj, m_solver->new_NOT(x_vj));
+                    Gate *right = m_solver->new_AND(m_solver->new_NOT(x_uj), x_vj);
+                    Gate *total = m_solver->new_OR(left, right);
                     // If gate already exists, we just add an OR operation
                     if (gate) {
-                        gate = m_solver.new_OR(gate, total);
+                        gate = m_solver->new_OR(gate, total);
                     }
                     else {
                         gate = total;
@@ -185,11 +194,11 @@ namespace gsjj {
                     Gate *l_uj = x_uj;
 
                     if (bin_i.at(j)) {
-                        l_uj = m_solver.new_NOT(x_uj);
+                        l_uj = m_solver->new_NOT(x_uj);
                     }
 
                     if (gate) {
-                        gate = m_solver.new_OR(gate, l_uj);
+                        gate = m_solver->new_OR(gate, l_uj);
                     }
                     else {
                         gate = l_uj;

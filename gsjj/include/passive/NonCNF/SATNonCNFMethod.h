@@ -25,7 +25,7 @@ namespace gsjj {
              */
             class SATNonCNFMethod : public Method {
             public:
-                SATNonCNFMethod(const std::set<std::string> &SpSet, const std::set<std::string> &SmSet, const std::set<std::string> &SSet, const std::set<std::string> &prefixesSet, const std::set<char> &alphabetSet, unsigned int n, const bool *stopTrigger);
+                SATNonCNFMethod() = delete;
                 virtual ~SATNonCNFMethod();
 
                 virtual bool solve() override;
@@ -35,6 +35,8 @@ namespace gsjj {
                 virtual std::unique_ptr<DFA<char>> constructDFA() override;
 
                 void printVariables() const override;
+
+                virtual void setStopTrigger(const std::chrono::seconds &timeLimit, std::atomic_bool &stopTrigger, const bool *stopPointer) override;
 
             protected:
                 /**
@@ -63,8 +65,9 @@ namespace gsjj {
                  */
                 virtual std::unique_ptr<DFA<char>> toDFA(std::istream &stream) const = 0;
 
+                SATNonCNFMethod(const std::set<std::string> &SpSet, const std::set<std::string> &SmSet, const std::set<std::string> &SSet, const std::set<std::string> &prefixesSet, const std::set<char> &alphabetSet, unsigned int n);
+
             private:
-                bool m_hasSolution;
                 const bool *mustStop;
 
             private:

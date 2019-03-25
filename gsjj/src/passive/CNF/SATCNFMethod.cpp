@@ -9,12 +9,9 @@ using namespace Minisat;
 namespace gsjj {
     namespace passive {
         namespace CNF {
-            SATCNFMethod::SATCNFMethod(const std::set<std::string> &SpSet, const std::set<std::string> &SmSet, const std::set<std::string> &SSet, const std::set<std::string> &prefixesSet, const std::set<char> &alphabetSet, unsigned int n, std::atomic_bool &stopTrigger) :
-                Method(SpSet, SmSet, SSet, prefixesSet, alphabetSet, n),
-                mustStop(stopTrigger)
+            SATCNFMethod::SATCNFMethod(const std::set<std::string> &SpSet, const std::set<std::string> &SmSet, const std::set<std::string> &SSet, const std::set<std::string> &prefixesSet, const std::set<char> &alphabetSet, unsigned int n) :
+                Method(SpSet, SmSet, SSet, prefixesSet, alphabetSet, n)
             {
-                m_solver = std::make_unique<SimpSolver>(mustStop);
-                m_solver->verbosity = 0;
             }
 
             SATCNFMethod::~SATCNFMethod() {
@@ -22,12 +19,13 @@ namespace gsjj {
             }
 
             bool SATCNFMethod::solve() {
-                m_solver = std::make_unique<SimpSolver>(mustStop);
+                m_solver = std::make_unique<SimpSolver>(*mustStop);
+                m_solver->verbosity = 0;
                 createVariables();
                 createClauses();
 
                 m_triedSolve = true;
-                if (mustStop) {
+                if (*mustStop) {
                     return false;
                 }
                 m_cpuTimeStart = cpuTime();
@@ -71,6 +69,10 @@ namespace gsjj {
                     }
                     std::cout << "\n";
                 }
+            }
+
+            void SATCNFMethod::setStopTrigger(const std::chrono::seconds &timeLimit, std::atomic_bool &stopTrigger, const bool *stopPointer) {
+                mustStop = &stopTrigger;
             }
 
             Minisat::Var SATCNFMethod::newVariable() {
