@@ -6,7 +6,7 @@
 #include <chrono>
 #include <atomic>
 
-#include "DFA.h"
+#include "gsjj/DFA.h"
 
 namespace gsjj {
     /**

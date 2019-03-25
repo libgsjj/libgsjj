@@ -1,7 +1,7 @@
 #pragma once
 
-#include "passive/SMT/SMTMethod.h"
-#include "passive/MethodFactory.h"
+#include "gsjj/passive/SMT/SMTMethod.h"
+#include "gsjj/passive/MethodFactory.h"
 
 namespace gsjj {
     namespace passive {

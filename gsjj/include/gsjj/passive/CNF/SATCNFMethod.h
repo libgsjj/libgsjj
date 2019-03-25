@@ -1,10 +1,10 @@
 #pragma once
 
-#include "mtl/Vec.h"
-#include "core/SolverTypes.h"
-#include "simp/SimpSolver.h"
+#include "MapleCOMSPS_LRB/mtl/Vec.h"
+#include "MapleCOMSPS_LRB/core/SolverTypes.h"
+#include "MapleCOMSPS_LRB/simp/SimpSolver.h"
 
-#include "passive/Method.h"
+#include "gsjj/passive/Method.h"
 
 namespace gsjj {
     namespace passive {

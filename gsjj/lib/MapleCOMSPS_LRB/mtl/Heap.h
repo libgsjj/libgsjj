@@ -21,7 +21,8 @@ OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWA
 #ifndef Minisat_Heap_h
 #define Minisat_Heap_h
 
-#include "mtl/Vec.h"
+// The following line was modified on 25 March 2019 to modify the paths
+#include "MapleCOMSPS_LRB/mtl/Vec.h"
 
 namespace Minisat {
 

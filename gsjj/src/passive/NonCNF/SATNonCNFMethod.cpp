@@ -1,10 +1,10 @@
-#include "passive/NonCNF/SATNonCNFMethod.h"
+#include "gsjj/passive/NonCNF/SATNonCNFMethod.h"
 
 #include <fstream>
 #include <iostream>
 #include <functional>
 
-#include "utils/System.h"
+#include "MapleCOMSPS_LRB/utils/System.h"
 using namespace Minisat;
 
 namespace gsjj {

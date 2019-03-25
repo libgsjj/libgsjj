@@ -9,4 +9,5 @@ if(BUILD_BENCHMARKS)
         gsjj
         ${OpenMP_CXX_LIBRARIES}
     )
+    target_compile_options(benchmarks PUBLIC ${OpenMP_CXX_FLAGS})
 endif(BUILD_BENCHMARKS)

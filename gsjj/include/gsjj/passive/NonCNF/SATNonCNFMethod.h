@@ -3,11 +3,11 @@
 #include <ostream>
 #include <atomic>
 
-#include "passive/Method.h"
+#include "gsjj/passive/Method.h"
 
 // Since limboole is written in C, we must force the compiler
 extern "C" {
-    #include "limboole.h"
+    #include "limboole/limboole.h"
 }
 
 namespace gsjj {

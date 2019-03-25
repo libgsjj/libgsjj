@@ -1,4 +1,4 @@
-#include "passive/CNF/UnaryCNFMethod.h"
+#include "gsjj/passive/CNF/UnaryCNFMethod.h"
 
 #include <iostream>
 

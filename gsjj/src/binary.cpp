@@ -6,7 +6,7 @@
  * See binary.h
  */
 
-#include "binary.h"
+#include "gsjj/binary.h"
 
 namespace gsjj {
     std::vector<bool> decimal_to_binary(unsigned int dec_number, unsigned int size) {

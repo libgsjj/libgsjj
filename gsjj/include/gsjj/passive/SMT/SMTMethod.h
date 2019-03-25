@@ -4,7 +4,7 @@
 
 #include <cvc4/cvc4.h>
 
-#include "passive/Method.h"
+#include "gsjj/passive/Method.h"
 
 namespace gsjj {
     namespace passive {

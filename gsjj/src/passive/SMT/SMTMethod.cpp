@@ -1,6 +1,6 @@
-#include "passive/SMT/SMTMethod.h"
+#include "gsjj/passive/SMT/SMTMethod.h"
 
-#include "utils/System.h"
+#include "MapleCOMSPS_LRB/utils/System.h"
 
 namespace gsjj {
     namespace passive {

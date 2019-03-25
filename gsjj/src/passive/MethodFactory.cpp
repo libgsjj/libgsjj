@@ -4,8 +4,8 @@
 #include <future>
 #include <cmath>
 
-#include "passive/MethodFactory.h"
-#include "passive/utils.h"
+#include "gsjj/passive/MethodFactory.h"
+#include "gsjj/passive/utils.h"
 
 std::atomic_bool falseStopTrigger(false);
 std::chrono::seconds noLimit(0);

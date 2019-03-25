@@ -1,21 +1,21 @@
-#include "passive/Method.h"
+#include "gsjj/passive/Method.h"
 
-#include "utils/System.h"
+#include "MapleCOMSPS_LRB/utils/System.h"
 
-#include "passive/MethodFactory.h"
+#include "gsjj/passive/MethodFactory.h"
 
-#include "passive/SMT/BiermannMethod.h"
-#include "passive/SMT/NeiderJansenMethod.h"
+#include "gsjj/passive/SMT/BiermannMethod.h"
+#include "gsjj/passive/SMT/NeiderJansenMethod.h"
 
-#include "passive/CNF/UnaryCNFMethod.h"
-#include "passive/CNF/BinaryCNFMethod.h"
-#include "passive/CNF/HeuleVerwerCNFMethod.h"
+#include "gsjj/passive/CNF/UnaryCNFMethod.h"
+#include "gsjj/passive/CNF/BinaryCNFMethod.h"
+#include "gsjj/passive/CNF/HeuleVerwerCNFMethod.h"
 
-#include "passive/NonCNF/UnaryNonCNFMethod.h"
-#include "passive/NonCNF/BinaryNonCNFMethod.h"
-#include "passive/NonCNF/HeuleVerwerNonCNFMethod.h"
+#include "gsjj/passive/NonCNF/UnaryNonCNFMethod.h"
+#include "gsjj/passive/NonCNF/BinaryNonCNFMethod.h"
+#include "gsjj/passive/NonCNF/HeuleVerwerNonCNFMethod.h"
 
-#include "passive/utils.h"
+#include "gsjj/passive/utils.h"
 
 using namespace Minisat;
 

@@ -1,6 +1,6 @@
 #include "catch.hpp"
 
-#include "binary.h"
+#include "gsjj/binary.h"
 
 using namespace gsjj;
 

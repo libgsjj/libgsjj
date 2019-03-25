@@ -2,8 +2,8 @@
 
 #include <vector>
 
-#include "passive/NonCNF/SATNonCNFMethod.h"
-#include "passive/MethodFactory.h"
+#include "gsjj/passive/NonCNF/SATNonCNFMethod.h"
+#include "gsjj/passive/MethodFactory.h"
 
 namespace gsjj {
     namespace passive {

@@ -4,14 +4,14 @@
  * This file implements the Biermann method that relies on CNF SAT solver.
  */
 
-#include "passive/CNF/BinaryCNFMethod.h"
+#include "gsjj/passive/CNF/BinaryCNFMethod.h"
 
 #include <iostream>
 #include <cmath>
 
-#include "utils/System.h"
+#include "MapleCOMSPS_LRB/utils/System.h"
 
-#include "binary.h"
+#include "gsjj/binary.h"
 
 using namespace Minisat;
 

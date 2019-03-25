@@ -6,10 +6,10 @@
 #include <chrono>
 #include <thread>
 
-#include "DFA.h"
-#include "passive/Method.h"
-#include "passive/utils.h"
-#include "passive/MethodFactory.h"
+#include "gsjj/DFA.h"
+#include "gsjj/passive/Method.h"
+#include "gsjj/passive/utils.h"
+#include "gsjj/passive/MethodFactory.h"
 
 #include "utils.h"
 

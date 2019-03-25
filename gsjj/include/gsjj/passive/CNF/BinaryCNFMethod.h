@@ -6,10 +6,10 @@
 
 #pragma once
 
-#include "bc.hh"
+#include "bcsat/bc.hh"
  
-#include "passive/Method.h"
-#include "passive/MethodFactory.h"
+#include "gsjj/passive/Method.h"
+#include "gsjj/passive/MethodFactory.h"
 
 namespace gsjj {
     namespace passive {

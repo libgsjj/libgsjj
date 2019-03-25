@@ -1,7 +1,7 @@
 #pragma once
 
-#include "passive/CNF/SATCNFMethod.h"
-#include "passive/MethodFactory.h"
+#include "gsjj/passive/CNF/SATCNFMethod.h"
+#include "gsjj/passive/MethodFactory.h"
 
 namespace gsjj {
     namespace passive {

@@ -1,8 +1,8 @@
-#include "passive/CNF/SATCNFMethod.h"
+#include "gsjj/passive/CNF/SATCNFMethod.h"
 
 #include <iostream>
 
-#include "utils/System.h"
+#include "MapleCOMSPS_LRB/utils/System.h"
 
 using namespace Minisat;
 

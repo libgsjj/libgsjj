@@ -1,4 +1,4 @@
-#include "passive/SMT/NeiderJansenMethod.h"
+#include "gsjj/passive/SMT/NeiderJansenMethod.h"
 
 using namespace CVC4;
 

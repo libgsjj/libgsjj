@@ -4,7 +4,7 @@
  * This file implements the Heule and Verwer method that relies on non CNF SAT solver.
  */
 
-#include "passive/NonCNF/HeuleVerwerNonCNFMethod.h"
+#include "gsjj/passive/NonCNF/HeuleVerwerNonCNFMethod.h"
 
 #include <iostream>
 #include <utility>

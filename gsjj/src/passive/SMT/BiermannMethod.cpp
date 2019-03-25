@@ -1,5 +1,5 @@
-#include "passive/SMT/BiermannMethod.h"
-#include "passive/MethodFactory.h"
+#include "gsjj/passive/SMT/BiermannMethod.h"
+#include "gsjj/passive/MethodFactory.h"
 
 using namespace CVC4;
 

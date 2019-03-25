@@ -4,7 +4,7 @@
  * This file implements the Heule and Verwer method that relies on CNF SAT solver.
  */
 
-#include "passive/CNF/HeuleVerwerCNFMethod.h"
+#include "gsjj/passive/CNF/HeuleVerwerCNFMethod.h"
 
 #include <iostream>
 

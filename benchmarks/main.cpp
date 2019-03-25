@@ -5,9 +5,9 @@
 #include <boost/program_options.hpp>
 #include <cvc4/cvc4.h>
 
-#include "passive/Method.h"
-#include "passive/utils.h"
-#include "passive/MethodFactory.h"
+#include "gsjj/passive/Method.h"
+#include "gsjj/passive/utils.h"
+#include "gsjj/passive/MethodFactory.h"
 
 namespace po = boost::program_options;
 using namespace gsjj;

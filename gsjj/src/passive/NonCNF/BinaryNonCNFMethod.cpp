@@ -1,4 +1,4 @@
-#include "passive/NonCNF/BinaryNonCNFMethod.h"
+#include "gsjj/passive/NonCNF/BinaryNonCNFMethod.h"
 
 #include <iostream>
 #include <cmath>
@@ -7,14 +7,10 @@
 #include <math.h>
 #include <boost/algorithm/string.hpp>
 
-#include "utils/System.h"
+#include "MapleCOMSPS_LRB/utils/System.h"
 using namespace Minisat;
 
-extern "C" {
-#include "limboole.h"
-}
-
-#include "binary.h"
+#include "gsjj/binary.h"
 
 namespace gsjj {
     namespace passive {

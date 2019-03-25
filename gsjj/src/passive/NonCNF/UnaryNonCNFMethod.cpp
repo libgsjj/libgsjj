@@ -1,4 +1,4 @@
-#include "passive/NonCNF/UnaryNonCNFMethod.h"
+#include "gsjj/passive/NonCNF/UnaryNonCNFMethod.h"
 
 #include <iostream>
 #include <vector>

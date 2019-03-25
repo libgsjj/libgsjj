@@ -22,8 +22,9 @@ OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWA
 
 #include <math.h>
 
-#include "mtl/Sort.h"
-#include "core/Solver.h"
+// The two following lines were modified on 25 March 2019 to modify the paths
+#include "MapleCOMSPS_LRB/mtl/Sort.h"
+#include "MapleCOMSPS_LRB/core/Solver.h"
 
 using namespace Minisat;
 

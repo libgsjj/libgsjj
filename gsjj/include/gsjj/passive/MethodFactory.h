@@ -5,7 +5,7 @@
 #include <map>
 #include <functional>
 
-#include "passive/Method.h"
+#include "gsjj/passive/Method.h"
 
 namespace gsjj {
     namespace passive {

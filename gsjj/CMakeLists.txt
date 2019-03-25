@@ -70,9 +70,6 @@ target_compile_options(gsjj
             "-Wextra"
             $<$<CONFIG:RELEASE>: "-O2" >
         >
-        ${OpenMP_CXX_FLAGS}
-    PUBLIC
-        ${OpenMP_CXX_FLAGS}
 )
 install(TARGETS gsjj
     EXPORT gsjjConfig

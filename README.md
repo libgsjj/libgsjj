@@ -85,3 +85,5 @@ We give here the modifications done on bcsat. The base files can be found at htt
     * Removing folders `minisat-2.2.0` et `zchaff.2008.10.12`.
   * On 10 March 2019:
     * Modification of `bc.hh`, `bc.cc` and `bcminisat220_solve.cc` to allow the functions to stop when the time limit is reached (the information is propagated through a `std::atomic_bool` object).
+  * On 25 March 2019:
+    * Modification of `bcminisat220_solve.c`, `lexer.lex`, `lexer11.lex`, `parser.y` and `parser11.y` to change the include paths
