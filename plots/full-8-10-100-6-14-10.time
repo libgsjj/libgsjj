@@ -1,3 +1,0 @@
-# Size; biermann mean median timeouts; unary mean median timeouts; binary mean median timeouts; heule mean median timeouts; neider mean median timeouts; unary (non CNF) mean median timeouts; binary (non CNF) mean median timeouts; heule (non CNF) mean median timeouts; 
-8 300.164 300.233 100 51.4387 40.4513 0 0.528024 0.52001 0 2.63409 2.39741 0 13.0954 1.75565 1 41.9344 37.623 0 0.42974 0.41905 0 73.5466 69.0186 0 
-9 299.896 300.251 100 100.016 88.4545 0 0.693845 0.687865 0 3.97241 3.8282 0 21.708 4.18171 3 66.4173 61.6881 0 0.567414 0.56016 0 104.686 102.282 4 
