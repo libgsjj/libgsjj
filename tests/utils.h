@@ -2,7 +2,7 @@
 
 #include <memory>
 
-#include "passive/Method.h"
+#include "gsjj/passive/Method.h"
 
 using namespace gsjj;
 

@@ -20,8 +20,9 @@ OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWA
 #ifndef Minisat_Map_h
 #define Minisat_Map_h
 
-#include "mtl/IntTypes.h"
-#include "mtl/Vec.h"
+// The two following lines were modified on 25 March 2019 to modify the paths
+#include "MapleCOMSPS_LRB/mtl/IntTypes.h"
+#include "MapleCOMSPS_LRB/mtl/Vec.h"
 
 namespace Minisat {
 

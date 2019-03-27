@@ -4,9 +4,10 @@
 #include <cstring>
 #include <cassert>
 #include <list>
-#include "defs.hh"
-#include "bc.hh"
-#include "gate.hh"
+// The three following lines were modified on 25 March 2019 to modifiy the path to the files
+#include "bcsat/defs.hh"
+#include "bcsat/bc.hh"
+#include "bcsat/gate.hh"
 
 /*
  * Imported lexer functions

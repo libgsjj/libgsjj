@@ -1,8 +1,8 @@
-<map id="include/passive/NonCNF/SATNonCNFMethod.h" name="include/passive/NonCNF/SATNonCNFMethod.h">
-<area shape="rect" id="node2" href="$BinaryNonCNFMethod_8h.html" title="include/passive/NonCNF\l/BinaryNonCNFMethod.h" alt="" coords="538,95,707,136"/>
-<area shape="rect" id="node5" href="$HeuleVerwerNonCNFMethod_8h.html" title="This file declares the Heule and Verwer method that relies on non CNF SAT solver. ..." alt="" coords="114,95,321,136"/>
-<area shape="rect" id="node7" href="$UnaryNonCNFMethod_8h.html" title="include/passive/NonCNF\l/UnaryNonCNFMethod.h" alt="" coords="345,95,513,136"/>
-<area shape="rect" id="node9" href="$SATNonCNFMethod_8cpp.html" title="src/passive/NonCNF\l/SATNonCNFMethod.cpp" alt="" coords="731,95,903,136"/>
+<map id="include/gsjj/passive/NonCNF/SATNonCNFMethod.h" name="include/gsjj/passive/NonCNF/SATNonCNFMethod.h">
+<area shape="rect" id="node2" href="$BinaryNonCNFMethod_8h.html" title="include/gsjj/passive\l/NonCNF/BinaryNonCNFMethod.h" alt="" coords="570,95,795,136"/>
+<area shape="rect" id="node5" href="$HeuleVerwerNonCNFMethod_8h.html" title="This file declares the Heule and Verwer method that relies on non CNF SAT solver. ..." alt="" coords="37,95,299,136"/>
+<area shape="rect" id="node7" href="$UnaryNonCNFMethod_8h.html" title="include/gsjj/passive\l/NonCNF/UnaryNonCNFMethod.h" alt="" coords="323,95,546,136"/>
+<area shape="rect" id="node9" href="$SATNonCNFMethod_8cpp.html" title="src/passive/NonCNF\l/SATNonCNFMethod.cpp" alt="" coords="819,95,991,136"/>
 <area shape="rect" id="node3" href="$Method_8cpp.html" title="src/passive/Method.cpp" alt="" coords="251,191,413,218"/>
 <area shape="rect" id="node4" href="$BinaryNonCNFMethod_8cpp.html" title="src/passive/NonCNF\l/BinaryNonCNFMethod.cpp" alt="" coords="643,184,826,225"/>
 <area shape="rect" id="node6" href="$HeuleVerwerNonCNFMethod_8cpp.html" title="This file implements the Heule and Verwer method that relies on non CNF SAT solver. " alt="" coords="5,184,227,225"/>

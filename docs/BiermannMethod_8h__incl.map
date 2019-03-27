@@ -1,5 +1,6 @@
-<map id="include/passive/SMT/BiermannMethod.h" name="include/passive/SMT/BiermannMethod.h">
-<area shape="rect" id="node2" href="$SMTMethod_8h.html" title="passive/SMT/SMTMethod.h" alt="" coords="195,95,380,121"/>
-<area shape="rect" id="node5" href="$Method_8h.html" title="passive/Method.h" alt="" coords="225,169,350,196"/>
-<area shape="rect" id="node10" href="$DFA_8h.html" title="This file declares and implements the templated class DFA. " alt="" coords="144,244,204,271"/>
+<map id="include/gsjj/passive/SMT/BiermannMethod.h" name="include/gsjj/passive/SMT/BiermannMethod.h">
+<area shape="rect" id="node2" href="$SMTMethod_8h.html" title="gsjj/passive/SMT/SMTMethod.h" alt="" coords="171,95,381,121"/>
+<area shape="rect" id="node16" href="$MethodFactory_8h.html" title="gsjj/passive/MethodFactory.h" alt="" coords="431,95,625,121"/>
+<area shape="rect" id="node5" href="$Method_8h.html" title="gsjj/passive/Method.h" alt="" coords="372,169,521,196"/>
+<area shape="rect" id="node11" href="$DFA_8h.html" title="This file declares and implements the templated class DFA. " alt="" coords="374,244,458,271"/>
 </map>

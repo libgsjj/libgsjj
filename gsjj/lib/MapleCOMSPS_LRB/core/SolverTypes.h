@@ -26,11 +26,12 @@ OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWA
 
 #include <assert.h>
 
-#include "mtl/IntTypes.h"
-#include "mtl/Alg.h"
-#include "mtl/Vec.h"
-#include "mtl/Map.h"
-#include "mtl/Alloc.h"
+// The five following lines were modified on 25 March 2019 to modify the paths
+#include "MapleCOMSPS_LRB/mtl/IntTypes.h"
+#include "MapleCOMSPS_LRB/mtl/Alg.h"
+#include "MapleCOMSPS_LRB/mtl/Vec.h"
+#include "MapleCOMSPS_LRB/mtl/Map.h"
+#include "MapleCOMSPS_LRB/mtl/Alloc.h"
 
 namespace Minisat {
 

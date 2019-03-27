@@ -1,8 +1,9 @@
 %{
 #include <cstring>
-#include "bc.hh"
-#include "gate.hh"
-#include "parser.hh"
+// The three following lines were modified on 25 March 2019 to modifiy the path to the files
+#include "bcsat/bc.hh"
+#include "bcsat/gate.hh"
+#include "bcsat/parser.hh"
 extern void bcp_error2(const char *, ...);
 
 %}

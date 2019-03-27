@@ -1,4 +1,4 @@
-<map id="include/passive/NonCNF/HeuleVerwerNonCNFMethod.h" name="include/passive/NonCNF/HeuleVerwerNonCNFMethod.h">
+<map id="include/gsjj/passive/NonCNF/HeuleVerwerNonCNFMethod.h" name="include/gsjj/passive/NonCNF/HeuleVerwerNonCNFMethod.h">
 <area shape="rect" id="node2" href="$Method_8cpp.html" title="src/passive/Method.cpp" alt="" coords="5,102,167,129"/>
 <area shape="rect" id="node3" href="$HeuleVerwerNonCNFMethod_8cpp.html" title="This file implements the Heule and Verwer method that relies on non CNF SAT solver. " alt="" coords="191,95,413,136"/>
 </map>

@@ -7,12 +7,12 @@ set(BCMINISAT220_PATH ${CMAKE_CURRENT_SOURCE_DIR}/bcsat)
 file(GLOB PICOSAT_SOURCES
     ${PICOSAT_SOLVER}/picosat.c
 )
-set(PICOSAT_HEADERS ${PICOSAT_SOLVER})
+set(PICOSAT_HEADERS ${PICOSAT_SOLVER}/..)
 add_library(picosat STATIC ${PICOSAT_SOURCES})
 target_include_directories(picosat
     PUBLIC
         $<BUILD_INTERFACE:${PICOSAT_HEADERS}>
-        $<INSTALL_INTERFACE:include/picosat>
+        $<INSTALL_INTERFACE:include>
 )
 target_compile_options(picosat
     PRIVATE
@@ -23,12 +23,12 @@ target_compile_options(picosat
 file(GLOB LIMBOOLE_SOURCES
     ${LIMBOOLE_SOLVER}/limboole.c
 )
-set(LIMBOOLE_HEADERS ${LIMBOOLE_SOLVER})
+set(LIMBOOLE_HEADERS ${LIMBOOLE_SOLVER}/..)
 add_library(limboole STATIC ${LIMBOOLE_SOURCES})
 target_include_directories(limboole
     PUBLIC
         $<BUILD_INTERFACE:${LIMBOOLE_HEADERS}>
-        $<INSTALL_INTERFACE:include/limboole>
+        $<INSTALL_INTERFACE:include>
 )
 target_link_libraries(limboole picosat)
 target_compile_options(limboole
@@ -46,24 +46,25 @@ find_package(FLEX REQUIRED)
 
 # The bcsat front-end for Minisat (MapleCOMSPS_LRB)
 # This front-end allows to use any boolean formula instead of just CNF
+file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/bcsat)
 BISON_TARGET(bcsat_parser
     ${BCMINISAT220_PATH}/parser.y
-    ${CMAKE_BINARY_DIR}/parser.cc
+    ${CMAKE_CURRENT_BINARY_DIR}/bcsat/parser.cc
     COMPILE_FLAGS "-b parser -p bcp_ -d"
 )
 BISON_TARGET(bcsat_parser11
     ${BCMINISAT220_PATH}/parser11.y
-    ${CMAKE_BINARY_DIR}/parser11.cc
+    ${CMAKE_CURRENT_BINARY_DIR}/bcsat/parser11.cc
     COMPILE_FLAGS "-b parser11 -p bcp11_ -d"
 )
 FLEX_TARGET(bcsat_lexer
     ${BCMINISAT220_PATH}/lexer.lex
-    ${CMAKE_BINARY_DIR}/lexer.cc
+    ${CMAKE_CURRENT_BINARY_DIR}/bcsat/lexer.cc
     COMPILE_FLAGS "-L -Pbcp_"
 )
 FLEX_TARGET(bcsat_lexer11
     ${BCMINISAT220_PATH}/lexer11.lex
-    ${CMAKE_BINARY_DIR}/lexer11.cc
+    ${CMAKE_CURRENT_BINARY_DIR}/bcsat/lexer11.cc
     COMPILE_FLAGS "-L -Pbcp11_"
 )
 ADD_FLEX_BISON_DEPENDENCY(bcsat_lexer bcsat_parser)
@@ -91,15 +92,15 @@ set(BCMINISAT_SOURCES
     ${FLEX_bcsat_lexer_OUTPUTS}
     ${FLEX_bcsat_lexer11_OUTPUTS}
 )
+set(BCMINISAT_HEADERS ${BCMINISAT220_PATH}/..)
 add_library(bcsat STATIC ${BCMINISAT_SOURCES})
 target_include_directories(bcsat
     PUBLIC
         $<BUILD_INTERFACE:
-            ${MAPLE_PATH}
-            ${MAPLE_PATH}/simp
-            ${BCMINISAT220_PATH}
+            ${MAPLE_PATH}/..
+            ${BCMINISAT_HEADERS}
         >
-        $<INSTALL_INTERFACE:include/bcsat>
+        $<INSTALL_INTERFACE:include>
     PRIVATE
         ${CMAKE_CURRENT_BINARY_DIR}
 )
@@ -116,11 +117,12 @@ file(GLOB MAPLE_SOURCES
     ${MAPLE_PATH}/simp/SimpSolver.cc
     ${MAPLE_PATH}/core/Solver.cc
 )
+set(MAPLE_HEADERS ${MAPLE_PATH}/..)
 add_library(maple STATIC ${MAPLE_SOURCES})
 target_include_directories(maple
     PUBLIC
-        $<BUILD_INTERFACE: ${MAPLE_PATH}>
-        $<INSTALL_INTERFACE: include/maple>
+        $<BUILD_INTERFACE: ${MAPLE_HEADERS}>
+        $<INSTALL_INTERFACE:include>
 )
 target_compile_options(maple
     PRIVATE
@@ -135,8 +137,7 @@ install(TARGETS picosat limboole bcsat maple
     RUNTIME         DESTINATION ${CMAKE_INSTALL_BINDIR}
     PUBLIC_HEADER   DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
 )
-# TODO: check if necessary
-# Copy the header files (just to make sure that our library can easily be used)
+# Copy the header files (it's necessary since our header files use them)
 install(FILES
     picosat/config.h
     picosat/picosat.h
@@ -158,10 +159,30 @@ install(FILES
     DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/bcsat
 )
 install(FILES
-    MapleCOMSPS_LRB/simp/SimpSolver.h
     MapleCOMSPS_LRB/core/Solver.h
     MapleCOMSPS_LRB/core/Dimacs.h
     MapleCOMSPS_LRB/core/SolverTypes.h
+    DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/MapleCOMSPS_LRB/core
+)
+install(FILES
+    MapleCOMSPS_LRB/mtl/Alg.h
+    MapleCOMSPS_LRB/mtl/Alloc.h
+    MapleCOMSPS_LRB/mtl/Heap.h
+    MapleCOMSPS_LRB/mtl/IntTypes.h
+    MapleCOMSPS_LRB/mtl/Map.h
+    MapleCOMSPS_LRB/mtl/Queue.h
+    MapleCOMSPS_LRB/mtl/Sort.h
+    MapleCOMSPS_LRB/mtl/Vec.h
+    MapleCOMSPS_LRB/mtl/XAlloc.h
+    DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/MapleCOMSPS_LRB/mtl
+)
+install(FILES
+    MapleCOMSPS_LRB/simp/SimpSolver.h
+    DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/MapleCOMSPS_LRB/simp
+)
+install(FILES
     MapleCOMSPS_LRB/utils/System.h
-    DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/maple
+    MapleCOMSPS_LRB/utils/Options.h
+    MapleCOMSPS_LRB/utils/ParseUtils.h
+    DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/MapleCOMSPS_LRB/utils
 )

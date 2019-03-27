@@ -16,7 +16,7 @@ To build such a DFA, we use what we call passive learning algorithms. The follow
   - Heule and Verwer's algorithm
   - Neider and Jansen's algorithm
 
-## How to use `libgsjj`
+## How to use libgsjj
 Please note that the benchmarks will only be correct under Linux because the way the CPU time for a thread is retrieved is only working under that family of OS. The Linux kernel's version must be at least 2.6.26.
 
 ### Dependencies to install
@@ -51,6 +51,60 @@ find_library(gsjj)
 ```
 and `gsjj` will be available a target you can link against. It's possible the user must set the `gsjj_DIR` CMake parameter to be able to build your program if the files are not installed in the standard location.
 
+To construct a method, please see the gsjj::passive::constructMethod functions. Here is the complete list of built-in methods with the names used in the program:
+  * Biermann and Feldman: `biermann`
+  * Neider and Jansen: `neider`
+  * Grinchtein, Leucker and Piterman unary:
+    * CNF: `unary`
+    * Non-CNF: `unaryNonCNF`
+  * Grinchtein, Leucker and Piterman binary:
+    * CNF: `binary`
+    * Non-CNF: `binaryNonCNF`
+  * Heule and Verwer:
+    * CNF: `heule`
+    * Non-CNF: `heuleNonCNF`
+
+#### How to add a new method
+Let's say we want to create a new method called `TestMethod`. It's really simple. We just have to create a new class, makes it inheriting gsjj::passive::Method and gsjj::passive::RegisterInFactory<TestMethod>. Here is a very simple (and stupid) example:
+```cpp
+class TestMethod :
+  public gsjj::passive::Method,
+  public gsjj::passive::RegisterInFactory<TestMethod> {
+  public:
+      bool solve() override {
+        // Every method inheriting RegisterInFactory must have a line using s_registered
+        s_registered = s_registered;
+        return true;
+      }
+      bool hasSolution() const override {
+        return true;
+      }
+      std::unique_ptr<gsjj::DFA<char>> constructDFA() override {
+        return nullptr;
+      }
+      void printVariables() const override {
+      }
+      void setStopTrigger(const std::chrono::seconds &timeLimit, std::atomic_bool &stopTrigger, const bool *stopPointer) override {
+        // If the method relies on CVC4, use timeLimit to set the engine's timeLimit
+        // If the method relies on Maple, use stopTrigger
+        // If the method relies on Limboole, use stopPointer
+      }
+      static std::string getFactoryName() {
+        return "test";
+      }
+
+  protected:
+      TestMethod(
+        const std::set<std::string> &SpSet,
+        const std::set<std::string> &SmSet,
+        const std::set<std::string> &SSet,
+        const std::set<std::string> &prefixesSet,
+        const std::set<char> &alphabetSet,
+        unsigned int n) :
+          Method(SpSet, SmSet, SSet, prefixesSet, alphabetSet, n) {}
+};
+```
+
 ### Unit tests
 Once build, you can launch the unit tests by starting the program `tests` (built in the subfolder `tests` in `build`).
 
@@ -70,3 +124,5 @@ We give here the modifications done on bcsat. The base files can be found at htt
     * Removing folders `minisat-2.2.0` et `zchaff.2008.10.12`.
   * On 10 March 2019:
     * Modification of `bc.hh`, `bc.cc` and `bcminisat220_solve.cc` to allow the functions to stop when the time limit is reached (the information is propagated through a `std::atomic_bool` object).
+  * On 25 March 2019:
+    * Modification of `bcminisat220_solve.c`, `lexer.lex`, `lexer11.lex`, `parser.y` and `parser11.y` to change the include paths

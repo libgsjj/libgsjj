@@ -15,6 +15,7 @@ set(SOURCE_FILES
     src/binary.cpp
     src/passive/Method.cpp
     src/passive/utils.cpp
+    src/passive/MethodFactory.cpp
     src/passive/CNF/BinaryCNFMethod.cpp
     src/passive/CNF/HeuleVerwerCNFMethod.cpp
     src/passive/CNF/SATCNFMethod.cpp
@@ -69,9 +70,6 @@ target_compile_options(gsjj
             "-Wextra"
             $<$<CONFIG:RELEASE>: "-O2" >
         >
-        ${OpenMP_CXX_FLAGS}
-    PUBLIC
-        ${OpenMP_CXX_FLAGS}
 )
 install(TARGETS gsjj
     EXPORT gsjjConfig
@@ -93,6 +91,7 @@ if(BUILD_DOCUMENTATION)
     set(DOXYGEN_JAVADOC_AUTOBRIEF TRUE)
     set(DOXYGEN_SOURCE_BROWSER TRUE)
     set(DOXYGEN_EXTRACT_ALL TRUE)
+    set(DOXYGEN_TOC_INCLUDE_HEADINGS 4)
     find_package(Doxygen
         REQUIRED dot
         OPTIONAL_COMPONENTS mscgen dia)

@@ -55,7 +55,7 @@ int BC::minisat_solve(const bool perform_simplifications
 #if defined(MINISAT220CORE)
 #include "Solver.h"
 #elif defined(MINISAT220SIMP)
-#include "SimpSolver.h"
+#include "MapleCOMSPS_LRB/simp/SimpSolver.h" // Modified on 25 March 2019
 #else
 #error "Unknown MiniSAT version defined"
 #endif

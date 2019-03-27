@@ -25,9 +25,10 @@ OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWA
 #include <math.h>
 #include <string.h>
 
-#include "mtl/IntTypes.h"
-#include "mtl/Vec.h"
-#include "utils/ParseUtils.h"
+// The three following lines were modified on 25 March 2019 to modify the paths
+#include "MapleCOMSPS_LRB/mtl/IntTypes.h"
+#include "MapleCOMSPS_LRB/mtl/Vec.h"
+#include "MapleCOMSPS_LRB/utils/ParseUtils.h"
 
 namespace Minisat {
 

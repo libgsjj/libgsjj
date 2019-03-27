@@ -1,18 +1,18 @@
-#include "passive/NonCNF/SATNonCNFMethod.h"
+#include "gsjj/passive/NonCNF/SATNonCNFMethod.h"
 
 #include <fstream>
 #include <iostream>
 #include <functional>
 
-#include "utils/System.h"
+#include "MapleCOMSPS_LRB/utils/System.h"
 using namespace Minisat;
 
 namespace gsjj {
     namespace passive {
         namespace NonCNF {
-            SATNonCNFMethod::SATNonCNFMethod(const std::set<std::string> &SpSet, const std::set<std::string> &SmSet, const std::set<std::string> &SSet, const std::set<std::string> &prefixesSet, const std::set<char> &alphabetSet, unsigned int n, const bool *stopTrigger) :
+            SATNonCNFMethod::SATNonCNFMethod(const std::set<std::string> &SpSet, const std::set<std::string> &SmSet, const std::set<std::string> &SSet, const std::set<std::string> &prefixesSet, const std::set<char> &alphabetSet, unsigned int n) :
                 Method(SpSet, SmSet, SSet, prefixesSet, alphabetSet, n),
-                mustStop(stopTrigger) {
+                mustStop(nullptr) {
             }
 
             SATNonCNFMethod::~SATNonCNFMethod() {
@@ -75,6 +75,10 @@ namespace gsjj {
 
             void SATNonCNFMethod::printVariables() const {
                 std::cout << "NOT IMPLEMENTED\n";
+            }
+
+            void SATNonCNFMethod::setStopTrigger(const std::chrono::seconds &timeLimit, std::atomic_bool &stopTrigger, const bool *stopPointer) {
+                mustStop = stopPointer;
             }
 
             bool SATNonCNFMethod::isSatisfiable() const {

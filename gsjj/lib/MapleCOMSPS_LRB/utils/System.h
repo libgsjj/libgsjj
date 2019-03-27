@@ -25,7 +25,8 @@ OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWA
 #include <fpu_control.h>
 #endif
 
-#include "mtl/IntTypes.h"
+// The following line was modified on 25 March 2019 to modify the path
+#include "MapleCOMSPS_LRB/mtl/IntTypes.h"
 
 //-------------------------------------------------------------------------------------------------
 

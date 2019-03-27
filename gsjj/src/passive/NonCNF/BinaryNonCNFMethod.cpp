@@ -1,4 +1,4 @@
-#include "passive/NonCNF/BinaryNonCNFMethod.h"
+#include "gsjj/passive/NonCNF/BinaryNonCNFMethod.h"
 
 #include <iostream>
 #include <cmath>
@@ -7,23 +7,24 @@
 #include <math.h>
 #include <boost/algorithm/string.hpp>
 
-#include "utils/System.h"
+#include "MapleCOMSPS_LRB/utils/System.h"
 using namespace Minisat;
 
-extern "C" {
-#include "limboole.h"
-}
-
-#include "binary.h"
+#include "gsjj/binary.h"
 
 namespace gsjj {
     namespace passive {
         namespace NonCNF {
-            BinaryNonCNFMethod::BinaryNonCNFMethod(const std::set<std::string> &SpSet, const std::set<std::string> &SmSet, const std::set<std::string> &SSet, const std::set<std::string> &prefixesSet, const std::set<char> &alphabetSet, unsigned int n, const bool *stopTrigger) :
-                SATNonCNFMethod(SpSet, SmSet, SSet, prefixesSet, alphabetSet, n, stopTrigger) {
+            BinaryNonCNFMethod::BinaryNonCNFMethod(const std::set<std::string> &SpSet, const std::set<std::string> &SmSet, const std::set<std::string> &SSet, const std::set<std::string> &prefixesSet, const std::set<char> &alphabetSet, unsigned int n) :
+                SATNonCNFMethod(SpSet, SmSet, SSet, prefixesSet, alphabetSet, n) {
+                s_registered = s_registered;
             }
 
             BinaryNonCNFMethod::~BinaryNonCNFMethod() {
+            }
+
+            std::string BinaryNonCNFMethod::getFactoryName() {
+                return "binaryNonCNF";
             }
 
             std::string BinaryNonCNFMethod::phi_different(std::string pref1, std::string pref2){

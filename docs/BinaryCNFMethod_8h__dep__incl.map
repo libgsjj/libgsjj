@@ -1,4 +1,4 @@
-<map id="include/passive/CNF/BinaryCNFMethod.h" name="include/passive/CNF/BinaryCNFMethod.h">
+<map id="include/gsjj/passive/CNF/BinaryCNFMethod.h" name="include/gsjj/passive/CNF/BinaryCNFMethod.h">
 <area shape="rect" id="node2" href="$BinaryCNFMethod_8cpp.html" title="This file implements the Biermann method that relies on CNF SAT solver. " alt="" coords="5,95,264,121"/>
 <area shape="rect" id="node3" href="$Method_8cpp.html" title="src/passive/Method.cpp" alt="" coords="287,95,449,121"/>
 </map>

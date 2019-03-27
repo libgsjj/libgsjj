@@ -21,7 +21,8 @@ OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWA
 #ifndef Minisat_Sort_h
 #define Minisat_Sort_h
 
-#include "mtl/Vec.h"
+// The following line was modified on 25 March 2019 to modify the path
+#include "MapleCOMSPS_LRB/mtl/Vec.h"
 
 //=================================================================================================
 // Some sorting algorithms for vec's

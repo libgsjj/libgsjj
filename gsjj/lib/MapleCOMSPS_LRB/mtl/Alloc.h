@@ -21,8 +21,9 @@ OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWA
 #ifndef Minisat_Alloc_h
 #define Minisat_Alloc_h
 
-#include "mtl/XAlloc.h"
-#include "mtl/Vec.h"
+// The two following lines were modified on 25 March 2019 to modify the paths
+#include "MapleCOMSPS_LRB/mtl/XAlloc.h"
+#include "MapleCOMSPS_LRB/mtl/Vec.h"
 
 namespace Minisat {
 

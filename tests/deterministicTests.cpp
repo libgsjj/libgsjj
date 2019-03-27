@@ -6,9 +6,10 @@
 #include <chrono>
 #include <thread>
 
-#include "DFA.h"
-#include "passive/Method.h"
-#include "passive/utils.h"
+#include "gsjj/DFA.h"
+#include "gsjj/passive/Method.h"
+#include "gsjj/passive/utils.h"
+#include "gsjj/passive/MethodFactory.h"
 
 #include "utils.h"
 
@@ -20,10 +21,10 @@ using namespace gsjj;
  * @param Sm The \f$S_-\f$
  * @param expectedSize The expected size of the DFA
  */
-void performTests(passive::Methods met, const std::set<std::string> &Sp, const std::set<std::string> &Sm, unsigned int expectedSize) {
+void performTests(const std::string &met, const std::set<std::string> &Sp, const std::set<std::string> &Sm, unsigned int expectedSize) {
     std::unique_ptr<passive::Method> method;
     bool success;
-    std::tie(method, success) = passive::Method::constructMethod(met, Sp, Sm);
+    std::tie(method, success) = passive::constructMethod(met, Sp, Sm);
 
     REQUIRE(method);
     REQUIRE(success);
@@ -40,7 +41,7 @@ void performTests(passive::Methods met, const std::set<std::string> &Sp, const s
     REQUIRE(method->numberOfStates() == dfa->getNumberOfStates());
 }
 
-void testMethod(passive::Methods met) {
+void testMethod(const std::string &met) {
     std::set<std::string> Sp, Sm;
     SECTION("Sp = {aab, aba, ba, babb} and Sm = {epsilon, bb}") {
         Sp = {"aab", "aba", "ba", "babb"};
@@ -72,33 +73,33 @@ void testMethod(passive::Methods met) {
 }
 
 TEST_CASE("The Biermann and Feldman method builds an optimal DFA", "[passive][optimal][biermann]") {
-    testMethod(passive::Methods::BIERMANN);
+    testMethod("biermann");
 }
 
 TEST_CASE("The unary method builds an optimal DFA", "[passive][optimal][unary]") {
-    testMethod(passive::Methods::UNARY);
+    testMethod("unary");
 }
 
 TEST_CASE("The binary method builds an optimal DFA", "[passive][optimal][binary]") {
-    testMethod(passive::Methods::BINARY);
+    testMethod("binary");
 }
 
 TEST_CASE("The Heule and Verwer method builds an optimal DFA", "[passive][optimal][heule]") {
-    testMethod(passive::Methods::HEULEVERWER);
+    testMethod("heule");
 }
 
 TEST_CASE("The Neider and Jansen method builds an optimal DFA", "[passive][optimal][neider]") {
-    testMethod(passive::Methods::NEIDERJANSEN);
+    testMethod("neider");
 }
 
 TEST_CASE("The unaryNonCNF method builds an optimal DFA", "[passive][optimal][unaryNonCNF]") {
-    testMethod(passive::Methods::UNARY_NON_CNF);
+    testMethod("unaryNonCNF");
 }
 
 TEST_CASE("The binaryNonCNF method builds an optimal DFA", "[passive][optimal][binaryNonCNF]") {
-    testMethod(passive::Methods::BINARY_NON_CNF);
+    testMethod("binaryNonCNF");
 }
 
 TEST_CASE("The Heule and Verwer nonCNF method builds an optimal DFA", "[passive][optimal][heuleNonCNF]") {
-    testMethod(passive::Methods::HEULE_NON_CNF);
+    testMethod("heuleNonCNF");
 }

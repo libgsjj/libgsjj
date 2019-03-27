@@ -24,8 +24,9 @@ OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWA
 #include <assert.h>
 #include <new>
 
-#include "mtl/IntTypes.h"
-#include "mtl/XAlloc.h"
+// The two following lines were modified on 25 March 2019 to modify the paths
+#include "MapleCOMSPS_LRB/mtl/IntTypes.h"
+#include "MapleCOMSPS_LRB/mtl/XAlloc.h"
 
 namespace Minisat {
 

@@ -48,7 +48,7 @@ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 typedef struct LGL LGL;
 #endif
 #ifdef LIMBOOLE_USE_PICOSAT
-#include "picosat.h"
+#include "picosat/picosat.h"
 #else
 typedef struct PicoSAT PicoSAT;
 #endif

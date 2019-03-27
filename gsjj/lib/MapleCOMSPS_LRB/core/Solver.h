@@ -35,11 +35,12 @@ OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWA
 #endif
 
 #include <atomic> // Modified on 10 March 2019
-#include "mtl/Vec.h"
-#include "mtl/Heap.h"
-#include "mtl/Alg.h"
-#include "utils/Options.h"
-#include "core/SolverTypes.h"
+// The five following lines were modified on 25 March 2019 to modify the paths
+#include "MapleCOMSPS_LRB/mtl/Vec.h"
+#include "MapleCOMSPS_LRB/mtl/Heap.h"
+#include "MapleCOMSPS_LRB/mtl/Alg.h"
+#include "MapleCOMSPS_LRB/utils/Options.h"
+#include "MapleCOMSPS_LRB/core/SolverTypes.h"
 
 
 // Don't change the actual numbers.
