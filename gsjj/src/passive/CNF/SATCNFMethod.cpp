@@ -34,10 +34,6 @@ namespace gsjj {
                 return m_hasSolution;
             }
 
-            bool SATCNFMethod::hasSolution() const {
-                return m_hasSolution;
-            }
-
             std::unique_ptr<DFA<char>> SATCNFMethod::constructDFA() {
                 // We try to solve the SAT problem if not yet done
                 if (!m_triedSolve) {
@@ -52,22 +48,6 @@ namespace gsjj {
                 // The SAT problem has a solution
                 else {
                     return toDFA(m_solver->model);
-                }
-            }
-
-            void SATCNFMethod::printVariables() const {
-                if (!m_triedSolve) {
-                    std::cout << "NOT SOLVED\n";
-                }
-                else if (!hasSolution()) {
-                    std::cout << "UNSAT\n";
-                }
-                else {
-                    std::cout << "SAT\n";
-                    for (int i = 0 ; i < m_solver->model.size() ; i++) {
-                        std::cout << " " << (m_solver->model[i] == l_True ? "" : "-") << i;
-                    }
-                    std::cout << "\n";
                 }
             }
 

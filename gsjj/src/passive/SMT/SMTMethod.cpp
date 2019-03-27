@@ -30,10 +30,6 @@ namespace gsjj {
                 return m_hasSolution;
             }
 
-            bool SMTMethod::hasSolution() const {
-                return m_hasSolution;
-            }
-
             std::unique_ptr<DFA<char>> SMTMethod::constructDFA() {
                 if (!m_triedSolve) {
                     solve();
@@ -42,10 +38,6 @@ namespace gsjj {
                     return toDFA();
                 }
                 return nullptr;
-            }
-
-            void SMTMethod::printVariables() const {
-                std::cout << "NOT YET IMPLEMENTED; you cannot print the variables of a SMT method for the moment\n";
             }
 
             void SMTMethod::setStopTrigger(const std::chrono::seconds &timeLimit, std::atomic_bool &stopTrigger, const bool *stopPointer) {

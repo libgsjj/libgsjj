@@ -56,7 +56,9 @@ namespace gsjj {
              * 
              * @return True iff the SAT problem has a solution
              */
-            virtual bool hasSolution() const = 0;
+            bool hasSolution() const {
+                return m_hasSolution;
+            }
 
             /**
              * Gives the number of states of the prospected DFA (the n)
@@ -73,15 +75,6 @@ namespace gsjj {
              * @return An unique_ptr to the constructed DFA or an empty pointer if the problem is not solvable
              */
             virtual std::unique_ptr<DFA<char>> constructDFA() = 0;
-
-            /**
-             * Prints the values of the variables, UNSAT or NOT SOLVED.
-             * 
-             * If solve() has not yet been called, prints NOT SOLVED.
-             * Else if the problem is not satisfiable, prints UNSAT.
-             * Else, prints SAT and the values of the variables.
-             */
-            virtual void printVariables() const = 0;
 
             /**
              * Gives the CPU time taken to solve the problem.

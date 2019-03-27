@@ -76,13 +76,8 @@ class TestMethod :
         s_registered = s_registered;
         return true;
       }
-      bool hasSolution() const override {
-        return true;
-      }
       std::unique_ptr<gsjj::DFA<char>> constructDFA() override {
         return nullptr;
-      }
-      void printVariables() const override {
       }
       void setStopTrigger(const std::chrono::seconds &timeLimit, std::atomic_bool &stopTrigger, const bool *stopPointer) override {
         // If the method relies on CVC4, use timeLimit to set the engine's timeLimit
@@ -103,6 +98,12 @@ class TestMethod :
         unsigned int n) :
           Method(SpSet, SmSet, SSet, prefixesSet, alphabetSet, n) {}
 };
+```
+
+After that, creating a new instance of this method is as easy as for the other methods:
+```cpp
+std::set<std::string> Sp = {...}, Sm = {...};
+auto method = gsjj::passive::constructMethod("test", Sp, Sm);
 ```
 
 ### Unit tests

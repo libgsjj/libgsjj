@@ -49,17 +49,13 @@ namespace gsjj {
                 }
 
                 createVariables();
-                createFormula();
+                m_solver->force_true(createFormula());
 
                 m_triedSolve = true;
                 m_cpuTimeStart = cpuTime();
                 // minisat_solver returns 1 iff the formula is sat
                 m_hasSolution = m_solver->minisat_solve(false, m_simplify_opts, false, false, false, false, 0) == 1;
                 m_cpuTimeEnd = cpuTime();
-                return m_hasSolution;
-            }
-
-            bool BinaryCNFMethod::hasSolution() const {
                 return m_hasSolution;
             }
 
@@ -89,10 +85,6 @@ namespace gsjj {
                 }
             }
 
-            void BinaryCNFMethod::printVariables() const {
-                std::cout << "NOT IMPLEMENTED\n";
-            }
-
             std::string BinaryCNFMethod::getFactoryName() {
                 return "binary";
             }
@@ -110,7 +102,7 @@ namespace gsjj {
                 }
             }
 
-            void BinaryCNFMethod::createFormula() {
+            Gate* BinaryCNFMethod::createFormula() {
                 Gate *formula = nullptr;
 
                 // For every ua, va in prefixes such that the last letter of ua is the same as the last letter of va
@@ -156,7 +148,7 @@ namespace gsjj {
                     }
                 }
 
-                m_solver->force_true(formula);
+                return formula;
             }
 
             Gate* BinaryCNFMethod::equal(const std::string &u, const std::string &v) {

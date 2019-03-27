@@ -31,7 +31,8 @@ namespace gsjj {
             m_alphabet(alphabetSet),
             m_triedSolve(false),
             m_cpuTimeStart(0),
-            m_cpuTimeEnd(0)
+            m_cpuTimeEnd(0),
+            m_hasSolution(false)
         {
 
         }

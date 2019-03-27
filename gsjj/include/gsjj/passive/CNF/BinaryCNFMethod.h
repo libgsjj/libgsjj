@@ -26,11 +26,7 @@ namespace gsjj {
 
                 bool solve() override;
 
-                bool hasSolution() const override;
-
                 std::unique_ptr<DFA<char>> constructDFA() override;
-
-                void printVariables() const override;
 
                 static std::string getFactoryName();
 
@@ -53,8 +49,8 @@ namespace gsjj {
                 m_mapType m_stateToVar;
 
             private:
-                void createVariables();
-                void createFormula();
+                virtual void createVariables();
+                virtual Gate* createFormula();
 
                 Gate* equal(const std::string &u, const std::string &v);
                 Gate* phi_different(const std::string &u, const std::string &v);

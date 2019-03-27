@@ -30,11 +30,7 @@ namespace gsjj {
 
                 virtual bool solve() override;
 
-                virtual bool hasSolution() const override;
-
                 virtual std::unique_ptr<DFA<char>> constructDFA() override;
-
-                void printVariables() const override;
 
                 virtual void setStopTrigger(const std::chrono::seconds &timeLimit, std::atomic_bool &stopTrigger, const bool *stopPointer) override;
 

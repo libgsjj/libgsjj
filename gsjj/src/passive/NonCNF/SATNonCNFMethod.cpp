@@ -46,10 +46,6 @@ namespace gsjj {
                 }
             }
 
-            bool SATNonCNFMethod::hasSolution() const {
-                return m_hasSolution;
-            }
-
             std::unique_ptr<DFA<char>> SATNonCNFMethod::constructDFA() {
                 if (!m_triedSolve) {
                     if (!solve()) {
@@ -71,10 +67,6 @@ namespace gsjj {
                     return dfa;
                 }
                 return nullptr;
-            }
-
-            void SATNonCNFMethod::printVariables() const {
-                std::cout << "NOT IMPLEMENTED\n";
             }
 
             void SATNonCNFMethod::setStopTrigger(const std::chrono::seconds &timeLimit, std::atomic_bool &stopTrigger, const bool *stopPointer) {
