@@ -94,7 +94,7 @@ plot "full.time" using 2:xtic(1) title "Méthode de Biermann et Feldman - moyenn
     "" using ($1)-0.84:4 title "Méthode de Biermann et Feldamn - nombre de timeouts" axes x1y2 with points linecolor rgb "#FF0000" pointsize 2 pointtype 9
 
 set output "time_neider.png"
-set title "Temps d'exécution moyen et médian en fonction du nombre de mots dans (S_+, S_-) pour la méthode de Biermann et Feldman"
+set title "Temps d'exécution moyen et médian en fonction du nombre de mots dans (S_+, S_-) pour la méthode de Neider et Jansen"
 plot "full.time" using 14:xtic(1) title "Méthode SMT de Neider et Jansen - moyenne" linecolor rgb "#8D0000",\
     "" using 15:xtic(1) title "Méthode SMT de Neider et Jansen - médianne" linecolor rgb "#8D0000" fillstyle pattern 5,\
     "" using ($1)-0.84:16 title "Méthode SMT de Neider et Jansen - nombre de timeouts" axes x1y2 with points linecolor rgb "#8D0000" pointsize 2 pt 7
