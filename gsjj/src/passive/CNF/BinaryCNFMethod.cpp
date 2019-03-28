@@ -19,8 +19,7 @@ namespace gsjj {
     namespace passive {
         namespace CNF {
             BinaryCNFMethod::BinaryCNFMethod(const std::set<std::string> &SpSet, const std::set<std::string> &SmSet, const std::set<std::string> &SSet, const std::set<std::string> &prefixesSet, const std::set<char> &alphabetSet, unsigned int n) :
-                Method(SpSet, SmSet, SSet, prefixesSet, alphabetSet, n),
-                m_hasSolution(false)
+                Method(SpSet, SmSet, SSet, prefixesSet, alphabetSet, n)
             {
                 // Defaults values for the options (taken from the bcsat code)
                 m_simplify_opts.constant_folding = true;
