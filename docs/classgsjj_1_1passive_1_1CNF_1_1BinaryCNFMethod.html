@@ -67,7 +67,9 @@ $(function() {
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
+<a href="#pro-types">Protected Types</a> &#124;
 <a href="#pro-methods">Protected Member Functions</a> &#124;
+<a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="classgsjj_1_1passive_1_1CNF_1_1BinaryCNFMethod-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">gsjj::passive::CNF::BinaryCNFMethod Class Reference</div>  </div>
@@ -106,15 +108,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ac427017eaa2faf08f77dd0a94b645ef4"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgsjj_1_1passive_1_1CNF_1_1BinaryCNFMethod.html#ac427017eaa2faf08f77dd0a94b645ef4">solve</a> () override</td></tr>
 <tr class="memdesc:ac427017eaa2faf08f77dd0a94b645ef4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Solves the SAT/SMT problem induced by the method.  <a href="#ac427017eaa2faf08f77dd0a94b645ef4">More...</a><br /></td></tr>
 <tr class="separator:ac427017eaa2faf08f77dd0a94b645ef4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0dd4cf4a64ba172316e5845afa59995a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgsjj_1_1passive_1_1CNF_1_1BinaryCNFMethod.html#a0dd4cf4a64ba172316e5845afa59995a">hasSolution</a> () const override</td></tr>
-<tr class="memdesc:a0dd4cf4a64ba172316e5845afa59995a"><td class="mdescLeft">&#160;</td><td class="mdescRight">If <a class="el" href="classgsjj_1_1passive_1_1CNF_1_1BinaryCNFMethod.html#ac427017eaa2faf08f77dd0a94b645ef4" title="Solves the SAT/SMT problem induced by the method. ">solve()</a> has been called and if there exists a solution, return True.  <a href="#a0dd4cf4a64ba172316e5845afa59995a">More...</a><br /></td></tr>
-<tr class="separator:a0dd4cf4a64ba172316e5845afa59995a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3daa5a8c24876d11d111e38c79273016"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classgsjj_1_1DFA.html">DFA</a>&lt; char &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgsjj_1_1passive_1_1CNF_1_1BinaryCNFMethod.html#a3daa5a8c24876d11d111e38c79273016">constructDFA</a> () override</td></tr>
 <tr class="memdesc:a3daa5a8c24876d11d111e38c79273016"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs the <a class="el" href="classgsjj_1_1DFA.html" title="A Deterministic Finite Automaton. ">DFA</a> induced by the variables according to the method.  <a href="#a3daa5a8c24876d11d111e38c79273016">More...</a><br /></td></tr>
 <tr class="separator:a3daa5a8c24876d11d111e38c79273016"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abea13e12caf3b79f6e1154954d0a9df6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgsjj_1_1passive_1_1CNF_1_1BinaryCNFMethod.html#abea13e12caf3b79f6e1154954d0a9df6">printVariables</a> () const override</td></tr>
-<tr class="memdesc:abea13e12caf3b79f6e1154954d0a9df6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints the values of the variables, UNSAT or NOT SOLVED.  <a href="#abea13e12caf3b79f6e1154954d0a9df6">More...</a><br /></td></tr>
-<tr class="separator:abea13e12caf3b79f6e1154954d0a9df6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a208b3a4dfc5e9682ca2dd9a34708b824"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgsjj_1_1passive_1_1CNF_1_1BinaryCNFMethod.html#a208b3a4dfc5e9682ca2dd9a34708b824">setStopTrigger</a> (const std::chrono::seconds &amp;timeLimit, std::atomic_bool &amp;stopTrigger, const bool *stopPointer) override</td></tr>
 <tr class="memdesc:a208b3a4dfc5e9682ca2dd9a34708b824"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the stop trigger for this method.  <a href="#a208b3a4dfc5e9682ca2dd9a34708b824">More...</a><br /></td></tr>
 <tr class="separator:a208b3a4dfc5e9682ca2dd9a34708b824"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -123,6 +119,9 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a389b5d1b558d8668297b48e2b11d2f49 inherit pub_methods_classgsjj_1_1passive_1_1Method"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0cce0cbd56d6f365c4340d1cbfad31ac inherit pub_methods_classgsjj_1_1passive_1_1Method"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgsjj_1_1passive_1_1Method.html#a0cce0cbd56d6f365c4340d1cbfad31ac">~Method</a> ()</td></tr>
 <tr class="separator:a0cce0cbd56d6f365c4340d1cbfad31ac inherit pub_methods_classgsjj_1_1passive_1_1Method"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6331d4254df44dd6a298e19a4a179020 inherit pub_methods_classgsjj_1_1passive_1_1Method"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgsjj_1_1passive_1_1Method.html#a6331d4254df44dd6a298e19a4a179020">hasSolution</a> () const</td></tr>
+<tr class="memdesc:a6331d4254df44dd6a298e19a4a179020 inherit pub_methods_classgsjj_1_1passive_1_1Method"><td class="mdescLeft">&#160;</td><td class="mdescRight">If <a class="el" href="classgsjj_1_1passive_1_1Method.html#a0d36eafeb3a90fa36ffc462b02f5ddd6" title="Solves the SAT/SMT problem induced by the method. ">solve()</a> has been called and if there exists a solution, return True.  <a href="classgsjj_1_1passive_1_1Method.html#a6331d4254df44dd6a298e19a4a179020">More...</a><br /></td></tr>
+<tr class="separator:a6331d4254df44dd6a298e19a4a179020 inherit pub_methods_classgsjj_1_1passive_1_1Method"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af3377625c54a2cfc2487847061d3d8ad inherit pub_methods_classgsjj_1_1passive_1_1Method"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgsjj_1_1passive_1_1Method.html#af3377625c54a2cfc2487847061d3d8ad">numberOfStates</a> () const</td></tr>
 <tr class="memdesc:af3377625c54a2cfc2487847061d3d8ad inherit pub_methods_classgsjj_1_1passive_1_1Method"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gives the number of states of the prospected <a class="el" href="classgsjj_1_1DFA.html" title="A Deterministic Finite Automaton. ">DFA</a> (the n)  <a href="classgsjj_1_1passive_1_1Method.html#af3377625c54a2cfc2487847061d3d8ad">More...</a><br /></td></tr>
 <tr class="separator:af3377625c54a2cfc2487847061d3d8ad inherit pub_methods_classgsjj_1_1passive_1_1Method"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -135,17 +134,45 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a2c4e6861ed459d3e692d943520f27f27"><td class="memItemLeft" align="right" valign="top">static std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgsjj_1_1passive_1_1CNF_1_1BinaryCNFMethod.html#a2c4e6861ed459d3e692d943520f27f27">getFactoryName</a> ()</td></tr>
 <tr class="separator:a2c4e6861ed459d3e692d943520f27f27"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-types"></a>
+Protected Types</h2></td></tr>
+<tr class="memitem:ab5eb6cd595f09e8fe3efa4d49286e8e1"><td class="memItemLeft" align="right" valign="top">typedef std::map&lt; std::pair&lt; std::string, unsigned int &gt;, Gate * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgsjj_1_1passive_1_1CNF_1_1BinaryCNFMethod.html#ab5eb6cd595f09e8fe3efa4d49286e8e1">m_mapType</a></td></tr>
+<tr class="separator:ab5eb6cd595f09e8fe3efa4d49286e8e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
 <tr class="memitem:a6cc56dd3f4aa5a75a2d737b518195399"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgsjj_1_1passive_1_1CNF_1_1BinaryCNFMethod.html#a6cc56dd3f4aa5a75a2d737b518195399">BinaryCNFMethod</a> (const std::set&lt; std::string &gt; &amp;SpSet, const std::set&lt; std::string &gt; &amp;SmSet, const std::set&lt; std::string &gt; &amp;SSet, const std::set&lt; std::string &gt; &amp;prefixesSet, const std::set&lt; char &gt; &amp;alphabetSet, unsigned int n)</td></tr>
 <tr class="separator:a6cc56dd3f4aa5a75a2d737b518195399"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a87a1c89d6f644de43d0c8d83b3b34e"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgsjj_1_1passive_1_1CNF_1_1BinaryCNFMethod.html#a2a87a1c89d6f644de43d0c8d83b3b34e">createVariables</a> ()</td></tr>
+<tr class="separator:a2a87a1c89d6f644de43d0c8d83b3b34e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a11495a8770202041fb22139c1bd1171c"><td class="memItemLeft" align="right" valign="top">virtual Gate *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgsjj_1_1passive_1_1CNF_1_1BinaryCNFMethod.html#a11495a8770202041fb22139c1bd1171c">createFormula</a> ()</td></tr>
+<tr class="separator:a11495a8770202041fb22139c1bd1171c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa000d5fbcff4ff1dda4938d5c41653e7"><td class="memItemLeft" align="right" valign="top">Gate *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgsjj_1_1passive_1_1CNF_1_1BinaryCNFMethod.html#aa000d5fbcff4ff1dda4938d5c41653e7">equal</a> (const std::string &amp;u, const std::string &amp;v)</td></tr>
+<tr class="separator:aa000d5fbcff4ff1dda4938d5c41653e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a137aa59cc94c447ec1875b24a5c072f8"><td class="memItemLeft" align="right" valign="top">Gate *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgsjj_1_1passive_1_1CNF_1_1BinaryCNFMethod.html#a137aa59cc94c447ec1875b24a5c072f8">phi_different</a> (const std::string &amp;u, const std::string &amp;v)</td></tr>
+<tr class="separator:a137aa59cc94c447ec1875b24a5c072f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0e52e081f23e1e4134481c4e5683ddf6"><td class="memItemLeft" align="right" valign="top">Gate *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgsjj_1_1passive_1_1CNF_1_1BinaryCNFMethod.html#a0e52e081f23e1e4134481c4e5683ddf6">phi_not_q_i</a> (const std::string &amp;u, unsigned int i)</td></tr>
+<tr class="separator:a0e52e081f23e1e4134481c4e5683ddf6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afcea90fbc727ad596460a438c0107895"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgsjj_1_1passive_1_1CNF_1_1BinaryCNFMethod.html#afcea90fbc727ad596460a438c0107895">toState</a> (const std::string &amp;u) const</td></tr>
+<tr class="separator:afcea90fbc727ad596460a438c0107895"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a48c291766b0c1dbab0951a91dbbce3aa"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classgsjj_1_1DFA.html">DFA</a>&lt; char &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgsjj_1_1passive_1_1CNF_1_1BinaryCNFMethod.html#a48c291766b0c1dbab0951a91dbbce3aa">toDFA</a> () const</td></tr>
+<tr class="separator:a48c291766b0c1dbab0951a91dbbce3aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_methods_classgsjj_1_1passive_1_1Method"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_classgsjj_1_1passive_1_1Method')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="classgsjj_1_1passive_1_1Method.html">gsjj::passive::Method</a></td></tr>
 <tr class="memitem:ab5de618f144bf5a3a22b729c363d53d8 inherit pro_methods_classgsjj_1_1passive_1_1Method"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgsjj_1_1passive_1_1Method.html#ab5de618f144bf5a3a22b729c363d53d8">Method</a> (const std::set&lt; std::string &gt; &amp;SpSet, const std::set&lt; std::string &gt; &amp;SmSet, const std::set&lt; std::string &gt; &amp;SSet, const std::set&lt; std::string &gt; &amp;prefixesSet, const std::set&lt; char &gt; &amp;alphabetSet, unsigned int n)</td></tr>
 <tr class="memdesc:ab5de618f144bf5a3a22b729c363d53d8 inherit pro_methods_classgsjj_1_1passive_1_1Method"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates the method.  <a href="classgsjj_1_1passive_1_1Method.html#ab5de618f144bf5a3a22b729c363d53d8">More...</a><br /></td></tr>
 <tr class="separator:ab5de618f144bf5a3a22b729c363d53d8 inherit pro_methods_classgsjj_1_1passive_1_1Method"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
-Additional Inherited Members</h2></td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
+<tr class="memitem:a4bea21993718c5a5487ccf7d158e5c33"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; BC &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgsjj_1_1passive_1_1CNF_1_1BinaryCNFMethod.html#a4bea21993718c5a5487ccf7d158e5c33">m_solver</a></td></tr>
+<tr class="separator:a4bea21993718c5a5487ccf7d158e5c33"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a46415577261647ccf43b528e234f7f6c"><td class="memItemLeft" align="right" valign="top">SimplifyOptions&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgsjj_1_1passive_1_1CNF_1_1BinaryCNFMethod.html#a46415577261647ccf43b528e234f7f6c">m_simplify_opts</a></td></tr>
+<tr class="separator:a46415577261647ccf43b528e234f7f6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab6786df8bd2e8ea622852e5b7173e828"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgsjj_1_1passive_1_1CNF_1_1BinaryCNFMethod.html#ab6786df8bd2e8ea622852e5b7173e828">m_binarySize</a></td></tr>
+<tr class="memdesc:ab6786df8bd2e8ea622852e5b7173e828"><td class="mdescLeft">&#160;</td><td class="mdescRight"><img class="formulaInl" alt="$m = log_2(n)$" src="form_15.png"/>  <a href="#ab6786df8bd2e8ea622852e5b7173e828">More...</a><br /></td></tr>
+<tr class="separator:ab6786df8bd2e8ea622852e5b7173e828"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aecb613ad2f2d2ac5a139fc0f5e0d09ae"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgsjj_1_1passive_1_1CNF_1_1BinaryCNFMethod.html#ab5eb6cd595f09e8fe3efa4d49286e8e1">m_mapType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgsjj_1_1passive_1_1CNF_1_1BinaryCNFMethod.html#aecb613ad2f2d2ac5a139fc0f5e0d09ae">m_stateToVar</a></td></tr>
+<tr class="separator:aecb613ad2f2d2ac5a139fc0f5e0d09ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_attribs_classgsjj_1_1passive_1_1Method"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classgsjj_1_1passive_1_1Method')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classgsjj_1_1passive_1_1Method.html">gsjj::passive::Method</a></td></tr>
 <tr class="memitem:a0217ec5813e210a39bd7afcda00714a8 inherit pro_attribs_classgsjj_1_1passive_1_1Method"><td class="memItemLeft" align="right" valign="top">const std::set&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgsjj_1_1passive_1_1Method.html#a0217ec5813e210a39bd7afcda00714a8">m_Sp</a></td></tr>
 <tr class="memdesc:a0217ec5813e210a39bd7afcda00714a8 inherit pro_attribs_classgsjj_1_1passive_1_1Method"><td class="mdescLeft">&#160;</td><td class="mdescRight">The set of words to accept <img class="formulaInl" alt="$S_+$" src="form_2.png"/>.  <a href="classgsjj_1_1passive_1_1Method.html#a0217ec5813e210a39bd7afcda00714a8">More...</a><br /></td></tr>
@@ -173,6 +200,9 @@ Additional Inherited Members</h2></td></tr>
 <tr class="separator:ab5066b6102d457181c65fa512b90b4dc inherit pro_attribs_classgsjj_1_1passive_1_1Method"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abcfd5b7be2ff29432d08328810b45408 inherit pro_attribs_classgsjj_1_1passive_1_1Method"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgsjj_1_1passive_1_1Method.html#abcfd5b7be2ff29432d08328810b45408">m_cpuTimeEnd</a></td></tr>
 <tr class="separator:abcfd5b7be2ff29432d08328810b45408 inherit pro_attribs_classgsjj_1_1passive_1_1Method"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
+Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pro_static_attribs_classgsjj_1_1passive_1_1RegisterInFactory"><td colspan="2" onclick="javascript:toggleInherit('pro_static_attribs_classgsjj_1_1passive_1_1RegisterInFactory')"><img src="closed.png" alt="-"/>&#160;Static Protected Attributes inherited from <a class="el" href="classgsjj_1_1passive_1_1RegisterInFactory.html">gsjj::passive::RegisterInFactory&lt; BinaryCNFMethod &gt;</a></td></tr>
 <tr class="memitem:a813c4622db02fd14c30ea8004afa8205 inherit pro_static_attribs_classgsjj_1_1passive_1_1RegisterInFactory"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgsjj_1_1passive_1_1RegisterInFactory.html#a813c4622db02fd14c30ea8004afa8205">s_registered</a></td></tr>
 <tr class="memdesc:a813c4622db02fd14c30ea8004afa8205 inherit pro_static_attribs_classgsjj_1_1passive_1_1RegisterInFactory"><td class="mdescLeft">&#160;</td><td class="mdescRight">Useful to make sure the template is correctly used by the compiler.  <a href="classgsjj_1_1passive_1_1RegisterInFactory.html#a813c4622db02fd14c30ea8004afa8205">More...</a><br /></td></tr>
@@ -183,7 +213,32 @@ Additional Inherited Members</h2></td></tr>
 <p>Since we need to use a tool to translate the boolean formula in <a class="el" href="namespacegsjj_1_1passive_1_1CNF.html" title="Contains every method that relies on a SAT solver with CNF clauses. ">CNF</a>, this implementation is different from the other methods relying on <a class="el" href="namespacegsjj_1_1passive_1_1CNF.html" title="Contains every method that relies on a SAT solver with CNF clauses. ">CNF</a> Solvers. </p>
 
 <p class="definition">Definition at line <a class="el" href="BinaryCNFMethod_8h_source.html#l00022">22</a> of file <a class="el" href="BinaryCNFMethod_8h_source.html">BinaryCNFMethod.h</a>.</p>
-</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+</div><h2 class="groupheader">Member Typedef Documentation</h2>
+<a id="ab5eb6cd595f09e8fe3efa4d49286e8e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab5eb6cd595f09e8fe3efa4d49286e8e1">&#9670;&nbsp;</a></span>m_mapType</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef std::map&lt;std::pair&lt;std::string, unsigned int&gt;, Gate*&gt; <a class="el" href="classgsjj_1_1passive_1_1CNF_1_1BinaryCNFMethod.html#ab5eb6cd595f09e8fe3efa4d49286e8e1">gsjj::passive::CNF::BinaryCNFMethod::m_mapType</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="BinaryCNFMethod_8h_source.html#l00036">36</a> of file <a class="el" href="BinaryCNFMethod_8h_source.html">BinaryCNFMethod.h</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a481034fdfcd4e650bd68090f66e65ca5"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a481034fdfcd4e650bd68090f66e65ca5">&#9670;&nbsp;</a></span>BinaryCNFMethod() <span class="overload">[1/2]</span></h2>
 
@@ -232,7 +287,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="BinaryCNFMethod_8cpp_source.html#l00041">41</a> of file <a class="el" href="BinaryCNFMethod_8cpp_source.html">BinaryCNFMethod.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BinaryCNFMethod_8cpp_source.html#l00040">40</a> of file <a class="el" href="BinaryCNFMethod_8cpp_source.html">BinaryCNFMethod.cpp</a>.</p>
 
 </div>
 </div>
@@ -327,7 +382,99 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="classgsjj_1_1passive_1_1Method.html#af9eea07c5d7bc311e2afa615702e913c">gsjj::passive::Method</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="BinaryCNFMethod_8cpp_source.html#l00066">66</a> of file <a class="el" href="BinaryCNFMethod_8cpp_source.html">BinaryCNFMethod.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BinaryCNFMethod_8cpp_source.html#l00061">61</a> of file <a class="el" href="BinaryCNFMethod_8cpp_source.html">BinaryCNFMethod.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a11495a8770202041fb22139c1bd1171c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a11495a8770202041fb22139c1bd1171c">&#9670;&nbsp;</a></span>createFormula()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Gate * gsjj::passive::CNF::BinaryCNFMethod::createFormula </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="BinaryCNFMethod_8cpp_source.html#l00104">104</a> of file <a class="el" href="BinaryCNFMethod_8cpp_source.html">BinaryCNFMethod.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a2a87a1c89d6f644de43d0c8d83b3b34e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2a87a1c89d6f644de43d0c8d83b3b34e">&#9670;&nbsp;</a></span>createVariables()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void gsjj::passive::CNF::BinaryCNFMethod::createVariables </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="BinaryCNFMethod_8cpp_source.html#l00095">95</a> of file <a class="el" href="BinaryCNFMethod_8cpp_source.html">BinaryCNFMethod.cpp</a>.</p>
+
+</div>
+</div>
+<a id="aa000d5fbcff4ff1dda4938d5c41653e7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa000d5fbcff4ff1dda4938d5c41653e7">&#9670;&nbsp;</a></span>equal()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Gate * gsjj::passive::CNF::BinaryCNFMethod::equal </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>u</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>v</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="BinaryCNFMethod_8cpp_source.html#l00153">153</a> of file <a class="el" href="BinaryCNFMethod_8cpp_source.html">BinaryCNFMethod.cpp</a>.</p>
 
 </div>
 </div>
@@ -354,12 +501,12 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="BinaryCNFMethod_8cpp_source.html#l00096">96</a> of file <a class="el" href="BinaryCNFMethod_8cpp_source.html">BinaryCNFMethod.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BinaryCNFMethod_8cpp_source.html#l00087">87</a> of file <a class="el" href="BinaryCNFMethod_8cpp_source.html">BinaryCNFMethod.cpp</a>.</p>
 
 </div>
 </div>
-<a id="a0dd4cf4a64ba172316e5845afa59995a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0dd4cf4a64ba172316e5845afa59995a">&#9670;&nbsp;</a></span>hasSolution()</h2>
+<a id="a137aa59cc94c447ec1875b24a5c072f8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a137aa59cc94c447ec1875b24a5c072f8">&#9670;&nbsp;</a></span>phi_different()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -368,31 +515,36 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool gsjj::passive::CNF::BinaryCNFMethod::hasSolution </td>
+          <td class="memname">Gate * gsjj::passive::CNF::BinaryCNFMethod::phi_different </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>u</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>v</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p>If <a class="el" href="classgsjj_1_1passive_1_1CNF_1_1BinaryCNFMethod.html#ac427017eaa2faf08f77dd0a94b645ef4" title="Solves the SAT/SMT problem induced by the method. ">solve()</a> has been called and if there exists a solution, return True. </p>
-<p>Otherwise, return false</p>
-<dl class="section return"><dt>Returns</dt><dd>True iff the SAT problem has a solution </dd></dl>
-
-<p>Implements <a class="el" href="classgsjj_1_1passive_1_1Method.html#a4fcee2ec7321629a70519151ee414feb">gsjj::passive::Method</a>.</p>
-
-<p class="definition">Definition at line <a class="el" href="BinaryCNFMethod_8cpp_source.html#l00062">62</a> of file <a class="el" href="BinaryCNFMethod_8cpp_source.html">BinaryCNFMethod.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BinaryCNFMethod_8cpp_source.html#l00157">157</a> of file <a class="el" href="BinaryCNFMethod_8cpp_source.html">BinaryCNFMethod.cpp</a>.</p>
 
 </div>
 </div>
-<a id="abea13e12caf3b79f6e1154954d0a9df6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abea13e12caf3b79f6e1154954d0a9df6">&#9670;&nbsp;</a></span>printVariables()</h2>
+<a id="a0e52e081f23e1e4134481c4e5683ddf6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0e52e081f23e1e4134481c4e5683ddf6">&#9670;&nbsp;</a></span>phi_not_q_i()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -401,25 +553,31 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void gsjj::passive::CNF::BinaryCNFMethod::printVariables </td>
+          <td class="memname">Gate * gsjj::passive::CNF::BinaryCNFMethod::phi_not_q_i </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>u</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>i</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p>Prints the values of the variables, UNSAT or NOT SOLVED. </p>
-<p>If <a class="el" href="classgsjj_1_1passive_1_1CNF_1_1BinaryCNFMethod.html#ac427017eaa2faf08f77dd0a94b645ef4" title="Solves the SAT/SMT problem induced by the method. ">solve()</a> has not yet been called, prints NOT SOLVED. Else if the problem is not satisfiable, prints UNSAT. Else, prints SAT and the values of the variables. </p>
-
-<p>Implements <a class="el" href="classgsjj_1_1passive_1_1Method.html#adaa209f5e7ce72be2cf98623e79dc39d">gsjj::passive::Method</a>.</p>
-
-<p class="definition">Definition at line <a class="el" href="BinaryCNFMethod_8cpp_source.html#l00092">92</a> of file <a class="el" href="BinaryCNFMethod_8cpp_source.html">BinaryCNFMethod.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BinaryCNFMethod_8cpp_source.html#l00178">178</a> of file <a class="el" href="BinaryCNFMethod_8cpp_source.html">BinaryCNFMethod.cpp</a>.</p>
 
 </div>
 </div>
@@ -475,7 +633,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="classgsjj_1_1passive_1_1Method.html#a3791091fea1b184e606b7221888b968c">gsjj::passive::Method</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="BinaryCNFMethod_8cpp_source.html#l00100">100</a> of file <a class="el" href="BinaryCNFMethod_8cpp_source.html">BinaryCNFMethod.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BinaryCNFMethod_8cpp_source.html#l00091">91</a> of file <a class="el" href="BinaryCNFMethod_8cpp_source.html">BinaryCNFMethod.cpp</a>.</p>
 
 </div>
 </div>
@@ -507,7 +665,161 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="classgsjj_1_1passive_1_1Method.html#a0d36eafeb3a90fa36ffc462b02f5ddd6">gsjj::passive::Method</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="BinaryCNFMethod_8cpp_source.html#l00045">45</a> of file <a class="el" href="BinaryCNFMethod_8cpp_source.html">BinaryCNFMethod.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BinaryCNFMethod_8cpp_source.html#l00044">44</a> of file <a class="el" href="BinaryCNFMethod_8cpp_source.html">BinaryCNFMethod.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a48c291766b0c1dbab0951a91dbbce3aa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a48c291766b0c1dbab0951a91dbbce3aa">&#9670;&nbsp;</a></span>toDFA()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::unique_ptr&lt; <a class="el" href="classgsjj_1_1DFA.html">DFA</a>&lt; char &gt; &gt; gsjj::passive::CNF::BinaryCNFMethod::toDFA </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="BinaryCNFMethod_8cpp_source.html#l00210">210</a> of file <a class="el" href="BinaryCNFMethod_8cpp_source.html">BinaryCNFMethod.cpp</a>.</p>
+
+</div>
+</div>
+<a id="afcea90fbc727ad596460a438c0107895"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afcea90fbc727ad596460a438c0107895">&#9670;&nbsp;</a></span>toState()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int gsjj::passive::CNF::BinaryCNFMethod::toState </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>u</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="BinaryCNFMethod_8cpp_source.html#l00202">202</a> of file <a class="el" href="BinaryCNFMethod_8cpp_source.html">BinaryCNFMethod.cpp</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="ab6786df8bd2e8ea622852e5b7173e828"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab6786df8bd2e8ea622852e5b7173e828">&#9670;&nbsp;</a></span>m_binarySize</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int gsjj::passive::CNF::BinaryCNFMethod::m_binarySize</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><img class="formulaInl" alt="$m = log_2(n)$" src="form_15.png"/> </p>
+
+<p class="definition">Definition at line <a class="el" href="BinaryCNFMethod_8h_source.html#l00058">58</a> of file <a class="el" href="BinaryCNFMethod_8h_source.html">BinaryCNFMethod.h</a>.</p>
+
+</div>
+</div>
+<a id="a46415577261647ccf43b528e234f7f6c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a46415577261647ccf43b528e234f7f6c">&#9670;&nbsp;</a></span>m_simplify_opts</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">SimplifyOptions gsjj::passive::CNF::BinaryCNFMethod::m_simplify_opts</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="BinaryCNFMethod_8h_source.html#l00054">54</a> of file <a class="el" href="BinaryCNFMethod_8h_source.html">BinaryCNFMethod.h</a>.</p>
+
+</div>
+</div>
+<a id="a4bea21993718c5a5487ccf7d158e5c33"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4bea21993718c5a5487ccf7d158e5c33">&#9670;&nbsp;</a></span>m_solver</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::unique_ptr&lt;BC&gt; gsjj::passive::CNF::BinaryCNFMethod::m_solver</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="BinaryCNFMethod_8h_source.html#l00053">53</a> of file <a class="el" href="BinaryCNFMethod_8h_source.html">BinaryCNFMethod.h</a>.</p>
+
+</div>
+</div>
+<a id="aecb613ad2f2d2ac5a139fc0f5e0d09ae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aecb613ad2f2d2ac5a139fc0f5e0d09ae">&#9670;&nbsp;</a></span>m_stateToVar</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classgsjj_1_1passive_1_1CNF_1_1BinaryCNFMethod.html#ab5eb6cd595f09e8fe3efa4d49286e8e1">m_mapType</a> gsjj::passive::CNF::BinaryCNFMethod::m_stateToVar</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="BinaryCNFMethod_8h_source.html#l00059">59</a> of file <a class="el" href="BinaryCNFMethod_8h_source.html">BinaryCNFMethod.h</a>.</p>
 
 </div>
 </div>

@@ -106,15 +106,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a853233c338f70ebbfd65466cc96d8979"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgsjj_1_1passive_1_1NonCNF_1_1SATNonCNFMethod.html#a853233c338f70ebbfd65466cc96d8979">solve</a> () override</td></tr>
 <tr class="memdesc:a853233c338f70ebbfd65466cc96d8979"><td class="mdescLeft">&#160;</td><td class="mdescRight">Solves the SAT/SMT problem induced by the method.  <a href="#a853233c338f70ebbfd65466cc96d8979">More...</a><br /></td></tr>
 <tr class="separator:a853233c338f70ebbfd65466cc96d8979"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8a98aa55affb45af901ab73c73511fba"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgsjj_1_1passive_1_1NonCNF_1_1SATNonCNFMethod.html#a8a98aa55affb45af901ab73c73511fba">hasSolution</a> () const override</td></tr>
-<tr class="memdesc:a8a98aa55affb45af901ab73c73511fba"><td class="mdescLeft">&#160;</td><td class="mdescRight">If <a class="el" href="classgsjj_1_1passive_1_1NonCNF_1_1SATNonCNFMethod.html#a853233c338f70ebbfd65466cc96d8979" title="Solves the SAT/SMT problem induced by the method. ">solve()</a> has been called and if there exists a solution, return True.  <a href="#a8a98aa55affb45af901ab73c73511fba">More...</a><br /></td></tr>
-<tr class="separator:a8a98aa55affb45af901ab73c73511fba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac55a34d74156706d4e3b01e970b3ed95"><td class="memItemLeft" align="right" valign="top">virtual std::unique_ptr&lt; <a class="el" href="classgsjj_1_1DFA.html">DFA</a>&lt; char &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgsjj_1_1passive_1_1NonCNF_1_1SATNonCNFMethod.html#ac55a34d74156706d4e3b01e970b3ed95">constructDFA</a> () override</td></tr>
 <tr class="memdesc:ac55a34d74156706d4e3b01e970b3ed95"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs the <a class="el" href="classgsjj_1_1DFA.html" title="A Deterministic Finite Automaton. ">DFA</a> induced by the variables according to the method.  <a href="#ac55a34d74156706d4e3b01e970b3ed95">More...</a><br /></td></tr>
 <tr class="separator:ac55a34d74156706d4e3b01e970b3ed95"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaaa175124d6a03dff8cff2f050a1a9d6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgsjj_1_1passive_1_1NonCNF_1_1SATNonCNFMethod.html#aaaa175124d6a03dff8cff2f050a1a9d6">printVariables</a> () const override</td></tr>
-<tr class="memdesc:aaaa175124d6a03dff8cff2f050a1a9d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints the values of the variables, UNSAT or NOT SOLVED.  <a href="#aaaa175124d6a03dff8cff2f050a1a9d6">More...</a><br /></td></tr>
-<tr class="separator:aaaa175124d6a03dff8cff2f050a1a9d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9af72e453f7b9e79ee51145d8d343b3a"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgsjj_1_1passive_1_1NonCNF_1_1SATNonCNFMethod.html#a9af72e453f7b9e79ee51145d8d343b3a">setStopTrigger</a> (const std::chrono::seconds &amp;timeLimit, std::atomic_bool &amp;stopTrigger, const bool *stopPointer) override</td></tr>
 <tr class="memdesc:a9af72e453f7b9e79ee51145d8d343b3a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the stop trigger for this method.  <a href="#a9af72e453f7b9e79ee51145d8d343b3a">More...</a><br /></td></tr>
 <tr class="separator:a9af72e453f7b9e79ee51145d8d343b3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -123,6 +117,9 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a389b5d1b558d8668297b48e2b11d2f49 inherit pub_methods_classgsjj_1_1passive_1_1Method"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0cce0cbd56d6f365c4340d1cbfad31ac inherit pub_methods_classgsjj_1_1passive_1_1Method"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgsjj_1_1passive_1_1Method.html#a0cce0cbd56d6f365c4340d1cbfad31ac">~Method</a> ()</td></tr>
 <tr class="separator:a0cce0cbd56d6f365c4340d1cbfad31ac inherit pub_methods_classgsjj_1_1passive_1_1Method"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6331d4254df44dd6a298e19a4a179020 inherit pub_methods_classgsjj_1_1passive_1_1Method"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgsjj_1_1passive_1_1Method.html#a6331d4254df44dd6a298e19a4a179020">hasSolution</a> () const</td></tr>
+<tr class="memdesc:a6331d4254df44dd6a298e19a4a179020 inherit pub_methods_classgsjj_1_1passive_1_1Method"><td class="mdescLeft">&#160;</td><td class="mdescRight">If <a class="el" href="classgsjj_1_1passive_1_1Method.html#a0d36eafeb3a90fa36ffc462b02f5ddd6" title="Solves the SAT/SMT problem induced by the method. ">solve()</a> has been called and if there exists a solution, return True.  <a href="classgsjj_1_1passive_1_1Method.html#a6331d4254df44dd6a298e19a4a179020">More...</a><br /></td></tr>
+<tr class="separator:a6331d4254df44dd6a298e19a4a179020 inherit pub_methods_classgsjj_1_1passive_1_1Method"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af3377625c54a2cfc2487847061d3d8ad inherit pub_methods_classgsjj_1_1passive_1_1Method"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgsjj_1_1passive_1_1Method.html#af3377625c54a2cfc2487847061d3d8ad">numberOfStates</a> () const</td></tr>
 <tr class="memdesc:af3377625c54a2cfc2487847061d3d8ad inherit pub_methods_classgsjj_1_1passive_1_1Method"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gives the number of states of the prospected <a class="el" href="classgsjj_1_1DFA.html" title="A Deterministic Finite Automaton. ">DFA</a> (the n)  <a href="classgsjj_1_1passive_1_1Method.html#af3377625c54a2cfc2487847061d3d8ad">More...</a><br /></td></tr>
 <tr class="separator:af3377625c54a2cfc2487847061d3d8ad inherit pub_methods_classgsjj_1_1passive_1_1Method"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -330,7 +327,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="classgsjj_1_1passive_1_1Method.html#af9eea07c5d7bc311e2afa615702e913c">gsjj::passive::Method</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="SATNonCNFMethod_8cpp_source.html#l00053">53</a> of file <a class="el" href="SATNonCNFMethod_8cpp_source.html">SATNonCNFMethod.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="SATNonCNFMethod_8cpp_source.html#l00049">49</a> of file <a class="el" href="SATNonCNFMethod_8cpp_source.html">SATNonCNFMethod.cpp</a>.</p>
 
 </div>
 </div>
@@ -401,39 +398,6 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="a8a98aa55affb45af901ab73c73511fba"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8a98aa55affb45af901ab73c73511fba">&#9670;&nbsp;</a></span>hasSolution()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool gsjj::passive::NonCNF::SATNonCNFMethod::hasSolution </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>If <a class="el" href="classgsjj_1_1passive_1_1NonCNF_1_1SATNonCNFMethod.html#a853233c338f70ebbfd65466cc96d8979" title="Solves the SAT/SMT problem induced by the method. ">solve()</a> has been called and if there exists a solution, return True. </p>
-<p>Otherwise, return false</p>
-<dl class="section return"><dt>Returns</dt><dd>True iff the SAT problem has a solution </dd></dl>
-
-<p>Implements <a class="el" href="classgsjj_1_1passive_1_1Method.html#a4fcee2ec7321629a70519151ee414feb">gsjj::passive::Method</a>.</p>
-
-<p class="definition">Definition at line <a class="el" href="SATNonCNFMethod_8cpp_source.html#l00049">49</a> of file <a class="el" href="SATNonCNFMethod_8cpp_source.html">SATNonCNFMethod.cpp</a>.</p>
-
-</div>
-</div>
 <a id="abffeffb8fffd0cbf3fb60a89db671f1f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#abffeffb8fffd0cbf3fb60a89db671f1f">&#9670;&nbsp;</a></span>isSatisfiable()</h2>
 
@@ -459,38 +423,6 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reads the output of the SAT solver and checks if the formula was satisfiable or not. </p>
 <dl class="section return"><dt>Returns</dt><dd>True iff the formula was satisfiable </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="SATNonCNFMethod_8cpp_source.html#l00084">84</a> of file <a class="el" href="SATNonCNFMethod_8cpp_source.html">SATNonCNFMethod.cpp</a>.</p>
-
-</div>
-</div>
-<a id="aaaa175124d6a03dff8cff2f050a1a9d6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aaaa175124d6a03dff8cff2f050a1a9d6">&#9670;&nbsp;</a></span>printVariables()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void gsjj::passive::NonCNF::SATNonCNFMethod::printVariables </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Prints the values of the variables, UNSAT or NOT SOLVED. </p>
-<p>If <a class="el" href="classgsjj_1_1passive_1_1NonCNF_1_1SATNonCNFMethod.html#a853233c338f70ebbfd65466cc96d8979" title="Solves the SAT/SMT problem induced by the method. ">solve()</a> has not yet been called, prints NOT SOLVED. Else if the problem is not satisfiable, prints UNSAT. Else, prints SAT and the values of the variables. </p>
-
-<p>Implements <a class="el" href="classgsjj_1_1passive_1_1Method.html#adaa209f5e7ce72be2cf98623e79dc39d">gsjj::passive::Method</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="SATNonCNFMethod_8cpp_source.html#l00076">76</a> of file <a class="el" href="SATNonCNFMethod_8cpp_source.html">SATNonCNFMethod.cpp</a>.</p>
 
@@ -548,7 +480,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="classgsjj_1_1passive_1_1Method.html#a3791091fea1b184e606b7221888b968c">gsjj::passive::Method</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="SATNonCNFMethod_8cpp_source.html#l00080">80</a> of file <a class="el" href="SATNonCNFMethod_8cpp_source.html">SATNonCNFMethod.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="SATNonCNFMethod_8cpp_source.html#l00072">72</a> of file <a class="el" href="SATNonCNFMethod_8cpp_source.html">SATNonCNFMethod.cpp</a>.</p>
 
 </div>
 </div>

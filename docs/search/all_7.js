@@ -1,6 +1,10 @@
 var searchData=
 [
-  ['isaccepted',['isAccepted',['../classgsjj_1_1DFA.html#a4f0cdacb466e4756d6e3374205d7297b',1,'gsjj::DFA::isAccepted(const std::list&lt; Sigma &gt; &amp;word)'],['../classgsjj_1_1DFA.html#af25182c15ec1af546e7624148e404668',1,'gsjj::DFA::isAccepted(const std::vector&lt; Sigma &gt; &amp;word)']]],
-  ['isaccepting',['isAccepting',['../NeiderJansenMethod_8cpp.html#a11c1abb747184cdcf7a153778fad1596',1,'NeiderJansenMethod.cpp']]],
-  ['issatisfiable',['isSatisfiable',['../classgsjj_1_1passive_1_1NonCNF_1_1SATNonCNFMethod.html#abffeffb8fffd0cbf3fb60a89db671f1f',1,'gsjj::passive::NonCNF::SATNonCNFMethod']]]
+  ['hassolution',['hasSolution',['../classgsjj_1_1passive_1_1Method.html#a6331d4254df44dd6a298e19a4a179020',1,'gsjj::passive::Method']]],
+  ['heuleverwercnfmethod',['HeuleVerwerCNFMethod',['../classgsjj_1_1passive_1_1CNF_1_1HeuleVerwerCNFMethod.html',1,'gsjj::passive::CNF::HeuleVerwerCNFMethod'],['../classgsjj_1_1passive_1_1CNF_1_1HeuleVerwerCNFMethod.html#a32a4cc54bbc4f49c4de26f3ed2c5a9fa',1,'gsjj::passive::CNF::HeuleVerwerCNFMethod::HeuleVerwerCNFMethod()=delete'],['../classgsjj_1_1passive_1_1CNF_1_1HeuleVerwerCNFMethod.html#a2128fdb487b3630e853fd8e32b15f0b2',1,'gsjj::passive::CNF::HeuleVerwerCNFMethod::HeuleVerwerCNFMethod(const std::set&lt; std::string &gt; &amp;SpSet, const std::set&lt; std::string &gt; &amp;SmSet, const std::set&lt; std::string &gt; &amp;SSet, const std::set&lt; std::string &gt; &amp;prefixesSet, const std::set&lt; char &gt; &amp;alphabetSet, unsigned int n)']]],
+  ['heuleverwercnfmethod_2ecpp',['HeuleVerwerCNFMethod.cpp',['../HeuleVerwerCNFMethod_8cpp.html',1,'']]],
+  ['heuleverwercnfmethod_2eh',['HeuleVerwerCNFMethod.h',['../HeuleVerwerCNFMethod_8h.html',1,'']]],
+  ['heuleverwernoncnfmethod',['HeuleVerwerNonCNFMethod',['../classgsjj_1_1passive_1_1NonCNF_1_1HeuleVerwerNonCNFMethod.html',1,'gsjj::passive::NonCNF::HeuleVerwerNonCNFMethod'],['../classgsjj_1_1passive_1_1NonCNF_1_1HeuleVerwerNonCNFMethod.html#a2bcfc00d8be24b39b5d939508af0c004',1,'gsjj::passive::NonCNF::HeuleVerwerNonCNFMethod::HeuleVerwerNonCNFMethod()=delete'],['../classgsjj_1_1passive_1_1NonCNF_1_1HeuleVerwerNonCNFMethod.html#a3674d98a4a87b918641cb2af2c30520f',1,'gsjj::passive::NonCNF::HeuleVerwerNonCNFMethod::HeuleVerwerNonCNFMethod(const std::set&lt; std::string &gt; &amp;SpSet, const std::set&lt; std::string &gt; &amp;SmSet, const std::set&lt; std::string &gt; &amp;SSet, const std::set&lt; std::string &gt; &amp;prefixesSet, const std::set&lt; char &gt; &amp;alphabetSet, unsigned int n)']]],
+  ['heuleverwernoncnfmethod_2ecpp',['HeuleVerwerNonCNFMethod.cpp',['../HeuleVerwerNonCNFMethod_8cpp.html',1,'']]],
+  ['heuleverwernoncnfmethod_2eh',['HeuleVerwerNonCNFMethod.h',['../HeuleVerwerNonCNFMethod_8h.html',1,'']]]
 ];

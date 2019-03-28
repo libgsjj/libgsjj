@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['neiderjansenmethod',['NeiderJansenMethod',['../classgsjj_1_1passive_1_1SMT_1_1NeiderJansenMethod.html#aad01560c38055f74908a19f0ad910f94',1,'gsjj::passive::SMT::NeiderJansenMethod::NeiderJansenMethod()=delete'],['../classgsjj_1_1passive_1_1SMT_1_1NeiderJansenMethod.html#a081623977d2122113a77d3accc2dacdf',1,'gsjj::passive::SMT::NeiderJansenMethod::NeiderJansenMethod(const std::set&lt; std::string &gt; &amp;SpSet, const std::set&lt; std::string &gt; &amp;SmSet, const std::set&lt; std::string &gt; &amp;SSet, const std::set&lt; std::string &gt; &amp;prefixesSet, const std::set&lt; char &gt; &amp;alphabetSet, unsigned int n)']]],
-  ['newvariable',['newVariable',['../classgsjj_1_1passive_1_1CNF_1_1SATCNFMethod.html#adffd3a2c3c8f64273a19f1b1ccc680a8',1,'gsjj::passive::CNF::SATCNFMethod']]],
-  ['nolimit',['noLimit',['../MethodFactory_8cpp.html#a732019738226d705944f314d56debee3',1,'MethodFactory.cpp']]],
-  ['numberofstates',['numberOfStates',['../classgsjj_1_1passive_1_1Method.html#af3377625c54a2cfc2487847061d3d8ad',1,'gsjj::passive::Method']]]
+  ['method',['Method',['../classgsjj_1_1passive_1_1Method.html#a389b5d1b558d8668297b48e2b11d2f49',1,'gsjj::passive::Method::Method()=delete'],['../classgsjj_1_1passive_1_1Method.html#ab5de618f144bf5a3a22b729c363d53d8',1,'gsjj::passive::Method::Method(const std::set&lt; std::string &gt; &amp;SpSet, const std::set&lt; std::string &gt; &amp;SmSet, const std::set&lt; std::string &gt; &amp;SSet, const std::set&lt; std::string &gt; &amp;prefixesSet, const std::set&lt; char &gt; &amp;alphabetSet, unsigned int n)']]],
+  ['methodfactory',['MethodFactory',['../classgsjj_1_1passive_1_1MethodFactory.html#a0e4622cb07876267282306b5eef6ef1b',1,'gsjj::passive::MethodFactory']]]
 ];

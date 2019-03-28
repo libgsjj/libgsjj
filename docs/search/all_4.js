@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['falsestopbool',['falseStopBool',['../MethodFactory_8cpp.html#a67e47705152dfb61659c8429e1f2079a',1,'MethodFactory.cpp']]],
-  ['falsestoptrigger',['falseStopTrigger',['../MethodFactory_8cpp.html#a23173af9455a4802cf1258f7940bca0d',1,'MethodFactory.cpp']]]
+  ['equal',['equal',['../classgsjj_1_1passive_1_1CNF_1_1BinaryCNFMethod.html#aa000d5fbcff4ff1dda4938d5c41653e7',1,'gsjj::passive::CNF::BinaryCNFMethod']]]
 ];
