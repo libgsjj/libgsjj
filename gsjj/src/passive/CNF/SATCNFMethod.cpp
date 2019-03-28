@@ -10,7 +10,8 @@ namespace gsjj {
     namespace passive {
         namespace CNF {
             SATCNFMethod::SATCNFMethod(const std::set<std::string> &SpSet, const std::set<std::string> &SmSet, const std::set<std::string> &SSet, const std::set<std::string> &prefixesSet, const std::set<char> &alphabetSet, unsigned int n) :
-                Method(SpSet, SmSet, SSet, prefixesSet, alphabetSet, n)
+                Method(SpSet, SmSet, SSet, prefixesSet, alphabetSet, n),
+                mustStop(nullptr)
             {
             }
 
@@ -19,13 +20,20 @@ namespace gsjj {
             }
 
             bool SATCNFMethod::solve() {
-                m_solver = std::make_unique<SimpSolver>(*mustStop);
+                if (mustStop) {
+                    m_solver = std::make_unique<SimpSolver>(*mustStop);
+                }
+                else {
+                    std::atomic_bool falseBool(false);
+                    m_solver = std::make_unique<SimpSolver>(falseBool);
+                }
                 m_solver->verbosity = 0;
                 createVariables();
                 createClauses();
 
                 m_triedSolve = true;
-                if (*mustStop) {
+                // If mustStop is a valid pointer and if the value is true
+                if (mustStop && *mustStop) {
                     return false;
                 }
                 m_cpuTimeStart = cpuTime();

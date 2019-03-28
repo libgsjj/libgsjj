@@ -47,6 +47,12 @@ namespace gsjj {
                     return m_hasSolution = (m_Sp.size() == 0 || m_Sm.size() == 0);
                 }
 
+                // If needed, we create the solver
+                if (!m_solver) {
+                    std::atomic_bool falseBool(false);
+                    m_solver = std::make_unique<BC>(falseBool);
+                }
+
                 createVariables();
                 m_solver->force_true(createFormula());
 

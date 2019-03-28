@@ -104,7 +104,6 @@ namespace gsjj {
                         }
                     }
                 }
-                addClause(clause);
 
                 // Equation 4.5.4
                 // For every u in S_+, q in Q, x_{u, q} => f_q

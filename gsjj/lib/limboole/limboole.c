@@ -1326,7 +1326,8 @@ int limboole (int argc, const char **argv, const bool *stopTrigger) // Modified 
     }
 
   // Added if on 10 March 2019
-  if (*mgr->stopTrigger) {
+  // And modified on 28 March 2019 to check if the pointer has a value
+  if (mgr->stopTrigger != NULL && *mgr->stopTrigger) {
     return false;
   }
 
@@ -1341,7 +1342,8 @@ int limboole (int argc, const char **argv, const bool *stopTrigger) // Modified 
 	  else
 	    {
         // Added if on 10 March 2019
-        if (*mgr->stopTrigger) {
+        // And modified on 28 March 2019 to check if the pointer has a value
+        if (mgr->stopTrigger != NULL && *mgr->stopTrigger) {
           return false;
         }
 	      connect_solver (mgr);

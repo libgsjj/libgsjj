@@ -5912,7 +5912,8 @@ sat (PS * ps, int l)
 	}
 
   // Added if on 10 March 2019
-  if (*(ps->mustStop)) {
+  // And modified on 28 March 2019 to check if the pointer has a value
+  if (ps->mustStop && *(ps->mustStop)) {
     break;
   }
 
@@ -5927,7 +5928,8 @@ SATISFIED:
 	}
 
 // Added if on 10 March 2019
-  if (*(ps->mustStop)) {
+  // And modified on 28 March 2019 to check if the pointer has a value
+  if (ps->mustStop && *(ps->mustStop)) {
     break;
   }
 
@@ -5939,7 +5941,8 @@ SATISFIED:
 	}
 
 // Added if on 10 March 2019
-  if (*(ps->mustStop)) {
+  // And modified on 28 March 2019 to check if the pointer has a value
+  if (ps->mustStop && *(ps->mustStop)) {
     break;
   }
 
@@ -5958,7 +5961,8 @@ SATISFIED:
 #endif
 
 // Added if on 10 March 2019
-  if (*(ps->mustStop)) {
+  // And modified on 28 March 2019 to check if the pointer has a value
+  if (ps->mustStop && *(ps->mustStop)) {
     break;
   }
 
@@ -5979,7 +5983,8 @@ SATISFIED:
 	}
 
   // Added if on 10 March 2019
-  if (*(ps->mustStop)) {
+  // And modified on 28 March 2019 to check if the pointer has a value
+  if (ps->mustStop && *(ps->mustStop)) {
     break;
   }
 
