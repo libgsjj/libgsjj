@@ -12,6 +12,7 @@
 #include <map>
 #include <vector>
 #include <list>
+#include <memory>
 
 #include <string>
 #include <sstream>
@@ -108,7 +109,7 @@ namespace gsjj {
                 }
             }
 
-            return m_acceptingStates.find(state) != m_acceptingStates.end();
+            return isAcceptingState(state);
         }
 
         /**
@@ -129,7 +130,7 @@ namespace gsjj {
                 }
             }
 
-            return m_acceptingStates.find(state) != m_acceptingStates.end();
+            return isAcceptingState(state);
         }
 
         /**
@@ -155,6 +156,78 @@ namespace gsjj {
             return dot.str();
         }
 
+        /**
+         * Creates a new DFA with exactly the same number of states and the same transitions but the type of the alphabet is changed
+         * @param conversionMap A map giving the conversion between the current alphabet and the target alphabet
+         * @return A DFA for which the alphabet is of type T
+         * @tparam T The type of the DFA to create
+         */
+        template<typename T>
+        std::unique_ptr<DFA<T>> convert(const std::map<Sigma, T> &conversionMap) const {
+            std::unique_ptr<DFA<T>> converted = std::make_unique<DFA<T>>(m_initialState, isAcceptingState(m_initialState));
+
+            for (unsigned int state : m_states) {
+                if (state != m_initialState) {
+                    converted->addState(state, isAcceptingState(state));
+                }
+            }
+
+            for (auto transition : m_transitions) {
+                unsigned int p = transition.first.first;
+                T a = conversionMap.at(transition.first.second);
+                unsigned int q = transition.second;
+                converted->addTransition(p, a, q);
+            }
+
+            return std::move(converted);
+        }
+
+        /**
+         * Tests whether the given state is a final (or accepting) state
+         * @param state The state to test
+         * @return True iff state is accepting
+         */
+        bool isAcceptingState(unsigned int state) const {
+            return m_acceptingStates.find(state) != m_acceptingStates.end();
+        }
+
+        /**
+         * Returns the set of states in this DFA
+         * @return The states
+         */
+        const std::unordered_set<unsigned int> &getStates() const {
+            return m_states;
+        }
+
+        /**
+         * Returns the set of accepting states of this DFA.
+         * 
+         * Note that every state in this set is also in getStates, of course
+         * @return The accepting states
+         */
+        const std::unordered_set<unsigned int> &getAcceptingStates() const {
+            return m_acceptingStates;
+        }
+
+        /**
+         * Returns the initial state of this DFA.
+         * 
+         * The initial state is of course present in getStates
+         * @return The initial state
+         */
+        unsigned int getInitialState() const {
+            return m_initialState;
+        }
+
+        /**
+         * Returns the function delta.
+         * 
+         * The map associates (p, a) to q, with p, q two states and a a symbol
+         */
+        const std::map<std::pair<unsigned int, Sigma>, unsigned int> getTransitions() const {
+            return m_transitions;
+        }
+
     private:
         /**
          * The set \f$Q\f$.
@@ -167,7 +240,7 @@ namespace gsjj {
         /**
          * The \f$\delta\f$ function.
          */
-        std::map<std::pair<unsigned int, Sigma>, int> m_transitions;
+        std::map<std::pair<unsigned int, Sigma>, unsigned int> m_transitions;
         /**
          * The set \f$F\f$.
          */
@@ -184,7 +257,7 @@ namespace gsjj {
             for (int state : m_states) {
                 dot << "\tnode [shape=";
                 // Accepting states are double circled
-                if (m_acceptingStates.find(state) != m_acceptingStates.end()) {
+                if (isAcceptingState(state)) {
                     dot << "doublecircle";
                 }
                 else {
