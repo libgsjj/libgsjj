@@ -70,6 +70,13 @@ void testMethod(const std::string &met) {
 
         performTests(met, Sp, Sm, 2);
     }
+
+    SECTION("Sp = {epsilon} and Sm = {}") {
+        Sp = {""};
+        Sm = {};
+
+        performTests(met, Sp, Sm, 1);
+    }
 }
 
 TEST_CASE("The Biermann and Feldman method builds an optimal DFA", "[passive][optimal][biermann]") {
