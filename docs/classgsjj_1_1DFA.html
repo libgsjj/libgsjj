@@ -100,6 +100,25 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ad8ed8d8b85557f3bafc979c2f6d6c180"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgsjj_1_1DFA.html#ad8ed8d8b85557f3bafc979c2f6d6c180">to_dot</a> () const</td></tr>
 <tr class="memdesc:ad8ed8d8b85557f3bafc979c2f6d6c180"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a string that is the representation of the <a class="el" href="classgsjj_1_1DFA.html" title="A Deterministic Finite Automaton. ">DFA</a> in the DOT language.  <a href="#ad8ed8d8b85557f3bafc979c2f6d6c180">More...</a><br /></td></tr>
 <tr class="separator:ad8ed8d8b85557f3bafc979c2f6d6c180"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad6bd297a69ae12e90cd02c560ae2a854"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:ad6bd297a69ae12e90cd02c560ae2a854"><td class="memTemplItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classgsjj_1_1DFA.html">DFA</a>&lt; T &gt; &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classgsjj_1_1DFA.html#ad6bd297a69ae12e90cd02c560ae2a854">convert</a> (const std::map&lt; Sigma, T &gt; &amp;conversionMap) const</td></tr>
+<tr class="memdesc:ad6bd297a69ae12e90cd02c560ae2a854"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new <a class="el" href="classgsjj_1_1DFA.html" title="A Deterministic Finite Automaton. ">DFA</a> with exactly the same number of states and the same transitions but the type of the alphabet is changed.  <a href="#ad6bd297a69ae12e90cd02c560ae2a854">More...</a><br /></td></tr>
+<tr class="separator:ad6bd297a69ae12e90cd02c560ae2a854"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac0c044c8ed031f5238f6618973cada9d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgsjj_1_1DFA.html#ac0c044c8ed031f5238f6618973cada9d">isAcceptingState</a> (unsigned int state) const</td></tr>
+<tr class="memdesc:ac0c044c8ed031f5238f6618973cada9d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tests whether the given state is a final (or accepting) state.  <a href="#ac0c044c8ed031f5238f6618973cada9d">More...</a><br /></td></tr>
+<tr class="separator:ac0c044c8ed031f5238f6618973cada9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a839d9a47da0fa4914d45c67f7b279fae"><td class="memItemLeft" align="right" valign="top">const std::unordered_set&lt; unsigned int &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgsjj_1_1DFA.html#a839d9a47da0fa4914d45c67f7b279fae">getStates</a> () const</td></tr>
+<tr class="memdesc:a839d9a47da0fa4914d45c67f7b279fae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the set of states in this <a class="el" href="classgsjj_1_1DFA.html" title="A Deterministic Finite Automaton. ">DFA</a>.  <a href="#a839d9a47da0fa4914d45c67f7b279fae">More...</a><br /></td></tr>
+<tr class="separator:a839d9a47da0fa4914d45c67f7b279fae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9b9b523752320d7ed1d9e952e849ebb1"><td class="memItemLeft" align="right" valign="top">const std::unordered_set&lt; unsigned int &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgsjj_1_1DFA.html#a9b9b523752320d7ed1d9e952e849ebb1">getAcceptingStates</a> () const</td></tr>
+<tr class="memdesc:a9b9b523752320d7ed1d9e952e849ebb1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the set of accepting states of this <a class="el" href="classgsjj_1_1DFA.html" title="A Deterministic Finite Automaton. ">DFA</a>.  <a href="#a9b9b523752320d7ed1d9e952e849ebb1">More...</a><br /></td></tr>
+<tr class="separator:a9b9b523752320d7ed1d9e952e849ebb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a33ab008e804106a7f14bcc320806ef5d"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgsjj_1_1DFA.html#a33ab008e804106a7f14bcc320806ef5d">getInitialState</a> () const</td></tr>
+<tr class="memdesc:a33ab008e804106a7f14bcc320806ef5d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the initial state of this <a class="el" href="classgsjj_1_1DFA.html" title="A Deterministic Finite Automaton. ">DFA</a>.  <a href="#a33ab008e804106a7f14bcc320806ef5d">More...</a><br /></td></tr>
+<tr class="separator:a33ab008e804106a7f14bcc320806ef5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c6c48adaeb1f9b2184c150cef51f5bb"><td class="memItemLeft" align="right" valign="top">const std::map&lt; std::pair&lt; unsigned int, Sigma &gt;, unsigned int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgsjj_1_1DFA.html#a8c6c48adaeb1f9b2184c150cef51f5bb">getTransitions</a> () const</td></tr>
+<tr class="memdesc:a8c6c48adaeb1f9b2184c150cef51f5bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the function delta.  <a href="#a8c6c48adaeb1f9b2184c150cef51f5bb">More...</a><br /></td></tr>
+<tr class="separator:a8c6c48adaeb1f9b2184c150cef51f5bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><h3>template&lt;typename Sigma&gt;<br />
@@ -121,7 +140,7 @@ class gsjj::DFA&lt; Sigma &gt;</h3>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="DFA_8h_source.html#l00038">38</a> of file <a class="el" href="DFA_8h_source.html">DFA.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="DFA_8h_source.html#l00039">39</a> of file <a class="el" href="DFA_8h_source.html">DFA.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a3097e7645afaf2eab33c4d56dd265af8"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3097e7645afaf2eab33c4d56dd265af8">&#9670;&nbsp;</a></span>DFA()</h2>
@@ -168,7 +187,7 @@ template&lt;typename Sigma &gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="DFA_8h_source.html#l00046">46</a> of file <a class="el" href="DFA_8h_source.html">DFA.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="DFA_8h_source.html#l00047">47</a> of file <a class="el" href="DFA_8h_source.html">DFA.h</a>.</p>
 
 </div>
 </div>
@@ -218,7 +237,7 @@ template&lt;typename Sigma &gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="DFA_8h_source.html#l00061">61</a> of file <a class="el" href="DFA_8h_source.html">DFA.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="DFA_8h_source.html#l00062">62</a> of file <a class="el" href="DFA_8h_source.html">DFA.h</a>.</p>
 
 </div>
 </div>
@@ -275,7 +294,118 @@ template&lt;typename Sigma &gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="DFA_8h_source.html#l00078">78</a> of file <a class="el" href="DFA_8h_source.html">DFA.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="DFA_8h_source.html#l00079">79</a> of file <a class="el" href="DFA_8h_source.html">DFA.h</a>.</p>
+
+</div>
+</div>
+<a id="ad6bd297a69ae12e90cd02c560ae2a854"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad6bd297a69ae12e90cd02c560ae2a854">&#9670;&nbsp;</a></span>convert()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Sigma &gt; </div>
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::unique_ptr&lt;<a class="el" href="classgsjj_1_1DFA.html">DFA</a>&lt;T&gt; &gt; <a class="el" href="classgsjj_1_1DFA.html">gsjj::DFA</a>&lt; Sigma &gt;::convert </td>
+          <td>(</td>
+          <td class="paramtype">const std::map&lt; Sigma, T &gt; &amp;&#160;</td>
+          <td class="paramname"><em>conversionMap</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Creates a new <a class="el" href="classgsjj_1_1DFA.html" title="A Deterministic Finite Automaton. ">DFA</a> with exactly the same number of states and the same transitions but the type of the alphabet is changed. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">conversionMap</td><td>A map giving the conversion between the current alphabet and the target alphabet </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A <a class="el" href="classgsjj_1_1DFA.html" title="A Deterministic Finite Automaton. ">DFA</a> for which the alphabet is of type T </dd></dl>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>The type of the <a class="el" href="classgsjj_1_1DFA.html" title="A Deterministic Finite Automaton. ">DFA</a> to create </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="DFA_8h_source.html#l00166">166</a> of file <a class="el" href="DFA_8h_source.html">DFA.h</a>.</p>
+
+</div>
+</div>
+<a id="a9b9b523752320d7ed1d9e952e849ebb1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9b9b523752320d7ed1d9e952e849ebb1">&#9670;&nbsp;</a></span>getAcceptingStates()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Sigma &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::unordered_set&lt;unsigned int&gt;&amp; <a class="el" href="classgsjj_1_1DFA.html">gsjj::DFA</a>&lt; Sigma &gt;::getAcceptingStates </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns the set of accepting states of this <a class="el" href="classgsjj_1_1DFA.html" title="A Deterministic Finite Automaton. ">DFA</a>. </p>
+<p>Note that every state in this set is also in getStates, of course </p><dl class="section return"><dt>Returns</dt><dd>The accepting states </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="DFA_8h_source.html#l00208">208</a> of file <a class="el" href="DFA_8h_source.html">DFA.h</a>.</p>
+
+</div>
+</div>
+<a id="a33ab008e804106a7f14bcc320806ef5d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a33ab008e804106a7f14bcc320806ef5d">&#9670;&nbsp;</a></span>getInitialState()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Sigma &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int <a class="el" href="classgsjj_1_1DFA.html">gsjj::DFA</a>&lt; Sigma &gt;::getInitialState </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns the initial state of this <a class="el" href="classgsjj_1_1DFA.html" title="A Deterministic Finite Automaton. ">DFA</a>. </p>
+<p>The initial state is of course present in getStates </p><dl class="section return"><dt>Returns</dt><dd>The initial state </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="DFA_8h_source.html#l00218">218</a> of file <a class="el" href="DFA_8h_source.html">DFA.h</a>.</p>
 
 </div>
 </div>
@@ -307,7 +437,71 @@ template&lt;typename Sigma &gt; </div>
 <p>Returns the number of states in this <a class="el" href="classgsjj_1_1DFA.html" title="A Deterministic Finite Automaton. ">DFA</a>. </p>
 <dl class="section return"><dt>Returns</dt><dd>The number of states </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="DFA_8h_source.html#l00139">139</a> of file <a class="el" href="DFA_8h_source.html">DFA.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="DFA_8h_source.html#l00140">140</a> of file <a class="el" href="DFA_8h_source.html">DFA.h</a>.</p>
+
+</div>
+</div>
+<a id="a839d9a47da0fa4914d45c67f7b279fae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a839d9a47da0fa4914d45c67f7b279fae">&#9670;&nbsp;</a></span>getStates()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Sigma &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::unordered_set&lt;unsigned int&gt;&amp; <a class="el" href="classgsjj_1_1DFA.html">gsjj::DFA</a>&lt; Sigma &gt;::getStates </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns the set of states in this <a class="el" href="classgsjj_1_1DFA.html" title="A Deterministic Finite Automaton. ">DFA</a>. </p>
+<dl class="section return"><dt>Returns</dt><dd>The states </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="DFA_8h_source.html#l00198">198</a> of file <a class="el" href="DFA_8h_source.html">DFA.h</a>.</p>
+
+</div>
+</div>
+<a id="a8c6c48adaeb1f9b2184c150cef51f5bb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8c6c48adaeb1f9b2184c150cef51f5bb">&#9670;&nbsp;</a></span>getTransitions()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Sigma &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::map&lt;std::pair&lt;unsigned int, Sigma&gt;, unsigned int&gt; <a class="el" href="classgsjj_1_1DFA.html">gsjj::DFA</a>&lt; Sigma &gt;::getTransitions </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns the function delta. </p>
+<p>The map associates (p, a) to q, with p, q two states and a a symbol </p>
+
+<p class="definition">Definition at line <a class="el" href="DFA_8h_source.html#l00227">227</a> of file <a class="el" href="DFA_8h_source.html">DFA.h</a>.</p>
 
 </div>
 </div>
@@ -346,7 +540,7 @@ template&lt;typename Sigma &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True iff the word is accepted by the <a class="el" href="classgsjj_1_1DFA.html" title="A Deterministic Finite Automaton. ">DFA</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="DFA_8h_source.html#l00098">98</a> of file <a class="el" href="DFA_8h_source.html">DFA.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="DFA_8h_source.html#l00099">99</a> of file <a class="el" href="DFA_8h_source.html">DFA.h</a>.</p>
 
 </div>
 </div>
@@ -385,7 +579,46 @@ template&lt;typename Sigma &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True iff the word is accepted by the <a class="el" href="classgsjj_1_1DFA.html" title="A Deterministic Finite Automaton. ">DFA</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="DFA_8h_source.html#l00119">119</a> of file <a class="el" href="DFA_8h_source.html">DFA.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="DFA_8h_source.html#l00120">120</a> of file <a class="el" href="DFA_8h_source.html">DFA.h</a>.</p>
+
+</div>
+</div>
+<a id="ac0c044c8ed031f5238f6618973cada9d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac0c044c8ed031f5238f6618973cada9d">&#9670;&nbsp;</a></span>isAcceptingState()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Sigma &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="classgsjj_1_1DFA.html">gsjj::DFA</a>&lt; Sigma &gt;::isAcceptingState </td>
+          <td>(</td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>state</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Tests whether the given state is a final (or accepting) state. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">state</td><td>The state to test </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True iff state is accepting </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="DFA_8h_source.html#l00190">190</a> of file <a class="el" href="DFA_8h_source.html">DFA.h</a>.</p>
 
 </div>
 </div>
@@ -417,7 +650,7 @@ template&lt;typename Sigma &gt; </div>
 <p>Constructs a string that is the representation of the <a class="el" href="classgsjj_1_1DFA.html" title="A Deterministic Finite Automaton. ">DFA</a> in the DOT language. </p>
 <dl class="section return"><dt>Returns</dt><dd>The string </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="DFA_8h_source.html#l00147">147</a> of file <a class="el" href="DFA_8h_source.html">DFA.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="DFA_8h_source.html#l00148">148</a> of file <a class="el" href="DFA_8h_source.html">DFA.h</a>.</p>
 
 </div>
 </div>

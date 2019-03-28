@@ -1,6 +1,6 @@
 <map id="include/gsjj/passive/NonCNF/BinaryNonCNFMethod.h" name="include/gsjj/passive/NonCNF/BinaryNonCNFMethod.h">
-<area shape="rect" id="node3" href="$SATNonCNFMethod_8h.html" title="gsjj/passive/NonCNF\l/SATNonCNFMethod.h" alt="" coords="152,95,311,136"/>
-<area shape="rect" id="node17" href="$MethodFactory_8h.html" title="gsjj/passive/MethodFactory.h" alt="" coords="481,102,675,129"/>
+<area shape="rect" id="node3" href="$SATNonCNFMethod_8h.html" title="gsjj/passive/NonCNF\l/SATNonCNFMethod.h" alt="" coords="152,95,310,136"/>
+<area shape="rect" id="node17" href="$MethodFactory_8h.html" title="gsjj/passive/MethodFactory.h" alt="" coords="492,102,685,129"/>
 <area shape="rect" id="node6" href="$Method_8h.html" title="gsjj/passive/Method.h" alt="" coords="326,184,475,211"/>
-<area shape="rect" id="node11" href="$DFA_8h.html" title="This file declares and implements the templated class DFA. " alt="" coords="401,259,485,285"/>
+<area shape="rect" id="node11" href="$DFA_8h.html" title="This file declares and implements the templated class DFA. " alt="" coords="501,259,585,285"/>
 </map>
