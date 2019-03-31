@@ -9,6 +9,8 @@
 #include "gsjj/passive/utils.h"
 #include "gsjj/passive/MethodFactory.h"
 
+#include "LFDFA.h"
+
 namespace po = boost::program_options;
 using namespace gsjj;
 
@@ -69,6 +71,9 @@ std::unique_ptr<passive::Method> call_method_fixed_n(const std::set<std::string>
     return std::move(method);
 }
 
+/**
+ * Computes the mean and the median of the given values
+ */
 std::tuple<long double, long double> values(std::vector<long double> &times) {
     long double mean = 0;
     for (auto &a : times) {
@@ -86,6 +91,31 @@ std::tuple<long double, long double> values(std::vector<long double> &times) {
     }
 
     return std::make_tuple(mean, median);
+}
+
+/**
+ * Launches every method on the given data and store the time taken by the methods in the times array
+ */
+void executeMethods(const std::set<std::string> &Sp, const std::set<std::string> &Sm, const std::set<std::string> &S, const std::set<std::string> &prefixes, const std::set<char> &alphabet, unsigned int timeLimit, bool verbose, std::vector<long double> &times, std::vector<unsigned int> &timeouts) {
+    // This should be a case of an embarrassingly parallel problem. Therefore, we only have to activate the parallelisation (using OpenMP)
+    #pragma omp parallel for schedule(dynamic)
+    for (unsigned int c = 0 ; c < passive::allMethods.size() ; c++) {
+        long double timeTaken = 0;
+        std::unique_ptr<passive::Method> ptr;
+        bool success;
+        std::tie(ptr, success) = passive::constructMethod(passive::allMethods[c], Sp, Sm, S, prefixes, alphabet, std::chrono::seconds(timeLimit), &timeTaken);
+        
+        times[c] += timeTaken;
+        if (!success) {
+            timeouts[c] += 1;
+        }
+        if (verbose) {
+            std::cout << passive::allMethods[c] << " ";
+        }
+    }
+    if (verbose) {
+        std::cout << "\n";
+    }
 }
 
 /**
@@ -109,18 +139,17 @@ void random_benchmark(unsigned int minSize, unsigned int maxSize, unsigned int n
 
     // First, we create an array to store the execution times
     // We need one array by method
-    std::array<std::vector<long double>, passive::allMethods.size()> times;
+    std::vector<long double> times(passive::allMethods.size());
     // We also need to count the number of timeouts
-    std::array<unsigned int, passive::allMethods.size()> timeouts;
+    std::vector<unsigned int> timeouts(passive::allMethods.size());
     for (unsigned int c = 0 ; c < passive::allMethods.size() ; c++) {
-        times[c].resize(nGenerations);
         output << passive::allMethods[c] << " mean median timeouts;" << " ";
     }
     output << "\n";
 
     // Now, we create nGenerations samples (the size varies from minSize to maxSize) and we execute every method on these samples
     for (unsigned int n = minSize ; n <= maxSize ; n++) {
-        timeouts.fill(0);
+        timeouts.assign(passive::allMethods.size(), 0);
 
         for (unsigned int generation = 0 ; generation < nGenerations ; generation++) {
             std::set<std::string> Sp, Sm;
@@ -132,32 +161,13 @@ void random_benchmark(unsigned int minSize, unsigned int maxSize, unsigned int n
             if (verbose) {
                 std::cout << "Size: " << n << "; generation: " << generation+1 << "/" << nGenerations << "\n";
             }
-
-            // This should be a case of an embarrassingly parallel problem. Therefore, we only have to activate the parallelisation (using OpenMP)
-            #pragma omp parallel for schedule(dynamic)
-            for (unsigned int c = 0 ; c < passive::allMethods.size() ; c++) {
-                long double timeTaken = 0;
-                std::unique_ptr<passive::Method> ptr;
-                bool success;
-                std::tie(ptr, success) = passive::constructMethod(passive::allMethods[c], Sp, Sm, S, prefixes, alphabet, std::chrono::seconds(timeLimit), &timeTaken);
-                
-                times[c][generation] = timeTaken;
-                if (!success) {
-                    timeouts[c] += 1;
-                }
-                if (verbose) {
-                    std::cout << passive::allMethods[c] << " ";
-                }
-            }
-            if (verbose) {
-                std::cout << "\n";
-            }
+            executeMethods(Sp, Sm, S, prefixes, alphabet, timeLimit, verbose, times, timeouts);
         }
 
         output << n << " ";
         for (unsigned int c = 0 ; c < passive::allMethods.size() ; c++) {
             long double mean, median;
-            std::tie(mean, median) = values(times[c]);
+            std::tie(mean, median) = values(times);
             output << mean << " " << median << " " << timeouts[c] << " ";
         }
         output << "\n";
@@ -167,10 +177,53 @@ void random_benchmark(unsigned int minSize, unsigned int maxSize, unsigned int n
     output.close();
 }
 
+void predefinedBenchmarks(unsigned int timeLimit, bool verbose) {
+    std::ofstream output("predefined.time");
+
+    std::vector<long double> times(passive::allMethods.size());
+    // We also need to count the number of timeouts
+    std::vector<unsigned int> timeouts(passive::allMethods.size());
+    for (unsigned int c = 0 ; c < passive::allMethods.size() ; c++) {
+        output << passive::allMethods[c] << " mean median timeouts;" << " ";
+    }
+    output << "\n";
+
+    for (unsigned int i = 4 ; i <= 21 ; i++) {
+        for (unsigned int j = 1 ; j <= 9 ; j++) {
+            for (unsigned int k = 1 ; k <= 5 ; k++) {
+                char file[29];
+                sprintf(file, "randm%0.2d.02.02.%0.2d.020_0030.%0.2d", i, j, k);
+                std::string filename(file);
+                if (verbose) {
+                    std::cout << filename << "\n";
+                }
+
+                auto dfa = LFDFA::loadFromFile("files/" + filename + ".kis");
+                std::set<std::string> Sp, Sm;
+                dfa->getSets(Sp, Sm);
+                std::set<std::string> S = passive::computeS(Sp, Sm);
+                std::set<char> alphabet = passive::computeAlphabet(S);
+                std::set<std::string> prefixes = passive::computePrefixes(S);
+
+                executeMethods(Sp, Sm, S, prefixes, alphabet, timeLimit, verbose, times, timeouts);
+            }
+        }
+    }
+
+    for (unsigned int c = 0 ; c < passive::allMethods.size() ; c++) {
+        std::cout << times[c] << "\n";
+        // long double mean, median;
+        // std::tie(mean, median) = values(times);
+        // output << mean << " " << median << " " << timeouts[c] << " ";
+    }
+    output << "\n";
+    output.flush();
+}
+
 int main(int argc, char** argv) {
     std::string choice;
     std::string inputFile, outputFile;
-    bool toDot, rand_bench, verbose;
+    bool toDot, rand_bench, verbose, predefinedBench;
     unsigned int n, numberWords, minSize, maxSize, nGenerations, wordSize, minWordSize, maxWordSize, alphabetSize, timeLimit;
     double probabilityAccepted;
 
@@ -191,6 +244,7 @@ int main(int argc, char** argv) {
         ("to-dot", po::bool_switch(&toDot), "If present, the program creates the DOT file describing the constructed DFA. If output-file is not set, the file is outputed in the terminal")
         ("output-file", po::value<std::string>(&outputFile), "If at least one option among to-dot (...) is present, the corresponding outputs are written in files named 'output-file.extension' with the correct extension")
 
+        ("predefined-benchmarks", po::bool_switch(&predefinedBench), "If set, the program executes the predefined benchmarks. The data are loaded from the files in the folder files")
         ("random-benchmarks", po::bool_switch(&rand_bench), "If set, the program executes the random benchmarks")
         ("number-generations", po::value<unsigned int>(&nGenerations)->default_value(50), "If random-benchmarks is set, use this option to change the number of generated samples set by size. By default, 50")
 
@@ -273,6 +327,9 @@ int main(int argc, char** argv) {
         else {
             random_benchmark(minSize, maxSize, nGenerations, wordSize, wordSize, alphabetSize, probabilityAccepted, timeLimit, verbose);
         }
+    }
+    else if (predefinedBench) {
+        predefinedBenchmarks(timeLimit, verbose);
     }
     else {
         if (!variables.count("method")) {

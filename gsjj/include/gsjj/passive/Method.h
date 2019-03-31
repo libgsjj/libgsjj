@@ -22,7 +22,7 @@ namespace gsjj {
         /**
          * An array with every possible method choice. Useful to iterate over the methods
          */
-        const std::array<std::string, 8> allMethods = {
+        const std::array<const std::string, 8> allMethods = {
             "biermann",
             "unary",
             "binary",
