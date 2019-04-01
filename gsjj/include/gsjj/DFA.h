@@ -88,7 +88,7 @@ namespace gsjj {
                 throw std::out_of_range(error.str());
             }
 
-            m_transitions.emplace(std::make_pair(p, symbol), q);
+            m_transitions[p][symbol] = q;
         }
 
         /**
@@ -99,9 +99,13 @@ namespace gsjj {
         bool isAccepted(const std::list<Sigma>& word) {
             unsigned int state = m_initialState;
             for (const Sigma &a : word) {
-                auto tran = m_transitions.find(std::make_pair(state, a));
+                auto itr = m_transitions.find(state);
+                if (itr == m_transitions.end()) {
+                    return false;
+                }
+                auto tran = itr->second.find(a);
 
-                if (tran != m_transitions.end()) {
+                if (tran != itr->second.end()) {
                     state = tran->second;
                 }
                 else {
@@ -222,10 +226,19 @@ namespace gsjj {
         /**
          * Returns the function delta.
          * 
-         * The map associates (p, a) to q, with p, q two states and a a symbol
+         * The map associates the state to a map. This map associates a symbol a to a state q.
          */
-        const std::map<std::pair<unsigned int, Sigma>, unsigned int> getTransitions() const {
+        const std::map<unsigned int, std::map<Sigma, unsigned int>> getTransitions() const {
             return m_transitions;
+        }
+
+        /**
+         * Checks if the given state number is in the states set
+         * @param state The state to check
+         * @return True iff state is in the DFA
+         */
+        bool isState(unsigned int state) const {
+            return m_states.find(state) != m_states.end();
         }
 
     private:
@@ -240,7 +253,7 @@ namespace gsjj {
         /**
          * The \f$\delta\f$ function.
          */
-        std::map<std::pair<unsigned int, Sigma>, unsigned int> m_transitions;
+        std::map<unsigned int, std::map<Sigma, unsigned int>> m_transitions;
         /**
          * The set \f$F\f$.
          */
@@ -276,12 +289,13 @@ namespace gsjj {
             // The arrow indicating the initial state
             dot << "\tqi -> q" << m_initialState << ";\n";
 
-            for (auto transition : m_transitions) {
-                unsigned int start = transition.first.first;
-                unsigned int end = transition.second;
-                Sigma symbol = transition.first.second;
-
-                dot << "\tq" << start << " -> q" << end << " [label=\"" << symbol << "\"];\n";
+            for (auto state : m_transitions) {
+                unsigned int start = state.first;
+                for (auto transition : state.second) {
+                    Sigma symbol = transition.first;
+                    unsigned int end = transition.second;
+                    dot << "\tq" << start << " -> q" << end << " [label=\"" << symbol << "\"];\n";
+                }
             }
         }
     };

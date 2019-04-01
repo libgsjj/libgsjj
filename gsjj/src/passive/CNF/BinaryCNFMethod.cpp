@@ -59,7 +59,7 @@ namespace gsjj {
                 m_triedSolve = true;
                 m_cpuTimeStart = cpuTime();
                 // minisat_solver returns 1 iff the formula is sat
-                m_hasSolution = m_solver->minisat_solve(false, m_simplify_opts, false, false, false, false, 0) == 1;
+                m_hasSolution = m_solver->minisat_solve(true, m_simplify_opts, false, false, false, false, 0) == 1;
                 m_cpuTimeEnd = cpuTime();
                 return m_hasSolution;
             }
