@@ -41,7 +41,8 @@ namespace gsjj {
             }
 
             void SMTMethod::setStopTrigger(const std::chrono::seconds &timeLimit, std::atomic_bool &stopTrigger, const bool *stopPointer) {
-                m_SMTEngine.setTimeLimit(std::chrono::milliseconds(timeLimit).count());
+                m_SMTEngine.setTimeLimit(std::chrono::milliseconds(timeLimit).count(), false);
+                m_SMTEngine.setTimeLimit(std::chrono::milliseconds(timeLimit).count(), true);
             }
         }
     }

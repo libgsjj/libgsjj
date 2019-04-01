@@ -111,10 +111,10 @@ void random_benchmark(unsigned int minSize, unsigned int maxSize, unsigned int n
     // We need one array by method
     std::array<std::vector<long double>, passive::allMethods.size()> times;
     // We also need to count the number of timeouts
-    std::array<unsigned int, passive::allMethods.size()> timeouts;
+    std::array<unsigned int, passive::allMethods.size()> timeouts, outOfMemories;
     for (unsigned int c = 0 ; c < passive::allMethods.size() ; c++) {
         times[c].resize(nGenerations);
-        output << passive::allMethods[c] << " mean median timeouts;" << " ";
+        output << passive::allMethods[c] << " mean median timeouts outOfMemories;" << " ";
     }
     output << "\n";
 
@@ -134,13 +134,19 @@ void random_benchmark(unsigned int minSize, unsigned int maxSize, unsigned int n
             }
 
             // This should be a case of an embarrassingly parallel problem. Therefore, we only have to activate the parallelisation (using OpenMP)
-            #pragma omp parallel for schedule(dynamic)
+            // #pragma omp parallel for schedule(dynamic)
             for (unsigned int c = 0 ; c < passive::allMethods.size() ; c++) {
                 long double timeTaken = 0;
                 std::unique_ptr<passive::Method> ptr;
                 bool success;
-                std::tie(ptr, success) = passive::constructMethod(passive::allMethods[c], Sp, Sm, S, prefixes, alphabet, std::chrono::seconds(timeLimit), &timeTaken);
-                
+                try {
+                    std::tie(ptr, success) = passive::constructMethod(passive::allMethods[c], Sp, Sm, S, prefixes, alphabet, std::chrono::seconds(timeLimit), &timeTaken);
+                }
+                catch (std::bad_alloc &e) {
+					std::cout << "OutOfMemory for: " << passive::allMethods.at(c) << "\n";
+                    outOfMemories[c] += 1;
+                }
+               
                 times[c][generation] = timeTaken;
                 if (!success) {
                     timeouts[c] += 1;
