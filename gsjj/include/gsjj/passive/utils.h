@@ -49,5 +49,7 @@ namespace gsjj {
          * @param SpProbability The probability that a word is put in Sp (by default, 0.5)
          */
         void generateRandomly(unsigned int numberWords, unsigned int minLength, unsigned int maxLength, unsigned int alphabetSize, std::set<std::string> &Sp, std::set<std::string> &Sm, double SpProbability = 0.5);
+
+        double getCPUTime();
     }
 }

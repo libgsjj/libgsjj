@@ -4,6 +4,8 @@
 #include <fstream>
 #include <random>
 
+#include "MapleCOMSPS_LRB/utils/System.h"
+
 namespace gsjj {
     namespace passive {
         std::set<std::string> computeS(const std::set<std::string> &Sp, const std::set<std::string> &Sm) {
@@ -74,6 +76,10 @@ namespace gsjj {
                     Sm.insert(word);
                 }
             }
+        }
+
+        double getCPUTime() {
+            return Minisat::cpuTime();
         }
     }
 }
