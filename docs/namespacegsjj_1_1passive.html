@@ -147,7 +147,7 @@ Variables</h2></td></tr>
 <li><img class="formulaInl" alt="$S_+$" src="form_2.png"/> is the set of words the automaton must accept</li>
 <li><img class="formulaInl" alt="$S_-$" src="form_3.png"/> is the set of words the automaton must reject</li>
 </ul>
-<p>The words that are not in <img class="formulaInl" alt="$S_+$" src="form_2.png"/> nor in <img class="formulaInl" alt="$S_-$" src="form_3.png"/> can be either accepted or rejected (depending on the generated <a class="el" href="classgsjj_1_1DFA.html" title="A Deterministic Finite Automaton. ">DFA</a>) </p>
+<p>The words that are not in <img class="formulaInl" alt="$S_+$" src="form_2.png"/> nor in <img class="formulaInl" alt="$S_-$" src="form_3.png"/> can be either accepted or rejected (depending on the generated <a class="el" href="classgsjj_1_1DFA.html" title="A Deterministic Finite Automaton. ">DFA</a>). </p><dl class="section warning"><dt>Warning</dt><dd><img class="formulaInl" alt="$S_+ \cup S_-$" src="form_22.png"/> can not be empty. </dd></dl>
 </div><h2 class="groupheader">Function Documentation</h2>
 <a id="a2cf0e78e92bacb37939193e63545ce7e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2cf0e78e92bacb37939193e63545ce7e">&#9670;&nbsp;</a></span>computeAlphabet()</h2>
@@ -294,6 +294,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A method to construct the <a class="el" href="classgsjj_1_1DFA.html" title="A Deterministic Finite Automaton. ">DFA</a> for the sample <img class="formulaInl" alt="$(S_+, S_-)$" src="form_18.png"/> </dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>S can not be empty (and must be coherent with Sp and Sm) </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="MethodFactory_8cpp_source.html#l00050">50</a> of file <a class="el" href="MethodFactory_8cpp_source.html">MethodFactory.cpp</a>.</p>
 
@@ -369,6 +370,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A method to construct the <a class="el" href="classgsjj_1_1DFA.html" title="A Deterministic Finite Automaton. ">DFA</a> for the sample <img class="formulaInl" alt="$(S_+, S_-)$" src="form_18.png"/> </dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>S can not be empty (and must be coherent with Sp and Sm) </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="MethodFactory_8cpp_source.html#l00058">58</a> of file <a class="el" href="MethodFactory_8cpp_source.html">MethodFactory.cpp</a>.</p>
 
@@ -431,6 +433,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A method to construct the <a class="el" href="classgsjj_1_1DFA.html" title="A Deterministic Finite Automaton. ">DFA</a> for the sample <img class="formulaInl" alt="$(S_+, S_-)$" src="form_18.png"/> and a boolean. The boolean is true iff the function did not reach the time limit. </dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>S can not be empty (and must be coherent with Sp and Sm) </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="MethodFactory_8cpp_source.html#l00062">62</a> of file <a class="el" href="MethodFactory_8cpp_source.html">MethodFactory.cpp</a>.</p>
 
@@ -514,6 +517,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A method to construct the <a class="el" href="classgsjj_1_1DFA.html" title="A Deterministic Finite Automaton. ">DFA</a> for the sample <img class="formulaInl" alt="$(S_+, S_-)$" src="form_18.png"/> and a boolean. The boolean is true iff the function did not reach the time limit. </dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>S can not be empty (and must be coherent with Sp and Sm) </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="MethodFactory_8cpp_source.html#l00070">70</a> of file <a class="el" href="MethodFactory_8cpp_source.html">MethodFactory.cpp</a>.</p>
 
@@ -753,7 +757,7 @@ Variables</h2></td></tr>
 <p>An array with every possible method choice. </p>
 <p>Useful to iterate over the methods </p>
 
-<p class="definition">Definition at line <a class="el" href="Method_8h_source.html#l00025">25</a> of file <a class="el" href="Method_8h_source.html">Method.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Method_8h_source.html#l00026">26</a> of file <a class="el" href="Method_8h_source.html">Method.h</a>.</p>
 
 </div>
 </div>
