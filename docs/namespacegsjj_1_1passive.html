@@ -130,14 +130,16 @@ Functions</h2></td></tr>
 <tr class="memitem:a0e7cf11070576ef0c21980412f142fc7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegsjj_1_1passive.html#a0e7cf11070576ef0c21980412f142fc7">generateRandomly</a> (unsigned int numberWords, unsigned int minLength, unsigned int maxLength, unsigned int alphabetSize, std::set&lt; std::string &gt; &amp;Sp, std::set&lt; std::string &gt; &amp;Sm, double SpProbability=0.5)</td></tr>
 <tr class="memdesc:a0e7cf11070576ef0c21980412f142fc7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates randomly a sample set.  <a href="#a0e7cf11070576ef0c21980412f142fc7">More...</a><br /></td></tr>
 <tr class="separator:a0e7cf11070576ef0c21980412f142fc7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9278850edce30fa71e6cd448da736170"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegsjj_1_1passive.html#a9278850edce30fa71e6cd448da736170">getCPUTime</a> ()</td></tr>
+<tr class="separator:a9278850edce30fa71e6cd448da736170"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5005bf7d43d31139d789247b28f70fae"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classgsjj_1_1passive_1_1Method.html">Method</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegsjj_1_1passive.html#a5005bf7d43d31139d789247b28f70fae">constructMethodTrigger</a> (const std::string &amp;name, unsigned int n, const std::set&lt; std::string &gt; &amp;Sp, const std::set&lt; std::string &gt; &amp;Sm, const std::set&lt; std::string &gt; &amp;S, const std::set&lt; std::string &gt; &amp;prefixes, const std::set&lt; char &gt; &amp;alphabet, const std::chrono::seconds &amp;timeLimit, std::atomic_bool &amp;stopTrigger, const bool *stopPointer)</td></tr>
 <tr class="separator:a5005bf7d43d31139d789247b28f70fae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:ad697e5c21ffd5fb6f28409caf145efbc"><td class="memItemLeft" align="right" valign="top">const std::array&lt; std::string, 8 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegsjj_1_1passive.html#ad697e5c21ffd5fb6f28409caf145efbc">allMethods</a></td></tr>
-<tr class="memdesc:ad697e5c21ffd5fb6f28409caf145efbc"><td class="mdescLeft">&#160;</td><td class="mdescRight">An array with every possible method choice.  <a href="#ad697e5c21ffd5fb6f28409caf145efbc">More...</a><br /></td></tr>
-<tr class="separator:ad697e5c21ffd5fb6f28409caf145efbc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2d933b7a6d99222ecdbfe2b0646766fb"><td class="memItemLeft" align="right" valign="top">const std::array&lt; const std::string, 8 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegsjj_1_1passive.html#a2d933b7a6d99222ecdbfe2b0646766fb">allMethods</a></td></tr>
+<tr class="memdesc:a2d933b7a6d99222ecdbfe2b0646766fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">An array with every possible method choice.  <a href="#a2d933b7a6d99222ecdbfe2b0646766fb">More...</a><br /></td></tr>
+<tr class="separator:a2d933b7a6d99222ecdbfe2b0646766fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Defines the passive methods for automatically learning deterministic finite automata. </p>
@@ -171,7 +173,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="utils_8cpp_source.html#l00025">25</a> of file <a class="el" href="utils_8cpp_source.html">utils.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utils_8cpp_source.html#l00027">27</a> of file <a class="el" href="utils_8cpp_source.html">utils.cpp</a>.</p>
 
 </div>
 </div>
@@ -199,7 +201,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="utils_8cpp_source.html#l00015">15</a> of file <a class="el" href="utils_8cpp_source.html">utils.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utils_8cpp_source.html#l00017">17</a> of file <a class="el" href="utils_8cpp_source.html">utils.cpp</a>.</p>
 
 </div>
 </div>
@@ -239,7 +241,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The set <img class="formulaInl" alt="$S = S_+ \cup S_-$" src="form_16.png"/> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="utils_8cpp_source.html#l00009">9</a> of file <a class="el" href="utils_8cpp_source.html">utils.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utils_8cpp_source.html#l00011">11</a> of file <a class="el" href="utils_8cpp_source.html">utils.cpp</a>.</p>
 
 </div>
 </div>
@@ -666,7 +668,26 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="utils_8cpp_source.html#l00052">52</a> of file <a class="el" href="utils_8cpp_source.html">utils.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utils_8cpp_source.html#l00054">54</a> of file <a class="el" href="utils_8cpp_source.html">utils.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a9278850edce30fa71e6cd448da736170"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9278850edce30fa71e6cd448da736170">&#9670;&nbsp;</a></span>getCPUTime()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double gsjj::passive::getCPUTime </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="utils_8cpp_source.html#l00081">81</a> of file <a class="el" href="utils_8cpp_source.html">utils.cpp</a>.</p>
 
 </div>
 </div>
@@ -712,19 +733,19 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="utils_8cpp_source.html#l00035">35</a> of file <a class="el" href="utils_8cpp_source.html">utils.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utils_8cpp_source.html#l00037">37</a> of file <a class="el" href="utils_8cpp_source.html">utils.cpp</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Variable Documentation</h2>
-<a id="ad697e5c21ffd5fb6f28409caf145efbc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad697e5c21ffd5fb6f28409caf145efbc">&#9670;&nbsp;</a></span>allMethods</h2>
+<a id="a2d933b7a6d99222ecdbfe2b0646766fb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2d933b7a6d99222ecdbfe2b0646766fb">&#9670;&nbsp;</a></span>allMethods</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">const std::array&lt;std::string, 8&gt; gsjj::passive::allMethods</td>
+          <td class="memname">const std::array&lt;const std::string, 8&gt; gsjj::passive::allMethods</td>
         </tr>
       </table>
 </div><div class="memdoc">
