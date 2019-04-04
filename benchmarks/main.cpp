@@ -96,7 +96,7 @@ std::tuple<long double, long double> values(std::vector<long double> &times) {
 /**
  * Launches every method on the given data and store the time taken by the methods in the times array
  */
-void executeMethods(const std::set<std::string> &Sp, const std::set<std::string> &Sm, const std::set<std::string> &S, const std::set<std::string> &prefixes, const std::set<char> &alphabet, unsigned int timeLimit, bool verbose, std::vector<long double> &times, std::vector<unsigned int> &timeouts, std::vector<unsigned int> &outOfMemories) {
+void executeMethods(const std::set<std::string> &Sp, const std::set<std::string> &Sm, const std::set<std::string> &S, const std::set<std::string> &prefixes, const std::set<char> &alphabet, unsigned int timeLimit, bool verbose, std::vector<std::vector<long double>> &times, unsigned int index, std::vector<unsigned int> &timeouts, std::vector<unsigned int> &outOfMemories) {
     // This should be a case of an embarrassingly parallel problem. Therefore, we only have to activate the parallelisation (using OpenMP)
     #pragma omp parallel for schedule(dynamic)
     for (unsigned int c = 0 ; c < passive::allMethods.size() ; c++) {
@@ -111,7 +111,7 @@ void executeMethods(const std::set<std::string> &Sp, const std::set<std::string>
             outOfMemories[c] += 1;
         }
         
-        times[c] += timeTaken;
+        times[c][index] = timeTaken;
         if (!success) {
             timeouts[c] += 1;
         }
@@ -145,10 +145,11 @@ void random_benchmark(unsigned int minSize, unsigned int maxSize, unsigned int n
 
     // First, we create an array to store the execution times
     // We need one array by method
-    std::vector<long double> times(passive::allMethods.size());
+    std::vector<std::vector<long double>> times(passive::allMethods.size());
     // We also need to count the number of timeouts and out of memory
     std::vector<unsigned int> timeouts(passive::allMethods.size()), outOfMemories(passive::allMethods.size());
     for (unsigned int c = 0 ; c < passive::allMethods.size() ; c++) {
+        times[c].resize(nGenerations, 0);
         output << passive::allMethods[c] << " mean median timeouts outOfMemories;" << " ";
     }
     output << "\n";
@@ -161,19 +162,20 @@ void random_benchmark(unsigned int minSize, unsigned int maxSize, unsigned int n
             std::set<std::string> Sp, Sm;
             passive::generateRandomly(n, minWordSize, maxWordSize, alphabetSize, Sp, Sm, SpProbability);
             std::set<std::string> S = passive::computeS(Sp, Sm);
+            std::cout << S.size() << "\n";
             std::set<char> alphabet = passive::computeAlphabet(S);
             std::set<std::string> prefixes = passive::computePrefixes(S);
 
             if (verbose) {
                 std::cout << "Size: " << n << "; generation: " << generation+1 << "/" << nGenerations << "\n";
             }
-            executeMethods(Sp, Sm, S, prefixes, alphabet, timeLimit, verbose, times, timeouts, outOfMemories);
+            executeMethods(Sp, Sm, S, prefixes, alphabet, timeLimit, verbose, times, generation, timeouts, outOfMemories);
         }
 
         output << n << " ";
         for (unsigned int c = 0 ; c < passive::allMethods.size() ; c++) {
             long double mean, median;
-            std::tie(mean, median) = values(times);
+            std::tie(mean, median) = values(times[c]);
             output << mean << " " << median << " " << timeouts[c] << " " << outOfMemories[c] << " ";
         }
         output << "\n";
@@ -186,13 +188,15 @@ void random_benchmark(unsigned int minSize, unsigned int maxSize, unsigned int n
 void predefinedBenchmarks(unsigned int timeLimit, bool verbose) {
     std::ofstream output("predefined.time");
 
-    std::vector<long double> times(passive::allMethods.size());
+    std::vector<std::vector<long double>> times(passive::allMethods.size());
     std::vector<unsigned int> timeouts(passive::allMethods.size()), outOfMemories(passive::allMethods.size());
     for (unsigned int c = 0 ; c < passive::allMethods.size() ; c++) {
+        times[c].resize((21 - 3) * 9 * 5, 0);
         output << passive::allMethods[c] << " mean median timeouts outOfMemories;" << " ";
     }
     output << "\n";
 
+    unsigned int counter = 0;
     for (unsigned int i = 4 ; i <= 21 ; i++) {
         for (unsigned int j = 1 ; j <= 9 ; j++) {
             for (unsigned int k = 1 ; k <= 5 ; k++) {
@@ -210,14 +214,14 @@ void predefinedBenchmarks(unsigned int timeLimit, bool verbose) {
                 std::set<char> alphabet = passive::computeAlphabet(S);
                 std::set<std::string> prefixes = passive::computePrefixes(S);
 
-                executeMethods(Sp, Sm, S, prefixes, alphabet, timeLimit, verbose, times, timeouts, outOfMemories);
+                executeMethods(Sp, Sm, S, prefixes, alphabet, timeLimit, verbose, times, counter++, timeouts, outOfMemories);
             }
         }
     }
 
     for (unsigned int c = 0 ; c < passive::allMethods.size() ; c++) {
         long double mean, median;
-        std::tie(mean, median) = values(times);
+        std::tie(mean, median) = values(times[c]);
         output << mean << " " << median << " " << timeouts[c] << " " << outOfMemories[c] << " ";
     }
     output << "\n";
