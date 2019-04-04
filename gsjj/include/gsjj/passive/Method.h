@@ -16,7 +16,8 @@ namespace gsjj {
      *  - \f$S_+\f$ is the set of words the automaton must accept
      *  - \f$S_-\f$ is the set of words the automaton must reject
      * 
-     * The words that are not in \f$S_+\f$ nor in \f$S_-\f$ can be either accepted or rejected (depending on the generated DFA)
+     * The words that are not in \f$S_+\f$ nor in \f$S_-\f$ can be either accepted or rejected (depending on the generated DFA).
+     * @warning \f$S_+ \cup S_-\f$ can not be empty.
      */
     namespace passive {
         /**

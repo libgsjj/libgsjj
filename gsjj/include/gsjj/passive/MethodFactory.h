@@ -118,6 +118,7 @@ namespace gsjj {
          * @param Sp The \f$S_+\f$ set
          * @param Sm The \f$S_-\f$ set
          * @return A method to construct the DFA for the sample \f$(S_+, S_-)\f$
+         * @warning S can not be empty (and must be coherent with Sp and Sm)
          */
         std::unique_ptr<Method> constructMethod(const std::string &name, unsigned int n, const std::set<std::string> &Sp, const std::set<std::string> &Sm);
 
@@ -133,6 +134,7 @@ namespace gsjj {
          * @param prefixes The \f$Pref(S)\f$ set. See passive::computePrefixes
          * @param alphabet The alphabet. See computeAlphabet
          * @return A method to construct the DFA for the sample \f$(S_+, S_-)\f$
+         * @warning S can not be empty (and must be coherent with Sp and Sm)
          */
         std::unique_ptr<Method> constructMethod(const std::string &name, unsigned int n, const std::set<std::string> &Sp, const std::set<std::string> &Sm, const std::set<std::string> &S, const std::set<std::string> &prefixes, const std::set<char> &alphabet);
 
@@ -148,6 +150,7 @@ namespace gsjj {
          * @param timeLimit The time in seconds the program can take to find the best possible method. If the time limit is reached, the function returns the best method found so far.
          * @param timeTaken If not nullptr, the total time used to solve the different formulas is written. It does NOT give the full CPU time to find the best number of states, juste the time used by the SAT/SMT solvers!
          * @return A method to construct the DFA for the sample \f$(S_+, S_-)\f$ and a boolean. The boolean is true iff the function did not reach the time limit.
+         * @warning S can not be empty (and must be coherent with Sp and Sm)
          */
         std::pair<std::unique_ptr<Method>, bool> constructMethod(const std::string &name, const std::set<std::string> &Sp, const std::set<std::string> &Sm, const std::chrono::seconds &timeLimit = std::chrono::seconds(0), long double *timeTaken = nullptr);
 
@@ -166,6 +169,7 @@ namespace gsjj {
          * @param timeLimit The time in milliseconds the program can take to find the best possible method. If the time limit is reached, the function returns the best method found so far.
          * @param timeTaken If not nullptr, the total time used to solve the different formulas is written. It does NOT give the full CPU time to find the best number of states, juste the time used by the SAT/SMT solvers!
          * @return A method to construct the DFA for the sample \f$(S_+, S_-)\f$ and a boolean. The boolean is true iff the function did not reach the time limit.
+         * @warning S can not be empty (and must be coherent with Sp and Sm)
          */
         std::pair<std::unique_ptr<Method>, bool> constructMethod(const std::string &name, const std::set<std::string> &Sp, const std::set<std::string> &Sm, const std::set<std::string> &S, const std::set<std::string> &prefixes, const std::set<char> &alphabet, const std::chrono::seconds &timeLimit = std::chrono::seconds(0), long double *timeTaken = nullptr);
     }

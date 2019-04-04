@@ -177,10 +177,12 @@ namespace gsjj {
             }
 
             for (auto transition : m_transitions) {
-                unsigned int p = transition.first.first;
-                T a = conversionMap.at(transition.first.second);
-                unsigned int q = transition.second;
-                converted->addTransition(p, a, q);
+                unsigned int p = transition.first;
+                for (auto t : transition.second) {
+                    T a = conversionMap.at(t.first);
+                    unsigned int q = t.second;
+                    converted->addTransition(p, a, q);
+                }
             }
 
             return std::move(converted);
