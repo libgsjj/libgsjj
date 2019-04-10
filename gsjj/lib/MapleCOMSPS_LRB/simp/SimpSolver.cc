@@ -366,7 +366,8 @@ bool SimpSolver::backwardSubsumptionCheck(bool verbose)
     int deleted_literals = 0;
     assert(decisionLevel() == 0);
 
-    while (subsumption_queue.size() > 0 || bwdsub_assigns < trail.size()){
+	// Modified on 9 April 2019
+    while ((subsumption_queue.size() > 0 || bwdsub_assigns < trail.size()) && !mustStop){
 
         // Empty subsumption queue and return immediately on user-interrupt:
         if (asynch_interrupt){
@@ -657,11 +658,12 @@ bool SimpSolver::eliminate(bool turn_off_elim)
         goto cleanup; }
 
     grow = grow ? grow * 2 : 8;
-    for (; grow < 10000; grow *= 2){
+	// The for instructions were modified on 9 April 2019 to add && !mustStop
+    for (; grow < 10000 && !mustStop; grow *= 2){
         // Rebuild elimination variable heap.
-        for (int i = 0; i < clauses.size(); i++){
+        for (int i = 0; i < clauses.size() && !mustStop; i++){
             const Clause& c = ca[clauses[i]];
-            for (int j = 0; j < c.size(); j++)
+            for (int j = 0; j < c.size() && !mustStop; j++)
                 if (!elim_heap.inHeap(var(c[j])))
                     elim_heap.insert(var(c[j]));
                 else
@@ -717,9 +719,13 @@ bool SimpSolver::eliminate_()
 
     // Main simplification loop:
     //
-    while (n_touched > 0 || bwdsub_assigns < trail.size() || elim_heap.size() > 0){
+	// Modified on 9 April 2019
+    while ((n_touched > 0 || bwdsub_assigns < trail.size() || elim_heap.size() > 0) && !mustStop){
 
         gatherTouchedClauses();
+		// Added on 9 April 2019
+        if (mustStop)
+            break;
         // printf("  ## (time = %6.2f s) BWD-SUB: queue = %d, trail = %d\n", cpuTime(), subsumption_queue.size(), trail.size() - bwdsub_assigns);
         if ((subsumption_queue.size() > 0 || bwdsub_assigns < trail.size()) && 
             !backwardSubsumptionCheck(true)){
@@ -734,7 +740,8 @@ bool SimpSolver::eliminate_()
             goto cleanup; }
 
         // printf("  ## (time = %6.2f s) ELIM: vars = %d\n", cpuTime(), elim_heap.size());
-        for (int cnt = 0; !elim_heap.empty(); cnt++){
+		// Modified on 9 April 2019
+        for (int cnt = 0; !elim_heap.empty() && !mustStop; cnt++){
             Var elim = elim_heap.removeMin();
             
             if (asynch_interrupt) break;

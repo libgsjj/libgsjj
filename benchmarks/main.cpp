@@ -98,7 +98,7 @@ std::tuple<long double, long double> values(std::vector<long double> &times) {
  */
 void executeMethods(const std::set<std::string> &Sp, const std::set<std::string> &Sm, const std::set<std::string> &S, const std::set<std::string> &prefixes, const std::set<char> &alphabet, unsigned int timeLimit, bool verbose, std::vector<std::vector<long double>> &times, unsigned int index, std::vector<unsigned int> &timeouts, std::vector<unsigned int> &outOfMemories) {
     // This should be a case of an embarrassingly parallel problem. Therefore, we only have to activate the parallelisation (using OpenMP)
-    #pragma omp parallel for schedule(dynamic)
+    #pragma omp parallel for schedule(dynamic) num_threads(2)
     for (unsigned int c = 0 ; c < passive::allMethods.size() ; c++) {
         long double timeTaken = 0;
         std::unique_ptr<passive::Method> ptr;
@@ -162,7 +162,6 @@ void random_benchmark(unsigned int minSize, unsigned int maxSize, unsigned int n
             std::set<std::string> Sp, Sm;
             passive::generateRandomly(n, minWordSize, maxWordSize, alphabetSize, Sp, Sm, SpProbability);
             std::set<std::string> S = passive::computeS(Sp, Sm);
-            std::cout << S.size() << "\n";
             std::set<char> alphabet = passive::computeAlphabet(S);
             std::set<std::string> prefixes = passive::computePrefixes(S);
 

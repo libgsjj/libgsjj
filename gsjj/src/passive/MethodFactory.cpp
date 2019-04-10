@@ -138,7 +138,7 @@ namespace gsjj {
                     return std::make_pair(std::move(bestPossible), true);
                 }
                 else {
-                    stopTrigger = true;
+                    stopTrigger.store(true);
                     stopBool = true;
                     t.join();
                     future.get(); // Allows to retrieve any thrown exception
