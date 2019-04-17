@@ -4,8 +4,6 @@ if(BUILD_BENCHMARKS)
     # To easily paralellise the different methods
     find_package(OpenMP REQUIRED)
 
-    file(COPY files DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
-
     add_executable(benchmarks main.cpp LFDFA.cpp)
     target_link_libraries(benchmarks
         gsjj
