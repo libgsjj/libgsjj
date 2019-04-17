@@ -17,32 +17,19 @@ namespace po = boost::program_options;
 using namespace gsjj;
 
 /**
- * Prints Sp and Sm. Mainly for debug purposes
+ * Prints Sp and Sm in the stream
  * @param Sp The Sp set
  * @param Sm The Sm set
+ * @param stream The stream in which to write the sample
  */
-void print_Sp_Sm(const std::set<std::string> &Sp, const std::set<std::string> &Sm) {
-    std::cout << "Sp = {";
-    bool first = true;
+void print_Sp_Sm(const std::set<std::string> &Sp, const std::set<std::string> &Sm, std::ostream &stream) {
     for (const auto &s : Sp) {
-        if (!first) {
-            std::cout << ", ";
-        }
-        std::cout << s;
-        first = false;
+        stream << s << "\n";
     }
-    std::cout << "}, " << Sp.size() << "\n";
-
-    std::cout << "Sm = {";
-    first = true;
+    stream << "=====\n";
     for (const auto &s : Sm) {
-        if (!first) {
-            std::cout << ", ";
-        }
-        std::cout << s;
-        first = false;
+        stream << s << "\n";
     }
-    std::cout << "}, " << Sm.size() << "\n";
 }
 
 /**
@@ -229,10 +216,25 @@ void predefinedBenchmarks(unsigned int timeLimit, bool verbose) {
     output.flush();
 }
 
+bool benchmarks(const std::string &method, const std::string &input, unsigned int timeLimit) {
+    std::set<std::string> Sp, Sm, S, prefixes;
+    std::set<char> alphabet;
+    passive::readFromFile(input, Sp, Sm);
+    S = passive::computeS(Sp, Sm);
+    prefixes = passive::computePrefixes(S);
+    alphabet = passive::computeAlphabet(S);
+    long double timeTaken = 0;
+    std::unique_ptr<passive::Method> ptr;
+    bool success;
+    std::tie(ptr, success) = passive::constructMethod(method, Sp, Sm, S, prefixes, alphabet, std::chrono::seconds(timeLimit), &timeTaken);
+    std::cout << timeTaken << "\n";
+    return success;
+}
+
 int main(int argc, char** argv) {
     std::string choice;
     std::string inputFile, outputFile;
-    bool toDot, rand_bench, verbose, predefinedBench;
+    bool toDot, rand_bench, verbose, predefinedBench, generateSample, bench;
     unsigned int n, numberWords, minSize, maxSize, nGenerations, wordSize, minWordSize, maxWordSize, alphabetSize, timeLimit;
     double probabilityAccepted;
 
@@ -240,6 +242,8 @@ int main(int argc, char** argv) {
     desc.add_options()
         ("help,h", "produce help message")
         ("verbose,v", po::bool_switch(&verbose), "If set, the program outputs more information")
+
+        ("generate-sample", po::bool_switch(&generateSample), "If set, the program generates a sample. See number-words, word-size, min-word-size, max-word-size, probability-accepted and output-file for configuration")
 
         ("method", po::value<std::string>(&choice), "The method to use [MANDATORY if random-benchmarks is not set]. The '--method' part is not necessary (positional argument)")
         ("number-states,n", po::value<unsigned int>(&n)->notifier([](unsigned int i) {
@@ -251,8 +255,9 @@ int main(int argc, char** argv) {
         ("input-file", po::value<std::string>(&inputFile), "Read the sets of words to accept and to reject from the given file. If not set, the words are randomly generated (see number-words). The file is composed of two blocks separated by a line with exactly five =. The first block is the set of words to accept while the second block is the set of words to reject. Every word must be on its own line (an empty line is considered as the empty word)")
 
         ("to-dot", po::bool_switch(&toDot), "If present, the program creates the DOT file describing the constructed DFA. If output-file is not set, the file is outputed in the terminal")
-        ("output-file", po::value<std::string>(&outputFile), "If at least one option among to-dot (...) is present, the corresponding outputs are written in files named 'output-file.extension' with the correct extension")
+        ("output-file", po::value<std::string>(&outputFile)->default_value("out"), "If at least one option among to-dot (...) is present, the corresponding outputs are written in files named 'output-file.extension' with the correct extension. If generate-sample is set, the sample is written in the output file.")
 
+        ("benchmarks", po::bool_switch(&bench), "If set, the program executes the given method on the sample in the input file and prints the taken time to the standard output. method and input-file must be set.")
         ("predefined-benchmarks", po::bool_switch(&predefinedBench), "If set, the program executes the predefined benchmarks. The data are loaded from the files in the folder files")
         ("random-benchmarks", po::bool_switch(&rand_bench), "If set, the program executes the random benchmarks")
         ("number-generations", po::value<unsigned int>(&nGenerations)->default_value(50), "If random-benchmarks is set, use this option to change the number of generated samples set by size. By default, 50")
@@ -329,7 +334,26 @@ int main(int argc, char** argv) {
         }
     }
 
-    if (rand_bench) {
+    if (generateSample) {
+        std::set<std::string> Sp, Sm;
+        if (variables.count("min-word-size")) {
+            passive::generateRandomly(numberWords, minWordSize, maxWordSize, alphabetSize, Sp, Sm, probabilityAccepted);
+        }
+        else {
+            passive::generateRandomly(numberWords, wordSize, wordSize, alphabetSize, Sp, Sm, probabilityAccepted);
+        }
+
+        std::ofstream stream(outputFile);
+        print_Sp_Sm(Sp, Sm, stream);
+        stream.close();
+    }
+    else if (bench) {
+        if (benchmarks(choice, inputFile, timeLimit)) {
+            return 0;
+        }
+        return 1;
+    }
+    else if (rand_bench) {
         if (variables.count("min-word-size")) {
             random_benchmark(minSize, maxSize, nGenerations, minWordSize, maxWordSize, alphabetSize, probabilityAccepted, timeLimit, verbose);
         }
@@ -350,7 +374,6 @@ int main(int argc, char** argv) {
 
         if (variables.count("input-file")) {
             passive::readFromFile(inputFile, Sp, Sm);
-            print_Sp_Sm(Sp, Sm);
         }
         else {
             if (variables.count("min-word-size")) {
@@ -359,7 +382,7 @@ int main(int argc, char** argv) {
             else {
                 passive::generateRandomly(numberWords, wordSize, wordSize, alphabetSize, Sp, Sm, probabilityAccepted);
             }
-            print_Sp_Sm(Sp, Sm);
+            print_Sp_Sm(Sp, Sm, std::cout);
         }
 
         std::set<std::string> S;
