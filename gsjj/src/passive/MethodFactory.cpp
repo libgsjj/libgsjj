@@ -103,7 +103,7 @@ namespace gsjj {
                     }
                     remainingTime -= std::chrono::seconds(int(std::floor(toTry->timeToSolve())));
                     // To make sure CVC4 does not think it has an unlimited available time
-                    if (remainingTime.count() < 0) {
+                    if (remainingTime.count() <= 0) {
                         if (timeLimit == std::chrono::seconds(0)) {
                             remainingTime = std::chrono::seconds(0);
                         }

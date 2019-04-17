@@ -2,6 +2,8 @@
 #include <istream>
 #include <array>
 
+#include <sys/resource.h>
+
 #include <boost/program_options.hpp>
 #include <cvc4/cvc4.h>
 
@@ -96,9 +98,9 @@ std::tuple<long double, long double> values(std::vector<long double> &times) {
 /**
  * Launches every method on the given data and store the time taken by the methods in the times array
  */
-void executeMethods(const std::set<std::string> &Sp, const std::set<std::string> &Sm, const std::set<std::string> &S, const std::set<std::string> &prefixes, const std::set<char> &alphabet, unsigned int timeLimit, bool verbose, std::vector<std::vector<long double>> &times, unsigned int index, std::vector<unsigned int> &timeouts, std::vector<unsigned int> &outOfMemories) {
+void executeMethods(const std::set<std::string> &Sp, const std::set<std::string> &Sm, const std::set<std::string> &S, const std::set<std::string> &prefixes, const std::set<char> &alphabet, unsigned int timeLimit, bool verbose, std::vector<std::vector<long double>> &times, unsigned int index, std::vector<unsigned int> &timeouts, std::vector<unsigned int> &fails) {
     // This should be a case of an embarrassingly parallel problem. Therefore, we only have to activate the parallelisation (using OpenMP)
-    #pragma omp parallel for schedule(dynamic) num_threads(2)
+    // #pragma omp parallel for schedule(dynamic) num_threads(2)
     for (unsigned int c = 0 ; c < passive::allMethods.size() ; c++) {
         long double timeTaken = 0;
         std::unique_ptr<passive::Method> ptr;
@@ -106,9 +108,9 @@ void executeMethods(const std::set<std::string> &Sp, const std::set<std::string>
         try {
             std::tie(ptr, success) = passive::constructMethod(passive::allMethods[c], Sp, Sm, S, prefixes, alphabet, std::chrono::seconds(timeLimit), &timeTaken);
         }
-        catch (std::bad_alloc &e) {
-            std::cout << "OutOfMemory for: " << passive::allMethods.at(c) << "\n";
-            outOfMemories[c] += 1;
+        catch (...) { // Catch any exception (we can't catch std::exception since CVC4's exceptions do not inherit from std::exception)
+            std::cout << "Fail for: " << passive::allMethods.at(c) << "\n";
+            fails[c] += 1;
         }
         
         times[c][index] = timeTaken;
@@ -146,8 +148,8 @@ void random_benchmark(unsigned int minSize, unsigned int maxSize, unsigned int n
     // First, we create an array to store the execution times
     // We need one array by method
     std::vector<std::vector<long double>> times(passive::allMethods.size());
-    // We also need to count the number of timeouts and out of memory
-    std::vector<unsigned int> timeouts(passive::allMethods.size()), outOfMemories(passive::allMethods.size());
+    // We also need to count the number of timeouts and fails (mainly due to OutOfMemory)
+    std::vector<unsigned int> timeouts(passive::allMethods.size()), fails(passive::allMethods.size());
     for (unsigned int c = 0 ; c < passive::allMethods.size() ; c++) {
         times[c].resize(nGenerations, 0);
         output << passive::allMethods[c] << " mean median timeouts outOfMemories;" << " ";
@@ -168,14 +170,14 @@ void random_benchmark(unsigned int minSize, unsigned int maxSize, unsigned int n
             if (verbose) {
                 std::cout << "Size: " << n << "; generation: " << generation+1 << "/" << nGenerations << "\n";
             }
-            executeMethods(Sp, Sm, S, prefixes, alphabet, timeLimit, verbose, times, generation, timeouts, outOfMemories);
+            executeMethods(Sp, Sm, S, prefixes, alphabet, timeLimit, verbose, times, generation, timeouts, fails);
         }
 
         output << n << " ";
         for (unsigned int c = 0 ; c < passive::allMethods.size() ; c++) {
             long double mean, median;
             std::tie(mean, median) = values(times[c]);
-            output << mean << " " << median << " " << timeouts[c] << " " << outOfMemories[c] << " ";
+            output << mean << " " << median << " " << timeouts[c] << " " << fails[c] << " ";
         }
         output << "\n";
         output.flush();
@@ -188,7 +190,7 @@ void predefinedBenchmarks(unsigned int timeLimit, bool verbose) {
     std::ofstream output("predefined.time");
 
     std::vector<std::vector<long double>> times(passive::allMethods.size());
-    std::vector<unsigned int> timeouts(passive::allMethods.size()), outOfMemories(passive::allMethods.size());
+    std::vector<unsigned int> timeouts(passive::allMethods.size()), fails(passive::allMethods.size());
     for (unsigned int c = 0 ; c < passive::allMethods.size() ; c++) {
         times[c].resize((21 - 3) * 9 * 5, 0);
         output << passive::allMethods[c] << " mean median timeouts outOfMemories;" << " ";
@@ -213,7 +215,7 @@ void predefinedBenchmarks(unsigned int timeLimit, bool verbose) {
                 std::set<char> alphabet = passive::computeAlphabet(S);
                 std::set<std::string> prefixes = passive::computePrefixes(S);
 
-                executeMethods(Sp, Sm, S, prefixes, alphabet, timeLimit, verbose, times, counter++, timeouts, outOfMemories);
+                executeMethods(Sp, Sm, S, prefixes, alphabet, timeLimit, verbose, times, counter++, timeouts, fails);
             }
         }
     }
@@ -221,7 +223,7 @@ void predefinedBenchmarks(unsigned int timeLimit, bool verbose) {
     for (unsigned int c = 0 ; c < passive::allMethods.size() ; c++) {
         long double mean, median;
         std::tie(mean, median) = values(times[c]);
-        output << mean << " " << median << " " << timeouts[c] << " " << outOfMemories[c] << " ";
+        output << mean << " " << median << " " << timeouts[c] << " " << fails[c] << " ";
     }
     output << "\n";
     output.flush();
