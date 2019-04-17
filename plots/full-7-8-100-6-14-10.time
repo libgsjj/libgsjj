@@ -1,3 +1,0 @@
-# Size; biermann mean median timeouts outOfMemories; unary mean median timeouts outOfMemories; binary mean median timeouts outOfMemories; heule mean median timeouts outOfMemories; neider mean median timeouts outOfMemories; unaryNonCNF mean median timeouts outOfMemories; binaryNonCNF mean median timeouts outOfMemories; heuleNonCNF mean median timeouts outOfMemories; 
-7 275.91 298.117 65 0 24.1351 18.2166 0 0 0.42824 0.473999 0 0 1.63531 1.46198 0 0 1.85328 1.03215 0 0 29.5306 27.0723 0 0 0.320034 0.326989 0 0 48.8766 43.6352 0 0 
-8 278.42 297.888 59 0 66.5957 59.651 0 0 0.689694 0.703626 0 0 3.09011 3.05995 0 0 10.1405 1.87574 0 0 55.0098 52.9903 0 0 0.525805 0.523377 0 0 85.3685 85.3411 0 0 
