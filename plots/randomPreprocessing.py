@@ -3,7 +3,7 @@
 import numpy as np
 
 with open("random.data", "w") as f:
-    for size in range(1, 3):
+    for size in range(1, 4):
         random = np.loadtxt("random-" + str(size))
         means = np.mean(random, axis=0)
         medians = np.median(random, axis=0)
