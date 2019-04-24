@@ -60,162 +60,6 @@ std::unique_ptr<passive::Method> call_method_fixed_n(const std::set<std::string>
     return std::move(method);
 }
 
-/**
- * Computes the mean and the median of the given values
- */
-std::tuple<long double, long double> values(std::vector<long double> &times) {
-    long double mean = 0;
-    for (auto &a : times) {
-        mean += a;
-    }
-    mean /= times.size();
-
-    long double median;
-    std::sort(times.begin(), times.end());
-    if (times.size() % 2 == 0) {
-        median = (times[times.size() / 2 - 1] + times[times.size() / 2]) / 2;
-    }
-    else {
-        median = times[times.size() / 2];
-    }
-
-    return std::make_tuple(mean, median);
-}
-
-/**
- * Launches every method on the given data and store the time taken by the methods in the times array
- */
-void executeMethods(const std::set<std::string> &Sp, const std::set<std::string> &Sm, const std::set<std::string> &S, const std::set<std::string> &prefixes, const std::set<char> &alphabet, unsigned int timeLimit, bool verbose, std::vector<std::vector<long double>> &times, unsigned int index, std::vector<unsigned int> &timeouts, std::vector<unsigned int> &fails) {
-    // This should be a case of an embarrassingly parallel problem. Therefore, we only have to activate the parallelisation (using OpenMP)
-    // #pragma omp parallel for schedule(dynamic) num_threads(2)
-    for (unsigned int c = 0 ; c < passive::allMethods.size() ; c++) {
-        long double timeTaken = 0;
-        std::unique_ptr<passive::Method> ptr;
-        bool success;
-        try {
-            std::tie(ptr, success) = passive::constructMethod(passive::allMethods[c], Sp, Sm, S, prefixes, alphabet, std::chrono::seconds(timeLimit), &timeTaken);
-        }
-        catch (...) { // Catch any exception (we can't catch std::exception since CVC4's exceptions do not inherit from std::exception)
-            std::cout << "Fail for: " << passive::allMethods.at(c) << "\n";
-            fails[c] += 1;
-        }
-        
-        times[c][index] = timeTaken;
-        if (!success) {
-            timeouts[c] += 1;
-        }
-        if (verbose) {
-            std::cout << passive::allMethods[c] << " ";
-        }
-    }
-    if (verbose) {
-        std::cout << "\n";
-    }
-}
-
-/**
- * Tests every and each method on random samples. Each method works on the same samples.
- * 
- * The output is produced in the file "full.time". The first column is the size of the samples set. The second column is the mean execution time for Biermann and the third is the median execution time for Biermann. The fourth and fifth are for the unary method. The sixth and seventh are for Heule and Verwer while the eighth and nineth are for Neider and Jansen.
- * 
- * @param minSize The minimal size of the samples set
- * @param maxSize The maximal size of the samples set
- * @param nGenerations The number of samples set generated for a given size
- * @param minWordSize The minimal size of each generated word
- * @param maxWordSize The maximal size of each generated word
- * @param alphabetSize The size of the alphabet. Since symbols are taken randomly in the alphabet, it may happen that a sampling set uses a smaller alphabet.
- * @param SpProbability The probability that a word ends in Sp
- * @param timeLimit The time limit in seconds
- * @param verbose Whether to print information during the benchmark run
- */
-void random_benchmark(unsigned int minSize, unsigned int maxSize, unsigned int nGenerations, unsigned int minWordSize, unsigned int maxWordSize, unsigned int alphabetSize, double SpProbability, unsigned int timeLimit, bool verbose) {
-    std::ofstream output("full-" + std::to_string(minSize) + "-" + std::to_string(maxSize) + "-" + std::to_string(nGenerations) + "-" + std::to_string(minWordSize) + "-" + std::to_string(maxWordSize) + "-" + std::to_string(alphabetSize) + ".time");
-    output << "# Size; ";
-
-    // First, we create an array to store the execution times
-    // We need one array by method
-    std::vector<std::vector<long double>> times(passive::allMethods.size());
-    // We also need to count the number of timeouts and fails (mainly due to OutOfMemory)
-    std::vector<unsigned int> timeouts(passive::allMethods.size()), fails(passive::allMethods.size());
-    for (unsigned int c = 0 ; c < passive::allMethods.size() ; c++) {
-        times[c].resize(nGenerations, 0);
-        output << passive::allMethods[c] << " mean median timeouts outOfMemories;" << " ";
-    }
-    output << "\n";
-
-    // Now, we create nGenerations samples (the size varies from minSize to maxSize) and we execute every method on these samples
-    for (unsigned int n = minSize ; n <= maxSize ; n++) {
-        timeouts.assign(passive::allMethods.size(), 0);
-
-        for (unsigned int generation = 0 ; generation < nGenerations ; generation++) {
-            std::set<std::string> Sp, Sm;
-            passive::generateRandomly(n, minWordSize, maxWordSize, alphabetSize, Sp, Sm, SpProbability);
-            std::set<std::string> S = passive::computeS(Sp, Sm);
-            std::set<char> alphabet = passive::computeAlphabet(S);
-            std::set<std::string> prefixes = passive::computePrefixes(S);
-
-            if (verbose) {
-                std::cout << "Size: " << n << "; generation: " << generation+1 << "/" << nGenerations << "\n";
-            }
-            executeMethods(Sp, Sm, S, prefixes, alphabet, timeLimit, verbose, times, generation, timeouts, fails);
-        }
-
-        output << n << " ";
-        for (unsigned int c = 0 ; c < passive::allMethods.size() ; c++) {
-            long double mean, median;
-            std::tie(mean, median) = values(times[c]);
-            output << mean << " " << median << " " << timeouts[c] << " " << fails[c] << " ";
-        }
-        output << "\n";
-        output.flush();
-    }
-
-    output.close();
-}
-
-void predefinedBenchmarks(unsigned int timeLimit, bool verbose) {
-    std::ofstream output("predefined.time");
-
-    std::vector<std::vector<long double>> times(passive::allMethods.size());
-    std::vector<unsigned int> timeouts(passive::allMethods.size()), fails(passive::allMethods.size());
-    for (unsigned int c = 0 ; c < passive::allMethods.size() ; c++) {
-        times[c].resize((21 - 3) * 9 * 5, 0);
-        output << passive::allMethods[c] << " mean median timeouts outOfMemories;" << " ";
-    }
-    output << "\n";
-
-    unsigned int counter = 0;
-    for (unsigned int i = 4 ; i <= 21 ; i++) {
-        for (unsigned int j = 1 ; j <= 9 ; j++) {
-            for (unsigned int k = 1 ; k <= 5 ; k++) {
-                char file[29];
-                sprintf(file, "randm%0.2d.02.02.%0.2d.020_0030.%0.2d", i, j, k);
-                std::string filename(file);
-                if (verbose) {
-                    std::cout << filename << "\n";
-                }
-
-                auto dfa = LFDFA::loadFromFile("files/" + filename + ".kis");
-                std::set<std::string> Sp, Sm;
-                dfa->getSets(Sp, Sm);
-                std::set<std::string> S = passive::computeS(Sp, Sm);
-                std::set<char> alphabet = passive::computeAlphabet(S);
-                std::set<std::string> prefixes = passive::computePrefixes(S);
-
-                executeMethods(Sp, Sm, S, prefixes, alphabet, timeLimit, verbose, times, counter++, timeouts, fails);
-            }
-        }
-    }
-
-    for (unsigned int c = 0 ; c < passive::allMethods.size() ; c++) {
-        long double mean, median;
-        std::tie(mean, median) = values(times[c]);
-        output << mean << " " << median << " " << timeouts[c] << " " << fails[c] << " ";
-    }
-    output << "\n";
-    output.flush();
-}
-
 bool benchmarks(const std::string &method, const std::string &input, unsigned int timeLimit) {
     std::set<std::string> Sp, Sm, S, prefixes;
     std::set<char> alphabet;
@@ -231,11 +75,27 @@ bool benchmarks(const std::string &method, const std::string &input, unsigned in
     return success;
 }
 
+bool benchmarksLoopFree(const std::string &method, const std::string &input, unsigned int timeLimit) {
+    auto dfa = LFDFA::loadFromFile(input);
+    std::set<std::string> Sp, Sm;
+    dfa->getSets(Sp, Sm);
+    auto S = passive::computeS(Sp, Sm);
+    auto alphabet = passive::computeAlphabet(S);
+    auto prefixes = passive::computePrefixes(S);
+
+    long double timeTaken = 0;
+    std::unique_ptr<passive::Method> ptr;
+    bool success;
+    std::tie(ptr, success) = passive::constructMethod(method, Sp, Sm, S, prefixes, alphabet, std::chrono::seconds(timeLimit), &timeTaken);
+    std::cout << ptr->numberOfStates() << " " << timeTaken << "\n";
+    return success;
+}
+
 int main(int argc, char** argv) {
     std::string choice;
     std::string inputFile, outputFile;
-    bool toDot, rand_bench, verbose, predefinedBench, generateSample, bench;
-    unsigned int n, numberWords, minSize, maxSize, nGenerations, wordSize, minWordSize, maxWordSize, alphabetSize, timeLimit;
+    bool toDot, verbose, generateSample, bench, loopFree;
+    unsigned int n, numberWords, wordSize, minWordSize, maxWordSize, alphabetSize, timeLimit;
     double probabilityAccepted;
 
     po::options_description desc("Benchmarks for learning DFA algorithms. For the moment, it only works for passive algorithms.");
@@ -253,17 +113,12 @@ int main(int argc, char** argv) {
             }), "If set, the program tries to construct a DFA with exactly n states. If not set, the minimal n is seeked")
 
         ("input-file", po::value<std::string>(&inputFile), "Read the sets of words to accept and to reject from the given file. If not set, the words are randomly generated (see number-words). The file is composed of two blocks separated by a line with exactly five =. The first block is the set of words to accept while the second block is the set of words to reject. Every word must be on its own line (an empty line is considered as the empty word)")
+        ("loop-free", po::bool_switch(&loopFree), "If set, the input file is processed as a 'kis' file describing a Loop-Free DFA")
 
         ("to-dot", po::bool_switch(&toDot), "If present, the program creates the DOT file describing the constructed DFA. If output-file is not set, the file is outputed in the terminal")
         ("output-file", po::value<std::string>(&outputFile)->default_value("out"), "If at least one option among to-dot (...) is present, the corresponding outputs are written in files named 'output-file.extension' with the correct extension. If generate-sample is set, the sample is written in the output file.")
 
         ("benchmarks", po::bool_switch(&bench), "If set, the program executes the given method on the sample in the input file and prints the taken time to the standard output. method and input-file must be set.")
-        ("predefined-benchmarks", po::bool_switch(&predefinedBench), "If set, the program executes the predefined benchmarks. The data are loaded from the files in the folder files")
-        ("random-benchmarks", po::bool_switch(&rand_bench), "If set, the program executes the random benchmarks")
-        ("number-generations", po::value<unsigned int>(&nGenerations)->default_value(50), "If random-benchmarks is set, use this option to change the number of generated samples set by size. By default, 50")
-
-        ("min-size", po::value<unsigned int>(&minSize)->default_value(1), "If random-benchmarks is set, use this option to change the minimum size of the generated samples set. By default, 1")
-        ("max-size", po::value<unsigned int>(&maxSize)->default_value(10), "If random-benchmarks is set, use this option to change the maximum size of the generated samples set. By default, 10")
 
         ("number-words", po::value<unsigned int>(&numberWords)->default_value(10)->notifier([](unsigned int i) {
                 if (i < 1)
@@ -348,21 +203,17 @@ int main(int argc, char** argv) {
         stream.close();
     }
     else if (bench) {
-        if (benchmarks(choice, inputFile, timeLimit)) {
-            return 0;
-        }
-        return 1;
-    }
-    else if (rand_bench) {
-        if (variables.count("min-word-size")) {
-            random_benchmark(minSize, maxSize, nGenerations, minWordSize, maxWordSize, alphabetSize, probabilityAccepted, timeLimit, verbose);
+        if (loopFree) {
+            if (benchmarksLoopFree(choice, inputFile, timeLimit)) {
+                return 0;
+            }
         }
         else {
-            random_benchmark(minSize, maxSize, nGenerations, wordSize, wordSize, alphabetSize, probabilityAccepted, timeLimit, verbose);
+            if (benchmarks(choice, inputFile, timeLimit)) {
+                return 0;
+            }
+            return 1;
         }
-    }
-    else if (predefinedBench) {
-        predefinedBenchmarks(timeLimit, verbose);
     }
     else {
         if (!variables.count("method")) {
