@@ -34,32 +34,35 @@ namespace gsjj {
             bool HeuleVerwerNonCNFMethod::createFormula(std::ostream &stream){
                 std::string formula = "";
                 //Equation 4.5.1
-                for (unsigned int p = 0; p < m_numberStates; p++){
-                    formula += " ( ";
-                    for (const char &a : m_alphabet){
+                if (m_numberStates > 1) {
+                    for (unsigned int p = 0; p < m_numberStates; p++){
                         formula += " ( ";
-                        for (unsigned int q = 0; q < m_numberStates; q++){
-                            for (unsigned int r = 0; r < m_numberStates; r++){
-                                //r is q' in the report
-                                if (q != r){
-                                    formula += "! ( d_" + std::to_string(p) + "_" + a + "_" + std::to_string(q) + 
-                                                " & d_" + std::to_string(p) + "_" + a + "_" + std::to_string(r) + " )";
-                                    formula += " &\n";
+                        for (const char &a : m_alphabet){
+                            formula += " ( ";
+                            for (unsigned int q = 0; q < m_numberStates; q++){
+                                for (unsigned int r = 0; r < m_numberStates; r++){
+                                    //r is q' in the report
+                                    if (q != r){
+                                        formula += "! ( d_" + std::to_string(p) + "_" + a + "_" + std::to_string(q) + 
+                                                    " & d_" + std::to_string(p) + "_" + a + "_" + std::to_string(r) + " )";
+                                        formula += " &\n";
+                                    }
                                 }
                             }
+                            formula = formula.substr(0, formula.length() - 3);
+                            formula += " ) &\n";
                         }
                         formula = formula.substr(0, formula.length() - 3);
                         formula += " ) &\n";
                     }
+
                     formula = formula.substr(0, formula.length() - 3);
-                    formula += " ) &\n";
+                    stream << formula;
+
+                    formula = " &\n";
                 }
 
-                formula = formula.substr(0, formula.length() - 3);
-                stream << formula;
-
                 //Equation 4.5.2
-                formula = " &\n";
                 for (const auto &u : m_prefixes) {
                     formula += " ( ";
                     for (unsigned int q = 0 ; q < m_numberStates ; q++) {
