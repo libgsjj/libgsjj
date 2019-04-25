@@ -147,7 +147,7 @@ namespace gsjj {
          * @param name The name of the method to construct
          * @param Sp The \f$S_+\f$ set
          * @param Sm The \f$S_-\f$ set
-         * @param timeLimit The time in seconds the program can take to find the best possible method. If the time limit is reached, the function returns the best method found so far.
+         * @param timeLimit The time in seconds the program can take to find the best possible method.
          * @param timeTaken If not nullptr, the total time used to solve the different formulas is written. It does NOT give the full CPU time to find the best number of states, juste the time used by the SAT/SMT solvers!
          * @return A method to construct the DFA for the sample \f$(S_+, S_-)\f$ and a boolean. The boolean is true iff the function did not reach the time limit.
          * @warning S can not be empty (and must be coherent with Sp and Sm)
@@ -166,7 +166,7 @@ namespace gsjj {
          * @param S \f$S = S_+ \cup S_-\f$. See passive::computeS
          * @param prefixes The set of prefixes of \f$S\f$. See passive::computePrefixes
          * @param alphabet The alphabet of \f$S\f$. See passive::computeAlphabet
-         * @param timeLimit The time in milliseconds the program can take to find the best possible method. If the time limit is reached, the function returns the best method found so far.
+         * @param timeLimit The time in milliseconds the program can take to find the best possible method.
          * @param timeTaken If not nullptr, the total time used to solve the different formulas is written. It does NOT give the full CPU time to find the best number of states, juste the time used by the SAT/SMT solvers!
          * @return A method to construct the DFA for the sample \f$(S_+, S_-)\f$ and a boolean. The boolean is true iff the function did not reach the time limit.
          * @warning S can not be empty (and must be coherent with Sp and Sm)

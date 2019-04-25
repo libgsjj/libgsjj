@@ -259,7 +259,8 @@ int main(int argc, char** argv) {
                 std::cout << "We found the best possible DFA\n";
             }
             else {
-                std::cout << "Timeout: not enough time to build the optimal DFA. We still show information about the best DFA found.\n";
+                std::cout << "Timeout: not enough time to build the optimal DFA.\n";
+                return 0;
             }
             std::cout << "Total time: " << timeTaken << "\n";
             std::cout << "Number of states: " << method->numberOfStates() << "\n";
