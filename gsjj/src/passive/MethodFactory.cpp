@@ -79,7 +79,7 @@ namespace gsjj {
             std::packaged_task<void()> task([&]() {
                 unsigned int n = 1;
                 bool cont = true;
-                while (cont) {
+                while (cont && !stopTrigger) {
                     std::unique_ptr<Method> toTry = constructMethodTrigger(method, n, Sp, Sm, S, prefixes, alphabet, remainingTime, stopTrigger, &stopBool);
 
                     bool success = toTry->solve();
