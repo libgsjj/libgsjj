@@ -4,6 +4,8 @@ set terminal pngcairo size 1920,1080
 
 set output "random_success.png"
 
+set yrange [0:100]
+
 set style data histogram
 set style histogram cluster gap 1
 set style fill solid border -1
