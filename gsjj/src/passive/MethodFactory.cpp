@@ -77,24 +77,9 @@ namespace gsjj {
 
             // We use a thread to be able to stop the method when the time limit is reached
             std::packaged_task<void()> task([&]() {
-                unsigned int nMin = 1, nMax = prefixes.size();
-
-                // We know that the prefix acceptor is consistent (it might be the smallest DFA)
-                bestPossible = constructMethodTrigger(method, nMax, Sp, Sm, S, prefixes, alphabet, timeLimit, stopTrigger, &stopBool);
-                bestPossible->solve();
-                if (timeTaken) {
-                    *timeTaken = bestPossible->timeToSolve();
-                }
-                if (!bestPossible->hasSolution()) {
-                    return;
-                }
-                remainingTime -= std::chrono::seconds(int(std::floor(bestPossible->timeToSolve())));
-
-                unsigned int n = std::ceil(nMin + (nMax - nMin) / 2.);
-
-                // We seek the best possible DFA size using a binary search
-                // We stop if we reach the end of a classic binary search but also when the stop is triggered
-                while (n != nMax && n != nMin && !stopTrigger) {
+                unsigned int n = 1;
+                bool cont = true;
+                while (cont) {
                     std::unique_ptr<Method> toTry = constructMethodTrigger(method, n, Sp, Sm, S, prefixes, alphabet, remainingTime, stopTrigger, &stopBool);
 
                     bool success = toTry->solve();
@@ -113,16 +98,10 @@ namespace gsjj {
                     }
 
                     if (success) {
-                        if (toTry->numberOfStates() < bestPossible->numberOfStates()) {
-                            bestPossible = std::move(toTry);
-                        }
-                        nMax = n;
+                        bestPossible = std::move(toTry);
+                        cont = false;
                     }
-                    else {
-                        nMin = n;
-                    }
-
-                    n = std::ceil(nMin + (nMax - nMin) / 2.);
+                    n++;
                 }
             });
 

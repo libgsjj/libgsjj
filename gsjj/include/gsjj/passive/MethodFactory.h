@@ -141,7 +141,7 @@ namespace gsjj {
         /**
          * Computes the alphabet and the prefixes set from Sp and Sm and constructs a method with the smallest possible number of states.
          * 
-         * This uses a binary search to find the minimal number of states
+         * This uses a linear search to find the minimal number of states
          * 
          * Sp and Sm must be disjoint.
          * @param name The name of the method to construct
@@ -157,7 +157,7 @@ namespace gsjj {
         /**
          * Constructs a method with the smallest possible number of states.
          * 
-         * This uses a binary search to find the minimal number of states
+         * This uses a linear search to find the minimal number of states
          * 
          * Sp and Sm must be disjoint.
          * @param name The name of the method to construct

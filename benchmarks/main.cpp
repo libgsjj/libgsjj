@@ -87,7 +87,7 @@ bool benchmarksLoopFree(const std::string &method, const std::string &input, uns
     std::unique_ptr<passive::Method> ptr;
     bool success;
     std::tie(ptr, success) = passive::constructMethod(method, Sp, Sm, S, prefixes, alphabet, std::chrono::seconds(timeLimit), &timeTaken);
-    std::cout << ptr->numberOfStates() << " " << timeTaken << "\n";
+    std::cout << timeTaken << "\n";
     return success;
 }
 
@@ -224,7 +224,12 @@ int main(int argc, char** argv) {
         std::set<std::string> Sp, Sm;
 
         if (variables.count("input-file")) {
-            passive::readFromFile(inputFile, Sp, Sm);
+            if (loopFree) {
+                LFDFA::loadFromFile(inputFile)->getSets(Sp, Sm);
+            }
+            else {
+                passive::readFromFile(inputFile, Sp, Sm);
+            }
         }
         else {
             if (variables.count("min-word-size")) {

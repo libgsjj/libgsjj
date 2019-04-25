@@ -30,7 +30,6 @@ do
         do
             echo $method
             cmd="${program} --benchmarks --input-file ${file} --loop-free ${method}"
-            start=$(date +%s.%N)
             # We will use the time given by our program when it's possible
             # But when the program crash (due to an out of memory error, for example), we can't retrieve the time taken so far. So, in this case, we will use date to estimate the taken time
             start=$(date +%s.%N)
