@@ -72,10 +72,12 @@ $(function() {
 </ul>
 </li>
 <li class="level3"><a href="#autotoc_md7">Unit tests</a></li>
-<li class="level3"><a href="#autotoc_md8">Benchmarks</a></li>
+<li class="level3"><a href="#autotoc_md8">Benchmarks</a><ul><li class="level4"><a href="#autotoc_md9">User manual</a></li>
 </ul>
 </li>
-<li class="level2"><a href="#autotoc_md9">License</a><ul><li class="level3"><a href="#autotoc_md10">Changes made on bcsat</a></li>
+</ul>
+</li>
+<li class="level2"><a href="#autotoc_md10">License</a><ul><li class="level3"><a href="#autotoc_md11">Changes made on bcsat</a></li>
 </ul>
 </li>
 </ul>
@@ -149,11 +151,16 @@ Unit tests</h3>
 <h3><a class="anchor" id="autotoc_md8"></a>
 Benchmarks</h3>
 <p>Once build, you can launch the benchmarks by starting the program <code>benchmarks</code> (built in the subfolder <code>benchmarks</code> in <code>build</code>).</p>
-<h2><a class="anchor" id="autotoc_md9"></a>
+<h4><a class="anchor" id="autotoc_md9"></a>
+User manual</h4>
+<p>The <code>benchmarks</code> program can be used to benchmark a method on a sample or to simply execute a method.</p>
+<p>To execute a method (let's say the Heule and Verwer method) on a randomly generated sample (with default parameters) and get the optimal DFA in a DOT format, we write: </p><div class="fragment"><div class="line">./benchmarks --to-dot heule</div></div><!-- fragment --><p> By default, the output file is <code>out.dot</code>. This can be changed with the option <code>--output-file</code>.</p>
+<p>To execute a method on an input-file describing a sample, we write: </p><div class="fragment"><div class="line">./benchmarks --to-dot --input-file /path/to/file heule</div></div><!-- fragment --><p>To execute a method on an input-file describing a loop-free DFA, we write: </p><div class="fragment"><div class="line">./benchmarks --to-dot --input-file /path/to/file --loop-free heule</div></div><!-- fragment --><p>We can also ask the program to execute a method on a fixed DFA size. Let's say we want to use the binary method, use a randomly generated sample and test if there exists a consistent DFA of size 3: </p><div class="fragment"><div class="line">./benchmarks --to-dot binary 3</div></div><!-- fragment --><p>To benchmark a method on a sample, we write: </p><div class="fragment"><div class="line">./benchmarks --benchmarks --input-file /path/to/file biermann</div></div><!-- fragment --><p> The program will print the time taken by the method and return 0 if and only if the method could find the optimal DFA.</p>
+<p>You can get the complete list of options with </p><div class="fragment"><div class="line">./benchmarks --help</div></div><!-- fragment --><h2><a class="anchor" id="autotoc_md10"></a>
 License</h2>
 <p>Due to bcsat and the modifications done on this dependency, our library is licensed under the GNU GPL v2.</p>
 <p>CVC4 is distributed both under BSD 3-Clause and GNU GPL v3. If you want to distribute binaries based on libgsjj, be sure to use a BSD 3-Clause distribution for CVC4 since GNU GPL v2 and v3 are incompatible.</p>
-<h3><a class="anchor" id="autotoc_md10"></a>
+<h3><a class="anchor" id="autotoc_md11"></a>
 Changes made on bcsat</h3>
 <p>We give here the modifications done on bcsat. The base files can be found at <a href="https://github.com/scrippie/bcsat">https://github.com/scrippie/bcsat</a>.</p>
 <ul>

@@ -421,13 +421,13 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Computes the alphabet and the prefixes set from Sp and Sm and constructs a method with the smallest possible number of states. </p>
-<p>This uses a binary search to find the minimal number of states</p>
+<p>This uses a linear search to find the minimal number of states</p>
 <p>Sp and Sm must be disjoint. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">name</td><td>The name of the method to construct </td></tr>
     <tr><td class="paramname">Sp</td><td>The <img class="formulaInl" alt="$S_+$" src="form_2.png"/> set </td></tr>
     <tr><td class="paramname">Sm</td><td>The <img class="formulaInl" alt="$S_-$" src="form_3.png"/> set </td></tr>
-    <tr><td class="paramname">timeLimit</td><td>The time in seconds the program can take to find the best possible method. If the time limit is reached, the function returns the best method found so far. </td></tr>
+    <tr><td class="paramname">timeLimit</td><td>The time in seconds the program can take to find the best possible method. </td></tr>
     <tr><td class="paramname">timeTaken</td><td>If not nullptr, the total time used to solve the different formulas is written. It does NOT give the full CPU time to find the best number of states, juste the time used by the SAT/SMT solvers! </td></tr>
   </table>
   </dd>
@@ -502,7 +502,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Constructs a method with the smallest possible number of states. </p>
-<p>This uses a binary search to find the minimal number of states</p>
+<p>This uses a linear search to find the minimal number of states</p>
 <p>Sp and Sm must be disjoint. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">name</td><td>The name of the method to construct </td></tr>
@@ -511,7 +511,7 @@ Variables</h2></td></tr>
     <tr><td class="paramname">S</td><td><img class="formulaInl" alt="$S = S_+ \cup S_-$" src="form_16.png"/>. See <a class="el" href="namespacegsjj_1_1passive.html#ab6f2e12ab7d67cf134acd98009868dc6" title="Computes . ">passive::computeS</a> </td></tr>
     <tr><td class="paramname">prefixes</td><td>The set of prefixes of <img class="formulaInl" alt="$S$" src="form_4.png"/>. See <a class="el" href="namespacegsjj_1_1passive.html#a8c8434ca88a6d8161698fb5b823dd5c7" title="Computes . ">passive::computePrefixes</a> </td></tr>
     <tr><td class="paramname">alphabet</td><td>The alphabet of <img class="formulaInl" alt="$S$" src="form_4.png"/>. See <a class="el" href="namespacegsjj_1_1passive.html#a2cf0e78e92bacb37939193e63545ce7e" title="Computes the alphabet  from the words in . ">passive::computeAlphabet</a> </td></tr>
-    <tr><td class="paramname">timeLimit</td><td>The time in milliseconds the program can take to find the best possible method. If the time limit is reached, the function returns the best method found so far. </td></tr>
+    <tr><td class="paramname">timeLimit</td><td>The time in milliseconds the program can take to find the best possible method. </td></tr>
     <tr><td class="paramname">timeTaken</td><td>If not nullptr, the total time used to solve the different formulas is written. It does NOT give the full CPU time to find the best number of states, juste the time used by the SAT/SMT solvers! </td></tr>
   </table>
   </dd>

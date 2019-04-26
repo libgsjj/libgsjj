@@ -60,6 +60,15 @@ std::unique_ptr<passive::Method> call_method_fixed_n(const std::set<std::string>
     return std::move(method);
 }
 
+/**
+ * Execute a method on the sample described in the input file.
+ * 
+ * It prints the timeTaken to find the optimal DFA (or something around the timeLimit if it did not have enough time).
+ * @param method The method to execute
+ * @param input The input file
+ * @param timeLimit The time limit (in seconds)
+ * @return True iff the method could find the optimal DFA
+ */
 bool benchmarks(const std::string &method, const std::string &input, unsigned int timeLimit) {
     std::set<std::string> Sp, Sm, S, prefixes;
     std::set<char> alphabet;
@@ -75,6 +84,15 @@ bool benchmarks(const std::string &method, const std::string &input, unsigned in
     return success;
 }
 
+/**
+ * Execute a method on the sample described by a loop-free DFA written in the input file.
+ * 
+ * It prints the timeTaken to find the optimal DFA (or something around the timeLimit if it did not have enough time).
+ * @param method The method to execute
+ * @param input The input file
+ * @param timeLimit The time limit (in seconds)
+ * @return True iff the method could find the optimal DFA
+ */
 bool benchmarksLoopFree(const std::string &method, const std::string &input, unsigned int timeLimit) {
     auto dfa = LFDFA::loadFromFile(input);
     std::set<std::string> Sp, Sm;
@@ -132,7 +150,7 @@ int main(int argc, char** argv) {
         ("alphabet-size", po::value<unsigned int>(&alphabetSize)->default_value(10), "Use this option to change the size of the alphabet used to randomly generated the samples. By default, 10")
         ("probability-accepted", po::value<double>(&probabilityAccepted)->default_value(0.5)->notifier([](double i) { if (!(0 <= i && i <= 1)) {throw std::runtime_error("--probability-accepted must be in [0, 1]");}}), "Use this option to change the probability that a generated word is added to the set of words that the DFA must accept. The probability that a word must be rejected is 1 minus this probability. By default, 0.5")
 
-        ("time-limit", po::value<unsigned int>(&timeLimit)->default_value(300), "The time limit, in seconds, the program has to find the best possible solution. If 0, there is no time limit. By default, 300s")
+        ("time-limit", po::value<unsigned int>(&timeLimit)->default_value(300), "The time limit, in seconds, the program has to find the best possible solution. If 0, there is no time limit. It's possible the program takes more time than the time limit allows because the program needs the reach a point where it checks if it must stops and some computation's steps take time. By default, 300s.")
     ;
 
     po::positional_options_description posopt;
@@ -143,7 +161,7 @@ int main(int argc, char** argv) {
     po::store(po::command_line_parser(argc, argv).options(desc).positional(posopt).run(), variables);
 
     // First, we check if the help is needed.
-    // We don't want to send an error message when the user doesn't know what to do, are we?
+    // We don't want to send an error message when the user doesn't know what to do
     if (variables.count("help"))
     {
         std::cout << desc << "\n";
@@ -260,7 +278,7 @@ int main(int argc, char** argv) {
             }
             else {
                 std::cout << "Timeout: not enough time to build the optimal DFA.\n";
-                return 0;
+                return 8;
             }
             std::cout << "Total time: " << timeTaken << "\n";
             std::cout << "Number of states: " << method->numberOfStates() << "\n";
@@ -274,13 +292,8 @@ int main(int argc, char** argv) {
         if (toDot) {
             auto dfa = method->constructDFA();
 
-            if (variables.count("output-file")) {
-                std::ofstream out(outputFile + ".dot");
-                out << dfa->to_dot();
-            }
-            else {
-                std::cout << dfa->to_dot() << "\n";
-            }
+            std::ofstream out(outputFile + ".dot");
+            out << dfa->to_dot();
         }
     }
 

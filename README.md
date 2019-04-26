@@ -112,6 +112,41 @@ Once build, you can launch the unit tests by starting the program `tests` (built
 ### Benchmarks
 Once build, you can launch the benchmarks by starting the program `benchmarks` (built in the subfolder `benchmarks` in `build`).
 
+#### User manual
+The `benchmarks` program can be used to benchmark a method on a sample or to simply execute a method.
+
+To execute a method (let's say the Heule and Verwer method) on a randomly generated sample (with default parameters) and get the optimal DFA in a DOT format, we write:
+```bash
+./benchmarks --to-dot heule
+```
+By default, the output file is `out.dot`. This can be changed with the option `--output-file`.
+
+To execute a method on an input-file describing a sample, we write:
+```bash
+./benchmarks --to-dot --input-file /path/to/file heule
+```
+
+To execute a method on an input-file describing a loop-free DFA, we write:
+```bash
+./benchmarks --to-dot --input-file /path/to/file --loop-free heule
+```
+
+We can also ask the program to execute a method on a fixed DFA size. Let's say we want to use the binary method, use a randomly generated sample and test if there exists a consistent DFA of size 3:
+```bash
+./benchmarks --to-dot binary 3
+```
+
+To benchmark a method on a sample, we write:
+```bash
+./benchmarks --benchmarks --input-file /path/to/file biermann
+```
+The program will print the time taken by the method and return 0 if and only if the method could find the optimal DFA.
+
+You can get the complete list of options with
+```bash
+./benchmarks --help
+```
+
 ## License
 Due to bcsat and the modifications done on this dependency, our library is licensed under the GNU GPL v2.
 
