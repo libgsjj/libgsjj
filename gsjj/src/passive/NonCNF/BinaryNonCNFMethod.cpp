@@ -80,6 +80,9 @@ namespace gsjj {
                 //Traduction of the first equation of Biermann and Feldman
                 std::string formula = "";
                 for (const auto &pref : m_prefixes){
+					if (mustStop && *mustStop) {
+						return false;
+					}
                     if (pref.size() > 0) {
                         const std::string &u = pref.substr(0, pref.length() - 1);
                         const char &a = pref.at(pref.length() - 1);

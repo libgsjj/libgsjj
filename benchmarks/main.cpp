@@ -225,6 +225,7 @@ int main(int argc, char** argv) {
             if (benchmarksLoopFree(choice, inputFile, timeLimit)) {
                 return 0;
             }
+			return 1;
         }
         else {
             if (benchmarks(choice, inputFile, timeLimit)) {

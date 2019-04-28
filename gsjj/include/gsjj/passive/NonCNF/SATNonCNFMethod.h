@@ -63,7 +63,7 @@ namespace gsjj {
 
                 SATNonCNFMethod(const std::set<std::string> &SpSet, const std::set<std::string> &SmSet, const std::set<std::string> &SSet, const std::set<std::string> &prefixesSet, const std::set<char> &alphabetSet, unsigned int n);
 
-            private:
+            protected:
                 const bool *mustStop;
 
             private:

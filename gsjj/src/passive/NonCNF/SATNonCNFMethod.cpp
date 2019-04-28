@@ -34,6 +34,10 @@ namespace gsjj {
                         out.c_str(),
                     };
 
+                    if (mustStop && *mustStop) {
+                        return false;
+                    }
+
                     m_cpuTimeStart = cpuTime();
                     limboole(5, argv, mustStop);
                     m_cpuTimeEnd = cpuTime();
