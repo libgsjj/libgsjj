@@ -8,6 +8,8 @@ find_package(cvc4 REQUIRED)
 find_package(GMP REQUIRED)
 # Required for one of the dependencies
 find_package(ZLIB REQUIRED)
+# Needed to use std::thread
+find_package(Threads REQUIRED)
 
 add_subdirectory(lib)
 
@@ -52,6 +54,7 @@ target_link_libraries(gsjj
         ${Boost_LIBRARIES}
         ${cvc4_LIBRARIES}
         ${GMP_LIBRARIES}
+		${CMAKE_THREADS_LIBS_INIT}
     PRIVATE
         picosat
         limboole
