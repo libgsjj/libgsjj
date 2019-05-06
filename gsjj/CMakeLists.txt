@@ -54,7 +54,7 @@ target_link_libraries(gsjj
         ${Boost_LIBRARIES}
         ${cvc4_LIBRARIES}
         ${GMP_LIBRARIES}
-		${CMAKE_THREADS_LIBS_INIT}
+        ${CMAKE_THREAD_LIBS_INIT}
     PRIVATE
         picosat
         limboole
