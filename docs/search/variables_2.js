@@ -18,5 +18,6 @@ var searchData=
   ['m_5fsp',['m_Sp',['../classgsjj_1_1passive_1_1Method.html#a0217ec5813e210a39bd7afcda00714a8',1,'gsjj::passive::Method']]],
   ['m_5fstatetovar',['m_stateToVar',['../classgsjj_1_1passive_1_1CNF_1_1BinaryCNFMethod.html#aecb613ad2f2d2ac5a139fc0f5e0d09ae',1,'gsjj::passive::CNF::BinaryCNFMethod']]],
   ['m_5ftriedsolve',['m_triedSolve',['../classgsjj_1_1passive_1_1Method.html#a587f941ba89bcbfe26d14bc58c9433ba',1,'gsjj::passive::Method']]],
-  ['m_5fxvars',['m_xVars',['../classgsjj_1_1passive_1_1CNF_1_1HeuleVerwerCNFMethod.html#affda17716e9848dc029dcf1669c88ba5',1,'gsjj::passive::CNF::HeuleVerwerCNFMethod']]]
+  ['m_5fxvars',['m_xVars',['../classgsjj_1_1passive_1_1CNF_1_1HeuleVerwerCNFMethod.html#affda17716e9848dc029dcf1669c88ba5',1,'gsjj::passive::CNF::HeuleVerwerCNFMethod']]],
+  ['muststop',['mustStop',['../classgsjj_1_1passive_1_1NonCNF_1_1SATNonCNFMethod.html#ad13fcdf875714236bd459b5d7e269ec5',1,'gsjj::passive::NonCNF::SATNonCNFMethod']]]
 ];

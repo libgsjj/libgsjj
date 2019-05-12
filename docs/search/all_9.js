@@ -27,5 +27,6 @@ var searchData=
   ['methodfactory',['MethodFactory',['../classgsjj_1_1passive_1_1MethodFactory.html',1,'gsjj::passive::MethodFactory'],['../classgsjj_1_1passive_1_1MethodFactory.html#a0e4622cb07876267282306b5eef6ef1b',1,'gsjj::passive::MethodFactory::MethodFactory()']]],
   ['methodfactory_2ecpp',['MethodFactory.cpp',['../MethodFactory_8cpp.html',1,'']]],
   ['methodfactory_2eh',['MethodFactory.h',['../MethodFactory_8h.html',1,'']]],
-  ['methodptr',['MethodPtr',['../classgsjj_1_1passive_1_1MethodFactory.html#ac563338a6b8257a6c0ca5305f0330508',1,'gsjj::passive::MethodFactory']]]
+  ['methodptr',['MethodPtr',['../classgsjj_1_1passive_1_1MethodFactory.html#ac563338a6b8257a6c0ca5305f0330508',1,'gsjj::passive::MethodFactory']]],
+  ['muststop',['mustStop',['../classgsjj_1_1passive_1_1NonCNF_1_1SATNonCNFMethod.html#ad13fcdf875714236bd459b5d7e269ec5',1,'gsjj::passive::NonCNF::SATNonCNFMethod']]]
 ];
