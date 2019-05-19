@@ -17,6 +17,8 @@ To build such a DFA, we use what we call passive learning algorithms. The follow
   - Neider and Jansen's algorithm
 
 ## How to use libgsjj
+`libgsjj` can only be compiled under Linux and OS X. Windows 10 users can use a Linux Subsystem for Windows to compile and execute the programs.
+
 Please note that the benchmarks will only be correct under Linux because the way the CPU time for a thread is retrieved is only working under that family of OS. The Linux kernel's version must be at least 2.6.26.
 
 ### Dependencies to install
@@ -112,7 +114,7 @@ Once build, you can launch the unit tests by starting the program `tests` (built
 ### Benchmarks
 Once build, you can launch the benchmarks by starting the program `benchmarks` (built in the subfolder `benchmarks` in `build`).
 
-#### User manual
+## User manual
 The `benchmarks` program can be used to benchmark a method on a sample or to simply execute a method.
 
 To execute a method (let's say the Heule and Verwer method) on a randomly generated sample (with default parameters) and get the optimal DFA in a DOT format, we write:
@@ -146,6 +148,30 @@ You can get the complete list of options with
 ```bash
 ./benchmarks --help
 ```
+
+### Input files
+As said before, the `benchmarks` program handles two types of input files :
+  1. Files describing a sample
+  2. Files describing a loop-free DFA
+
+#### Sample
+The files describing a sample start with the words in \f$S_+\f$, followed by a line with `=====` and end with the words in \f$S_-\f$. Each word must be in its own line and an empty line is considered as the empty word. See the files `example.in`, `neider.in` and `names.in` for examples.
+
+#### Loop-free DFA
+The files describing a loop-free DFA are structured as followed:
+```
+.p 600
+.s 601
+.i 1
+.o 1
+1 N0 N1 0
+1 N1 N2 0
+.e
+```
+
+We suppose that the alphabet is always \f$\{0,1\}\f$. The four first lines must be present in the file but are not used. The lines after describe a transition in the loop⁻free DFA. For example, `1 N0 N1 0` indicates that there is a transition from `N0` to `N1` using the symbol `1` and that `N1` is not an accepting state. The last line must be `.e`.
+
+See the files in the directory `plots/files` for examples.
 
 ## License
 Due to bcsat and the modifications done on this dependency, our library is licensed under the GNU GPL v2.

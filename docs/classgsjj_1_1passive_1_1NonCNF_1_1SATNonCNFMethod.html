@@ -67,6 +67,7 @@ $(function() {
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pro-methods">Protected Member Functions</a> &#124;
+<a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="classgsjj_1_1passive_1_1NonCNF_1_1SATNonCNFMethod-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">gsjj::passive::NonCNF::SATNonCNFMethod Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
@@ -148,8 +149,10 @@ Protected Member Functions</h2></td></tr>
 <tr class="memdesc:ab5de618f144bf5a3a22b729c363d53d8 inherit pro_methods_classgsjj_1_1passive_1_1Method"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates the method.  <a href="classgsjj_1_1passive_1_1Method.html#ab5de618f144bf5a3a22b729c363d53d8">More...</a><br /></td></tr>
 <tr class="separator:ab5de618f144bf5a3a22b729c363d53d8 inherit pro_methods_classgsjj_1_1passive_1_1Method"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
-Additional Inherited Members</h2></td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
+<tr class="memitem:ad13fcdf875714236bd459b5d7e269ec5"><td class="memItemLeft" align="right" valign="top">const bool *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgsjj_1_1passive_1_1NonCNF_1_1SATNonCNFMethod.html#ad13fcdf875714236bd459b5d7e269ec5">mustStop</a></td></tr>
+<tr class="separator:ad13fcdf875714236bd459b5d7e269ec5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_attribs_classgsjj_1_1passive_1_1Method"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classgsjj_1_1passive_1_1Method')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classgsjj_1_1passive_1_1Method.html">gsjj::passive::Method</a></td></tr>
 <tr class="memitem:a0217ec5813e210a39bd7afcda00714a8 inherit pro_attribs_classgsjj_1_1passive_1_1Method"><td class="memItemLeft" align="right" valign="top">const std::set&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgsjj_1_1passive_1_1Method.html#a0217ec5813e210a39bd7afcda00714a8">m_Sp</a></td></tr>
 <tr class="memdesc:a0217ec5813e210a39bd7afcda00714a8 inherit pro_attribs_classgsjj_1_1passive_1_1Method"><td class="mdescLeft">&#160;</td><td class="mdescRight">The set of words to accept <img class="formulaInl" alt="$S_+$" src="form_2.png"/>.  <a href="classgsjj_1_1passive_1_1Method.html#a0217ec5813e210a39bd7afcda00714a8">More...</a><br /></td></tr>
@@ -327,7 +330,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="classgsjj_1_1passive_1_1Method.html#af9eea07c5d7bc311e2afa615702e913c">gsjj::passive::Method</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="SATNonCNFMethod_8cpp_source.html#l00049">49</a> of file <a class="el" href="SATNonCNFMethod_8cpp_source.html">SATNonCNFMethod.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="SATNonCNFMethod_8cpp_source.html#l00053">53</a> of file <a class="el" href="SATNonCNFMethod_8cpp_source.html">SATNonCNFMethod.cpp</a>.</p>
 
 </div>
 </div>
@@ -424,7 +427,7 @@ Additional Inherited Members</h2></td></tr>
 <p>Reads the output of the SAT solver and checks if the formula was satisfiable or not. </p>
 <dl class="section return"><dt>Returns</dt><dd>True iff the formula was satisfiable </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="SATNonCNFMethod_8cpp_source.html#l00076">76</a> of file <a class="el" href="SATNonCNFMethod_8cpp_source.html">SATNonCNFMethod.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="SATNonCNFMethod_8cpp_source.html#l00080">80</a> of file <a class="el" href="SATNonCNFMethod_8cpp_source.html">SATNonCNFMethod.cpp</a>.</p>
 
 </div>
 </div>
@@ -480,7 +483,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="classgsjj_1_1passive_1_1Method.html#a3791091fea1b184e606b7221888b968c">gsjj::passive::Method</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="SATNonCNFMethod_8cpp_source.html#l00072">72</a> of file <a class="el" href="SATNonCNFMethod_8cpp_source.html">SATNonCNFMethod.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="SATNonCNFMethod_8cpp_source.html#l00076">76</a> of file <a class="el" href="SATNonCNFMethod_8cpp_source.html">SATNonCNFMethod.cpp</a>.</p>
 
 </div>
 </div>
@@ -544,6 +547,31 @@ Additional Inherited Members</h2></td></tr>
 <p>If this function is called, the boolean formula is satisfiable. The output of the SAT solver is given in the stream </p>
 
 <p>Implemented in <a class="el" href="classgsjj_1_1passive_1_1NonCNF_1_1HeuleVerwerNonCNFMethod.html#abe6f50574187d16beccbba2d5657d477">gsjj::passive::NonCNF::HeuleVerwerNonCNFMethod</a>, <a class="el" href="classgsjj_1_1passive_1_1NonCNF_1_1BinaryNonCNFMethod.html#a4ea209c9ef8215328749fa83bb0a7d46">gsjj::passive::NonCNF::BinaryNonCNFMethod</a>, and <a class="el" href="classgsjj_1_1passive_1_1NonCNF_1_1UnaryNonCNFMethod.html#a8ed0fe6f244ae64f0c64182c65fe23b7">gsjj::passive::NonCNF::UnaryNonCNFMethod</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="ad13fcdf875714236bd459b5d7e269ec5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad13fcdf875714236bd459b5d7e269ec5">&#9670;&nbsp;</a></span>mustStop</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const bool* gsjj::passive::NonCNF::SATNonCNFMethod::mustStop</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="SATNonCNFMethod_8h_source.html#l00067">67</a> of file <a class="el" href="SATNonCNFMethod_8h_source.html">SATNonCNFMethod.h</a>.</p>
 
 </div>
 </div>
